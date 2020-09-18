@@ -1,7 +1,7 @@
 ﻿courseId: 58 # COURSE NAME
-categoryId: 48 # CATEGORY NAME
+categoryId: 52 # CATEGORY NAME
 quizId: ~ # auto generated at spring side
-name: test_quiz
+name: another test quiz
 questions:
   - questionId: ~ # auto generated
     description: Multiple inheritance means
