@@ -1,9 +1,8 @@
-﻿courseId: 53 # COURSE NAME
-categoryId: 48 # CATEGORY NAME
-quizId: ~ # auto generated at spring side
+﻿categoryId: 48 # CATEGORY NAME
 name: test_quiz
 questions:
-  - questionId: 1 # must be filled to maintain the initial order of the questions, since the questions is implemented as set at SpringBoot
+  - questionId: ~
+    order: 1
     description: Multiple inheritance means
     choices:
       - one class inheriting from more super classes
@@ -15,7 +14,8 @@ questions:
       Inheritance is inheriting from one super class, therefore multiple
       inheritance is inheriting from more superclass
     correctChoice: 0
-  - questionId: 2
+  - questionId: ~
+    order: 2
     description: Multiple inheritance means
     choices:
       - one class inheriting from more super classes
@@ -27,7 +27,8 @@ questions:
       Inheritance is inheriting from one super class, therefore multiple
       inheritance is inheriting from more superclass
     correctChoice: 0
-  - questionId: 3
+  - questionId: ~
+    order: 3
     description: 'The default value of a static integer variable of a class in Java is:'
     choices:
       - '0'
@@ -37,7 +38,8 @@ questions:
     hint: hint not applicable to this question
     explanation: The correct choice is 0. Since this is defined by Java.
     correctChoice: 0
-  - questionId: 4
+  - questionId: ~
+    order: 4
     description: Which statement is not true in java language?
     choices:
       - A public member of a class can be accessed in all the packages.
@@ -51,7 +53,8 @@ questions:
       Private member of the same class can still be accessed by the methods in
       the same class
     correctChoice: 1
-  - questionId: 5
+  - questionId: ~
+    order: 5
     description: Which statement is not true in java language?
     choices:
       - A public member of a class can be accessed in all the packages.
