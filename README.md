@@ -7,6 +7,12 @@ In this repo the raw quiz data for the vogella Quiz App ist maintained.
 Each quiz is assigned to a course category id.
 The server then assigns a quiz to a course according to the category id and sorts the quizzes according to the course structure.
 
+The name of the yaml file will not be used for the assignment of a quiz to a course or the ordering of the quizzes in a course.
+Nevertheless for maintenance reasons a prefix of the underlying course should be set upfront. e.g.:
+* `rcp_` for the Rich Client Platform course
+* `flutter_` for the Flutter course
+* `plugin_` for the Eclipse IDE extensions course
+
 The following will give an introduction on how to create a quiz for a category in a course.
 
 ## Header
