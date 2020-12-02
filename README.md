@@ -2,24 +2,26 @@
 
 ## Intro
 
-This is a repo for Quiz App @vogella to obtain raw quiz data. The assignment of the quiz to a category in course is achieved by fetching from KnowledgeForge server, and later processed by server according to the `categoryId`.
+In this repo the raw quiz data for the vogella Quiz App ist maintained.
 
-The following will give an introduction on how to create a test for a category in Training course.
+Each quiz is assigned to a course category id.
+The server then assigns a quiz to a course according to the category id and sorts the quizzes according to the course structure.
+
+The following will give an introduction on how to create a quiz for a category in a course.
 
 ## Header
 
 * assign the categoryId to which the quiz is for by: `categoryId: **categoryId**` 
 * assign a name to the quiz by `name: **name**`
 
-## Question
+## Questions
 
-* the `questions` is a set for object `question` 
-* one object `question` consist `description`, `choices`, `hint`, `explanation`, `correctChoice`
-* `description`: the description of the question
-* `choices`: four choices designed for the question
-* `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
-* `explanation`: an explanation for the answer, if does not exist then please put `NULL`
-* `correctChoice`: the id for the correct choice, range 0-3
+* `questions` consist of:
+** `description`: the description of the question
+** `choices`: four choices designed for the question
+** `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
+** `explanation`: an explanation for the answer, if does not exist then please put `NULL`
+** `correctChoice`: the id for the correct choice, range 0-3
   
 ## Template
 
