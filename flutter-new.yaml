@@ -1,12 +1,12 @@
 categoryId: 25453 # CATEGORY NAME
-name: Flutter Installation
+name: Flutter Null testing
 questions:
   - description: What is Flutter?
     choices:
       - Flutter is an open-source UI toolkit from Google for crafting beautiful, natively compiled applications for desktop, web, and mobile from a single codebase. Flutter apps are built using the Dart programming language.
       - Flutter is an awesome programming language
       - Flutter is another version for Andoird
-      - None of the above
+      - NULL
     hint: NULL
     explanation: NULL
     correctChoice: 0
@@ -15,7 +15,7 @@ questions:
       - 2
       - 1
       - A lot of widgets
-      - None of the above
+      - NULL
     hint: The mainly used ones
     explanation: >-
       Only two types of widgets are used in Flutter. 

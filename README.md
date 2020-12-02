@@ -24,7 +24,7 @@ The following will give an introduction on how to create a quiz for a category i
 
 `questions` consist of:
 * `description`: the description of the question
-* `choices`: four choices designed for the question
+* `choices`: four choices designed for the question. For number of choices less than 4, please put missing choices as `NULL` in the end.
 * `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
 * `explanation`: an explanation for the answer, if does not exist then please put `NULL`
 * `correctChoice`: the id for the correct choice, range 0-3
@@ -40,7 +40,7 @@ questions:
       - # Choice A
       - # Chocie B
       - # Choice C
-      - # Choice D
+      - # Choice D or NULL
     hint: # hint
     explanation: # explanation
     correctChoice: # choiceId
