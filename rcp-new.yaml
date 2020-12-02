@@ -12,6 +12,17 @@ questions:
       Inheritance is inheriting from one super class, therefore multiple
       inheritance is inheriting from more superclass
     correctChoice: 0
+  - description: Multiple inheritance means
+    choices:
+      - one class inheriting from more super classes
+      - more classes inheriting from one super class
+      - more classes inheriting from more super classes
+      - None of the above
+    hint: First think about the definistion for inheritance
+    explanation: >-
+      Inheritance is inheriting from one super class, therefore multiple
+      inheritance is inheriting from more superclass
+    correctChoice: 0
   - description: 'The default value of a static integer variable of a class in Java is:'
     choices:
       - '0'
