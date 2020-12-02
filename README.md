@@ -16,12 +16,12 @@ The following will give an introduction on how to create a quiz for a category i
 
 ## Questions
 
-* `questions` consist of:
-** `description`: the description of the question
-** `choices`: four choices designed for the question
-** `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
-** `explanation`: an explanation for the answer, if does not exist then please put `NULL`
-** `correctChoice`: the id for the correct choice, range 0-3
+`questions` consist of:
+* `description`: the description of the question
+* `choices`: four choices designed for the question
+* `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
+* `explanation`: an explanation for the answer, if does not exist then please put `NULL`
+* `correctChoice`: the id for the correct choice, range 0-3
   
 ## Template
 
