@@ -1,5 +1,11 @@
 # Guide to generate a Quiz
 
+## Intro
+
+This is a repo for Quiz App @vogella to obtain raw quiz data. The assignment of the quiz to a category in course is achieved by fetching from KnowledgeForge server, and later processed by server according to the `categoryId`.
+
+The following will give an introduction on how to create a test for a category in Training course.
+
 ## Header
 
 * assign the categoryId to which the quiz is for by: `categoryId: **categoryId**` 
