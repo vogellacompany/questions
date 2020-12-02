@@ -1,5 +1,5 @@
 ﻿categoryId: 1689 # CATEGORY NAME
-name: another test quiz
+name: User interface development with SWT and JFace
 questions:
   - description: Multiple inheritance means
     choices:

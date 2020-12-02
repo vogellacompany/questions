@@ -1,5 +1,5 @@
 ﻿categoryId: 1684 # CATEGORY NAME
-name: another test quiz
+name: Introduction to Eclipse RCP
 questions:
   - description: Multiple inheritance means
     choices:

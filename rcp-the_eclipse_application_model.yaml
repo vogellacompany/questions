@@ -1,5 +1,5 @@
 ﻿categoryId: 1722 # CATEGORY NAME
-name: test_quiz
+name: The Eclipse application model
 questions:
   - description: Multiple inheritance means
     choices:
