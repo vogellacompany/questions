@@ -1,7 +1,7 @@
 ﻿categoryId: 1684 # CATEGORY NAME
 name: Introduction to Eclipse RCP
 questions:
-  - description: Multiple inheritance means
+  - description: 1 Multiple inheritance means
     choices:
       - one class inheriting from more super classes
       - more classes inheriting from one super class
@@ -11,8 +11,8 @@ questions:
     explanation: >-
       Inheritance is inheriting from one super class, therefore multiple
       inheritance is inheriting from more superclass
-    correctChoice: 0
-  - description: Multiple inheritance means
+    correctChoice: 0 
+  - description: 2 Multiple inheritance means 
     choices:
       - one class inheriting from more super classes
       - more classes inheriting from one super class
@@ -22,8 +22,8 @@ questions:
     explanation: >-
       Inheritance is inheriting from one super class, therefore multiple
       inheritance is inheriting from more superclass
-    correctChoice: 0
-  - description: 'The default value of a static integer variable of a class in Java is:'
+    correctChoice: 0 
+  - description: '3 The default value of a static integer variable of a class in Java is:'
     choices:
       - '0'
       - '1'
@@ -32,7 +32,7 @@ questions:
     hint: hint not applicable to this question
     explanation: The correct choice is 0. Since this is defined by Java.
     correctChoice: 0
-  - description: Which statement is not true in java language?
+  - description: 4 Which statement is not true in java language?
     choices:
       - A public member of a class can be accessed in all the packages.
       - >-
@@ -45,7 +45,7 @@ questions:
       Private member of the same class can still be accessed by the methods in
       the same class
     correctChoice: 1
-  - description: Which statement is not true in java language?
+  - description: 5 Which statement is not true in java language?
     choices:
       - A public member of a class can be accessed in all the packages.
       - >-
