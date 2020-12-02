@@ -1,5 +1,5 @@
 categoryId: 25444 # CATEGORY NAME
-name: test_quiz_flutter
+name: Flutter Installation
 questions:
   - description: What is Flutter?
     choices:
