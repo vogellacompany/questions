@@ -1,0 +1,26 @@
+﻿categoryId: 1692 # CATEGORY NAME
+name: Dialogs and Wizards
+questions:
+  - description: 1 What is a dialog?
+    choices:
+      - one class inheriting from more super classes
+      - more classes inheriting from one super class
+      - NULL
+      - NULL
+    hint: First think about the definistion for inheritance
+    explanation:
+      Inheritance is inheriting from one super class, therefore multiple
+      inheritance is inheriting from more superclass
+    correctChoice: 0 
+  - description: 2 What is a wizard? 
+    choices:
+      - one class inheriting from more super classes
+      - more classes inheriting from one super class
+      - more classes inheriting from more super classes
+      - NULL
+    hint: First think about the definistion for inheritance
+    explanation:
+      Inheritance is inheriting from one super class, therefore multiple
+      inheritance is inheriting from more superclass
+    correctChoice: 0 
+ 
