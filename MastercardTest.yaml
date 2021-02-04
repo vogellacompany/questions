@@ -4,7 +4,7 @@ questions:
   - description: What is a Mastercard?
     choices:
       - Something to eat
-      - A drink
+      - A drink drink
       - Something related to payment
       - None of the above
     hint: I know its hard
