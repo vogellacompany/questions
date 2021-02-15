@@ -1,0 +1,21 @@
+categoryId: 4675 # CATEGORY NAME
+name: Basics of Git
+questions:
+  - description: Git is
+    choices:
+      - The leading distributed version control system developed as open source software. 
+      - The leading centralized version control system developed as open source software. 
+      - The leading distributed version control system developed by Github and Microsoft. 
+      - A distributed version control system which is currently under development but planned to be replaced by another upcoming distributed version control system from Google.
+    hint:
+    explanation: Git is the leading DVCS still adapted by multiple clients and companies like Microsoft, IBM, Google and SAP and the main version control system for open source software like Android, Flutter, Eclipse, Visual Studio Code, Spring, etc.
+    correctChoice: 1
+  - description: Git stores
+    choices:
+      - Full snapshots with all files referred to by each commit
+      - Deltas of file changes to save disc space
+      - 
+      - 
+    hint: The duration of operations comparing files via the Git history are not dependent on time between the commits.
+    explanation: Git stores always full version of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundacy.
+    correctChoice: 1
