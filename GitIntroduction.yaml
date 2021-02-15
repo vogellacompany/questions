@@ -28,3 +28,12 @@ questions:
     hint: You need to mark each change to be relevant for the next commit of your local Git repository
     explanation: 
     correctChoice: 1
+  - description: Commits in Git
+    choices:
+      - Can be adjusted by the user to reflect desired changes via the amend option.
+      - Are immutable and cannot be changed, the amend option creates a new commit.
+      - 
+      - 
+    hint: Git was designed to be secure.
+    explanation: Amend allows you to adjust the changes of the last commit in a new commit as Git commits are immutable
+    correctChoice: 1
