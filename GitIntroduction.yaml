@@ -19,3 +19,12 @@ questions:
     hint: The duration of operations comparing files via the Git history are not dependent on time between the commits.
     explanation: Git stores always full version of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundacy.
     correctChoice: 1
+  - description: To add a change in a file to your Git repository you
+    choices:
+      - Stage the change and commit it afterwards to your local Git repository.
+      - You stage the change and push it to the remote repository.
+      - You commit the change and pull it to your local Git repository. 
+      - You reset the change, while staging and afterwards commit it.
+    hint: You need to mark each change to be relevant for the next commit of your local Git repository
+    explanation: 
+    correctChoice: 1
