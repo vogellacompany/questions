@@ -37,3 +37,26 @@ questions:
     hint: Git was designed to be secure.
     explanation: Amend allows you to adjust the changes of the last commit in a new commit as Git commits are immutable
     correctChoice: 1
+
+categoryId: 8337 # CATEGORY NAME
+name: Good practices in Git
+questions:
+  - description: How should a commit message be?
+    choices:
+      - It should include the changed code. 
+      - It doesn't matter because you know what you changed in the commit. 
+      - It should be descriptive and informative without repeating the code changes. 
+      - It should be no longer than 10 words.
+    hint:
+    explanation: The commit message can be read by everyone who has access to the repository and it should be written in a way that it is clear to everyone what the changes of the commit are.
+    correctChoice: 3
+  - description: Which sections can have a commit message?
+    choices:
+      - A short description named header.
+      - A long description named body.
+      - A header and a body.
+      - A header, body, and footer.
+    hint:
+    explanation: The header ensures that the change is displayed well on command line or graphical tools. The body describes the reason for the change. The footer can contain metadata as key-value pairs.
+    correctChoice: 4
+
