@@ -64,6 +64,16 @@ questions:
     hint:  
     explanation: 
     correctChoice: 4
+  - description: What are tags frequently used for?
+    choices:
+       - To tag a sofware release
+       - To give multiple names to commits
+       - To find repositories easily
+       -
+    hint:
+    explanation: Tags are frequently used to tag a software release. In this case, they are called release tags. Convention is that release tags are labeled based on the [major].[minor].[patch] naming scheme. These release tags follow the semantic versioning of the software release.
+    correctChoice: 1
+
 
 
 
