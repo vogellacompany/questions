@@ -1,11 +1,11 @@
 categoryId: 8251 # CATEGORY NAME
 name: Remote repositories, brances and tags
 questions:
-  - description: What is a remote repository?
+  - description: Where can a remote repository be hosted?
     choices:
-      - A repository which is always hosted on a server. 
-      - A repository which can be hosted on a server or in the local file system.  
-      - A repository which can only be hosted in the local file system. 
+      - A remote repository is always hosted on a server. 
+      - A remote repository can be hosted on a server or in the local file system.  
+      - A remote repository can only be hosted in the local file system. 
       - 
     hint:
     explanation: It doesn't make a difference where the remote repository is hosted.
@@ -21,18 +21,18 @@ questions:
     correctChoice: 1
   - description: What is a bare repository?
     choices:
-      - An empty repository.
-      - A repository without a working tree.
-      - A normal repository. 
-      - 
+      - An empty repository without a commit.
+      - A repository without a working tree to which other user can push their changes. It is typically hosted on a server.
+      - A normal repository with a fancy name.
+      - A repository with a working tree but with the option that other users can push their changes. It is typically hosted on a server.
     hint: 
     explanation: 
     correctChoice: 2
   - description: What does the command git clone do?
     choices:
       - It copies only the latest version of the git repository without its previous history.
-      - It creates a link to a git repository.
-      - It copies a git repository with its complete history.
+      - It creates a link to a git repository and updates the working tree with the latest changes from master.
+      - It copies a git repository with its complete history, creates a link to the cloned repo named "origin" "and creates a local branch named master.
       - It creates a similiar version of a git repository
     hint: Nothing ever gets lost with git.
     explanation: 
@@ -48,19 +48,19 @@ questions:
     correctChoice: 2
   - description: Can you work on multiple branches at the same time?
     choices:
-      - No, this is not possible.
-      - Yes, you need to checkout the branches and git will decide in which branch to put your changes.
-      - Yes, you need to checkout the branches and switch to the respective brach to do your changes.
+      - Yes you can change multiple branches with one commit.
+      - Yes, you need to checkout all desired the branches and git will decide in which branch to put your changes.
+      - No, you checkout one branch and do your changes. Git points to the active branch via its HEAD pointer and moves the active branch to the new commit.
       - 
-    hint: Git is smart, but still you need to give it a hand. 
+    hint: Checkout of a branch moves the HEAD pointer to this branch and updates your working tree with the snapshot describes by this commit
     explanation: 
     correctChoice: 3
-  - description: What are tags?
+  - description: What are (annotated) tags?
     choices:
       - It is a short name for a git repository.
       - Is is the name of a specific branch.
       - It is the same as the commit message.
-      - It is aditional metadata for commits. 
+      - It is additional, immutable metadata for commits frequently used to indicate a release. 
     hint:  
     explanation: 
     correctChoice: 4
