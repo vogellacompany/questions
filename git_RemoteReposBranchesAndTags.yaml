@@ -1,6 +1,15 @@
 categoryId: 8251 # CATEGORY NAME
 name: Remote repositories, brances and tags
 questions:
+  - description: How do I get updates of remote-tracking branches?
+    choices:
+      - There is no way to get updates of remote-tracking branches
+      - Only the command git clone will can update them
+      - The command git fetch will do so
+      - 
+    hint:
+    explanation: 
+    correctChoice: 3
   - description: Where can a remote repository be hosted?
     choices:
       - A remote repository is always hosted on a server. 
