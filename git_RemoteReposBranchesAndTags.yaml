@@ -1,0 +1,69 @@
+categoryId: 8251 # CATEGORY NAME
+name: Remote repositories, brances and tags
+questions:
+  - description: What is a remote repository?
+    choices:
+      - A repository which is always hosted on a server. 
+      - A repository which can be hosted on a server or in the local file system.  
+      - A repository which can only be hosted in the local file system. 
+      - 
+    hint:
+    explanation: It doesn't make a difference where the remote repository is hosted.
+    correctChoice: 2
+  - description: What is the difference btw. a remote repository and a remote?
+    choices:
+      - Remotes are shorter bookmarks for remote repositories
+      - There is no difference
+      - Remote is just a shorter name for remote repositories
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 1
+  - description: What is a bare repository?
+    choices:
+      - An empty repository.
+      - A repository without a working tree.
+      - A normal repository. 
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 2
+  - description: What does the command git clone do?
+    choices:
+      - It copies only the latest version of the git repository without its previous history.
+      - It creates a link to a git repository.
+      - It copies a git repository with its complete history.
+      - It creates a similiar version of a git repository
+    hint: Nothing ever gets lost with git.
+    explanation: 
+    correctChoice: 3
+  - description: What is a branch?
+    choices:
+      - A new copy of a git repository.
+      - A named pointer to a commit.
+      - The history of the git repository.
+      - All commits of a repository.
+    hint: 
+    explanation: 
+    correctChoice: 2
+  - description: Can you work on multiple branches at the same time?
+    choices:
+      - No, this is not possible.
+      - Yes, you need to checkout the branches and git will decide in which branch to put your changes.
+      - Yes, you need to checkout the branches and switch to the respective brach to do your changes.
+      - 
+    hint: Git is smart, but still you need to give it a hand. 
+    explanation: 
+    correctChoice: 3
+  - description: What are tags?
+    choices:
+      - It is a short name for a git repository.
+      - Is is the name of a specific branch.
+      - It is the same as the commit message.
+      - It is aditional metadata for commits. 
+    hint:  
+    explanation: 
+    correctChoice: 4
+
+
+
