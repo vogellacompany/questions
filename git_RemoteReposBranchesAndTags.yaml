@@ -60,7 +60,7 @@ questions:
       - It is a short name for a git repository.
       - Is is the name of a specific branch.
       - It is the same as the commit message.
-      - It is additional, immutable metadata for commits frequently used to indicate a release. 
+      - It is additional, immutable metadata for commits. 
     hint:  
     explanation: 
     correctChoice: 4
