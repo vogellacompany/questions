@@ -1,0 +1,58 @@
+categoryId: 4710 # CATEGORY NAME
+name: Integration of changes via merge, rebase and other tools
+questions:
+  - description: How do I get updates of remote-tracking branches?
+    choices:
+      - There is no way to get updates of remote-tracking branches
+      - Only the command git clone will can update them
+      - The command git fetch will do so
+      - 
+    hint:
+    explanation: 
+    correctChoice: 3
+  - description: What is meant with merge?
+    choices:
+      - It is the process of creating a new commit
+      - Merge enables you to combine the changes which were created on two different branches
+      - It is what happens after the git fetch command
+      - 
+    hint: 
+    explanation: You can merge based on branches, tags or commits. Other ways are using rebase or cherry-pick.
+    correctChoice: 2
+  - description: Which merge conflicts can git handle itself?
+    choices:
+      - All merge conflicts. Git knows what is right and wrong
+      - Git never handles merge conflicts itself
+      - Only if changes are done in different files 
+      - If changes are done in different files or in same files but in different locations
+    hint: 
+    explanation: Git doesn't know which change is right if the change affects the same location. 
+    correctChoice: 4
+  - description: Does git show merge conflicts which can not be solved automatically?
+    choices:
+      - Yes, git marks the conflicts in the affected files
+      - No, you have to search them manually
+      - 
+      - 
+    hint: 
+    explanation: Even though git can not solve all merge conflicts, the conflicts are marked in all respective files.
+    correctChoice: 1
+  - description: What is the difference btw. merge and rebase?
+    choices:
+      - There is no difference at all
+      - The final result for the source code is the same, but the commit history is cleaner, the history appears to be linear
+      - With rebase git solves all merge conficts itself
+      - 
+    hint: Same but different.
+    explanation: You should avoid using the Git rebase operation for changes which have been published in other Git repositories. The Git rebase operation creates new commit objects, this may confuse other developers using the existing commit objects. 
+    correctChoice: 2
+  - description: What is the cherry-pick command used for?
+    choices:
+      - To select individual changes from one branch and transfer them to another branch
+      - To select the commit with the best description
+      - To delete wrong commits
+      - 
+    hint: Just get the best of a branch
+    explanation: The git cherry-pick command allows you to select the patch which was introduced with an individual commit and apply this patch on another branch. The patch is captured as a new commit on the other branch.
+    correctChoice: 1
+  
