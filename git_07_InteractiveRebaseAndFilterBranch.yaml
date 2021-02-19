@@ -1,0 +1,31 @@
+categoryId: 8269 # CATEGORY NAME
+name: Interactive rebase and filter branch
+questions:
+  - description: Is there a possiblity to rewrite the commit history?
+    choices:
+      - No, there is none
+      - Yes, the only way is by using the interactive rebase
+      - Yes, interactive rebase or filter branch can be used
+      - Yes, by pulling a commit, do some changes and then push the changes with a new commmit message
+    hint: 
+    explanation: This is useful as it allows the user to rewrite the commit history (cleaning it up) before pushing the changes to a remote repository.
+    correctChoice: 3
+  - description: What can be achieved with the interactive rebase?
+    choices:
+      - Several commits can be combined into one commit, reordered or skiped and the commit message can be edited
+      - The commit messages of all pushed commits can be changed
+      - The repository can be set to its last state
+      - 
+    hint: 
+    explanation: This is useful as it allows the user to rewrite the commit history (cleaning it up) before pushing the changes to a remote repository.
+    correctChoice: 1
+  - description: In which scenario is it recommended to use the 'git filter-branch'?
+    choices:
+      - If you only want to clone certain branches of the repository
+      - If you want to remove a file which conatins a password from the Git history
+      - Everytime you want to remove files from a specific branch.
+      - 
+    hint: 
+    explanation: Using the filter-branch command is dangerous as it changes the Git repository. It changes the commit IDs and reacting on such a change requires explicit action from the developer, e.g., trying to rebase the stale local branch onto the corresponding rewritten remote-tracking branch.
+    correctChoice: 2
+ 
