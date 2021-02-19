@@ -5,8 +5,8 @@ questions:
     choices:
       - It shows if the repository is in a stable state
       - It shows the current status of the repository and possible actions which can be performed
-      - It only shows the current status of the repository
-      - It shows if a connection to the repository can be established 
+      - It shows the current status of the repository and the changes compared to the remote repository
+      - It shows if a connection to the repository can be established or if networks exists 
     hint: 
     explanation: It shows which files have changed, which are staged and which are not part of the staging area. It also shows which files have merge conflicts and gives an indication what the user can do with these changes, e.g., add them to the staging area or remove them, etc.
     correctChoice: 2
@@ -22,24 +22,24 @@ questions:
   - description: Why could the history of a git repository be of interest?
     choices:
       - Because you can then know since when it is hosted on GitHub 
-      - Because it is then clear which change was introduced by which commit
+      - Because it can be used to indentify which change was introduced by which commit
       - Because you can see who is the parent of the repository
-      - In good coordinated teams, the history is not relevant, because everyone knows what the other did
+      - In good coordinated teams, the history is not relevant, because everyone knows what the others did
     hint: 
     explanation: The git log command shows the history of the Git repository. If no commit reference is specified it starts from the commit referred to by the HEAD pointer.
     correctChoice: 2
   - description: What does the command 'git blame' do?
     choices:
       - It starts a cyber mobbing attac
-      - It classifies the git repository is useless
-      - It gets removed from the web server
+      - It classifies the git repository as useless and allows to rebuild the Git commit history
+      - It removes the Git repostory from the web server
       - It allows you to see which commit and author modified a file on a per line base
     hint: 
     explanation: This is very useful to identify the person or the commit which introduced a change.  
     correctChoice: 4
   - description: Is it possible to delete untracked files?
     choices:
-      - Yes, with the command 'git clean'
+      - Yes, with the command 'git clean -fdx'
       - No, what happens in git stays in git
       - Yes, but they will still be visible in the history and can be restored
       - 
@@ -64,7 +64,7 @@ questions:
     hint: 
     explanation: This is for example useful to undo a particular change or to build up a different commit history.
     correctChoice: 2
-  - description: Is it possible to withdraw a commit?
+  - description: Is it possible to undo changes done by a commit while keeping the original commit in the history?
     choices:
       - No, once commited it can not be withdrawn
       - Yes, with the command 'git reset commit_id' 
