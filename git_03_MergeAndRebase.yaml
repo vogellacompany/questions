@@ -9,7 +9,7 @@ questions:
       - 
     hint: 
     explanation: You can merge based on branches, tags or commits. Other ways are using rebase or cherry-pick.
-    correctChoice: 2
+    correctChoice: 1
   - description: Which merges can git handle itself?
     choices:
       - All merge conflicts. Git knows what is right and wrong
@@ -18,7 +18,7 @@ questions:
       - If changes are done in different files or in same files but in different locations
     hint: 
     explanation: Git doesn't know which change is right if the change affects the same location. 
-    correctChoice: 4
+    correctChoice: 3
   - description: Does git show merge conflicts which can not be solved automatically?
     choices:
       - Yes, git marks the conflicts in the affected files
@@ -27,7 +27,7 @@ questions:
       - 
     hint: 
     explanation: Even though git can not solve all merge conflicts, the conflicts are marked in all respective files.
-    correctChoice: 1
+    correctChoice: 0
   - description: What is the difference btw. merge and rebase?
     choices:
       - There is no difference at all as the working tree looks the same
@@ -36,7 +36,7 @@ questions:
       - Using rebase should be avoided as you loose the information how the branches was integrated
     hint: Same but different.
     explanation: Rebase moves the work done in one branch or commit onto the changes done in another branch. This results in less merge commits and a linear history. 
-    correctChoice: 2
+    correctChoice: 1
   - description: What is the cherry-pick command used for?
     choices:
       - To select individual changes created by commits and apply the same changes onto another commit
@@ -45,5 +45,5 @@ questions:
       - 
     hint: Just get the best of a branch
     explanation: The git cherry-pick command allows you to select the changes which was introduced with an individual commit and apply these changes on another branch. This is captured as a new commit on the other branch.
-    correctChoice: 1
+    correctChoice: 0
   
