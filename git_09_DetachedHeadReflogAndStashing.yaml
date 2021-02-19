@@ -1,0 +1,39 @@
+categoryId: 8318 # CATEGORY NAME
+name: Detached head, reflow and stashing
+questions:
+  - description: Can commits get lost in Git?
+    choices:
+      - Yes, if it is not reachable from any branch or reference
+      - No, nothing gets lost with Git
+      - Yes, if you create an unreferenced commit by committing with a detached head
+      - Yes, after using the 'git amend' or 'git reset' commands
+    hint: 
+    explanation: To find 'lost' commits, use the so-called reflog functionality
+    correctChoice: 2
+  - description: What is meant with the 'Detached HEAD state'
+    choices:
+      - It is when Git doesnt know which is the latest commit of a repository
+      - It is when Git lost track of your repository
+      - It is when you checkout a branch and dont create a new local branch for it
+      - It is when the connection to the repository is interupted
+    hint: 
+    explanation: 
+    correctChoice: 3
+  - description: What is the stash?
+    choices:
+      - It is a separate area where changes can be put if they are not yet ready to be commited to the current branch
+      - It is where all deleted files end up
+      - It is where the staged changes are collected
+      - It is where the unstaged changes are collected
+    hint: 
+    explanation: Committing to the stash does not create a new commit on the currently checked out branch but instead creates a new stashed commit which includes changes made in the working directory and staged in the index.
+    correctChoice: 1
+  - description: When is it common to use the stash?
+    choices:
+      - Everytime before a commit and push of changes
+      - When merge or rebase is executed, but the local uncommitted changes should not get lost and aren’t quite ready to be commited on the current branch
+      - If files are to be deleted
+      - If a new commit should replace an oder commit
+    hint: 
+    explanation: 
+    correctChoice: 2
