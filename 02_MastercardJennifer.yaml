@@ -9,7 +9,7 @@ questions:
       - 
     hint:
     explanation: 
-    correctChoice: 3
+    correctChoice: 2
   - description: Where can a remote repository be hosted?
     choices:
       - A remote repository is always hosted on a server
@@ -18,7 +18,7 @@ questions:
       - 
     hint:
     explanation: It doesn't make a difference where the remote repository is hosted.
-    correctChoice: 2
+    correctChoice: 1
   - description: What is the difference btw. a remote repository and a remote?
     choices:
       - Remotes are shorter bookmarks for remote repositories
@@ -27,7 +27,7 @@ questions:
       - 
     hint: 
     explanation: 
-    correctChoice: 1
+    correctChoice: 0
   - description: What is a bare repository?
     choices:
       - An empty repository without a commit
@@ -36,7 +36,7 @@ questions:
       - A repository with a working tree but with the option that other users can push their changes, it is typically hosted on a server
     hint: 
     explanation: 
-    correctChoice: 2
+    correctChoice: 1
   - description: What does the command git clone do?
     choices:
       - It copies only the latest version of the git repository without its previous history
@@ -45,7 +45,7 @@ questions:
       - It creates a similiar version of a git repository
     hint: Nothing ever gets lost with git.
     explanation: 
-    correctChoice: 3
+    correctChoice: 2
   - description: What is a branch?
     choices:
       - A new copy of a git repository
@@ -54,7 +54,7 @@ questions:
       - All commits of a repository
     hint: 
     explanation: 
-    correctChoice: 2
+    correctChoice: 1
   - description: Can you work on multiple branches at the same time?
     choices:
       - Yes you can change multiple branches with one commit
@@ -63,7 +63,7 @@ questions:
       - 
     hint: Checkout of a branch moves the HEAD pointer to this branch and updates your working tree with the snapshot describes by this commit
     explanation: 
-    correctChoice: 3
+    correctChoice: 2
   - description: What are (annotated) tags?
     choices:
       - It is a short name for a git repository
@@ -81,6 +81,6 @@ questions:
        -
     hint:
     explanation: Tags are frequently used to tag a software release. In this case, they are called release tags. Convention is that release tags are labeled based on the [major].[minor].[patch] naming scheme. These release tags follow the semantic versioning of the software release.
-    correctChoice: 1
+    correctChoice: 0
 
 
