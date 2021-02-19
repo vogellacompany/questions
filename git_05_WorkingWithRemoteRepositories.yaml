@@ -1,0 +1,49 @@
+categoryId: 4719 # CATEGORY NAME
+name: Working with remote repositories in Git
+questions:
+  - description: What is a remote tracking branch?
+    choices:
+      - It is a branch of the remote repository
+      - It is a local reference to a branch of the remote repository
+      - It is a copy of the remote repository
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 2
+  - description: What happens if you delete a remote tracking branch?
+    choices:
+      - This is safe and does not affect a remote repository
+      - The branch will be deleted in the remote repository
+      - 
+      - 
+    hint: 
+    explanation: After deleting a remote tracking branch it can be recreated with the 'git fetch' command
+    correctChoice: 1
+  - description: What happens if you delete a remote branch?
+    choices:
+      - This is safe and does not affect a remote repository
+      - The remote branch is completly deleted
+      - The git repository which includes the branch gets deleted
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 2
+  - description: Is a tracking branch automatically created by git?
+    choices:
+      - No, this is a manual process
+      - Yes, everytime you commit and push changes, git creates a tracking branch on the remote repository
+      - Yes, after cloning a repository
+      - 
+    hint: 
+    explanation: If you clone a Git repository, your local master branch is created as a tracking branch for the master branch of the origin repository by Git.
+    correctChoice: 3
+  - description: Can multiple people work at the same remote repository?
+    choices:
+      - Yes, it is even possible to push on the same branch
+      - No, because of possible merge conflicts
+      - Yes, but every developer has to create thier own branch
+      - 
+    hint: 
+    explanation: It is a common scenario that developers push to the same branch and typically, this branch evolves since the beginning of the development of a local feature and a push fails. But this situtation can be handled.
+    correctChoice: 1
+ 
