@@ -6,7 +6,7 @@ questions:
       - There is no way to get updates of remote-tracking branches
       - Only the command git clone will can update them
       - The command git fetch will do so
-      - 
+      - NULL
     hint:
     explanation: 
     correctChoice: 2
@@ -15,7 +15,7 @@ questions:
       - A remote repository is always hosted on a server
       - A remote repository can be hosted on a server or in the local file system  
       - A remote repository can only be hosted in the local file system 
-      - 
+      - NULL
     hint:
     explanation: It doesn't make a difference where the remote repository is hosted.
     correctChoice: 1
@@ -24,7 +24,7 @@ questions:
       - Remotes are shorter bookmarks for remote repositories
       - There is no difference
       - Remote is just a shorter name for remote repositories
-      - 
+      - NULL
     hint: 
     explanation: 
     correctChoice: 0
@@ -60,7 +60,7 @@ questions:
       - Yes you can change multiple branches with one commit
       - Yes, you need to checkout all desired the branches and git will decide in which branch to put your changes
       - No, you checkout one branch and do your changes. Git points to the active branch via its HEAD pointer and moves the active branch to the new commit
-      - 
+      - NULL
     hint: Checkout of a branch moves the HEAD pointer to this branch and updates your working tree with the snapshot describes by this commit
     explanation: 
     correctChoice: 2
@@ -78,9 +78,7 @@ questions:
        - To tag a sofware release
        - To give multiple names to commits
        - To find repositories easily
-       -
+       - NULL
     hint:
     explanation: Tags are frequently used to tag a software release. In this case, they are called release tags. Convention is that release tags are labeled based on the [major].[minor].[patch] naming scheme. These release tags follow the semantic versioning of the software release.
     correctChoice: 0
-
-
