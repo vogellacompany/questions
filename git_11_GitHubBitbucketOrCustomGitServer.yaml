@@ -19,7 +19,7 @@ questions:
     hint: 
     explanation: Bitbucket provides hosting for publicly visible and private Git repositories. A public repository can be cloned by other people at any point in time.
     correctChoice: 3
-  - description: Is an own Git server necessary to run Git for remote repositories?
+  - description: Is an own Git server necessary to use Git for remote repositories?
     choices:
       - No, it isn't.      
       - Yes, you need an own Git server
