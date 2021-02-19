@@ -1,16 +1,16 @@
 categoryId: 4675 # CATEGORY NAME
 name: Basics of Git
 questions:
-  - description: Git is
+  - description: What is Git?
     choices:
-      - The leading distributed version control system developed as open source software. 
-      - The leading centralized version control system developed as open source software. 
-      - The leading distributed version control system developed by Github and Microsoft. 
-      - A distributed version control system which is currently under development but planned to be replaced by another upcoming distributed version control system from Google.
+      - The leading distributed version control system developed as open source software 
+      - The leading centralized version control system developed as open source software 
+      - The leading distributed version control system developed by Github and Microsoft 
+      - A distributed version control system which is currently under development but planned to be replaced by another upcoming distributed version control system from Google
     hint:
     explanation: Git is the leading DVCS still adapted by multiple clients and companies like Microsoft, IBM, Google and SAP and the main version control system for open source software like Android, Flutter, Eclipse, Visual Studio Code, Spring, etc.
     correctChoice: 1
-  - description: Git stores
+  - description: Git stores ...
     choices:
       - Full snapshots with all files referred to by each commit
       - Deltas of file changes to save disc space
@@ -19,24 +19,21 @@ questions:
     hint: The duration of operations comparing files via the Git history are not dependent on time between the commits.
     explanation: Git stores always full version of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundacy.
     correctChoice: 1
-  - description: To add a change in a file to your Git repository you
+  - description: To add a change in a file to your Git repository you ...
     choices:
-      - Stage the change and commit it afterwards to your local Git repository.
-      - You stage the change and push it to the remote repository.
-      - You commit the change and pull it to your local Git repository. 
-      - You reset the change, while staging and afterwards commit it.
+      - Stage the change and commit it afterwards to your local Git repository
+      - You stage the change and push it to the remote repository
+      - You commit the change and pull it to your local Git repository 
+      - You reset the change, while staging and afterwards commit it
     hint: You need to mark each change to be relevant for the next commit of your local Git repository
     explanation: 
     correctChoice: 1
-  - description: Commits in Git
+  - description: Commits in Git ...
     choices:
-      - Can be adjusted by the user to reflect desired changes via the amend option.
-      - Are immutable and cannot be changed, the amend option creates a new commit.
+      - Can be adjusted by the user to reflect desired changes via the amend option
+      - Are immutable and cannot be changed, the amend option creates a new commit
       - 
       - 
     hint: Git was designed to be secure.
     explanation: Amend allows you to adjust the changes of the last commit in a new commit as Git commits are immutable
     correctChoice: 1
-
-
-
