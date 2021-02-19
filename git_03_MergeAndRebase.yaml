@@ -37,7 +37,7 @@ questions:
     hint: Same but different.
     explanation: Rebase moves the work done in one branch or commit onto the changes done in another branch. This results in less merge commits and a linear history. 
     correctChoice: 1
-  - description: What is the cherry-pick command used for?
+  - description: What is the cherry-pick2 command used for?
     choices:
       - To select individual changes created by commits and apply the same changes onto another commit
       - To select the commit with the best description
