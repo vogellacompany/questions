@@ -1,0 +1,32 @@
+categoryId: 8310 # CATEGORY NAME
+name: Other Git commands, like alias, bisect and patch
+questions:
+  - description: What is a so called alias in Git?
+    choices:
+      - It is another name for a repository or branch
+      - It is a shorter name for a Git commit
+      - It is a short form for one or several existing Git commands
+      - it is a short name for a Git branch
+    hint: 
+    explanation: For example, you can define an alias which is a short form of your own favorite commands or you can combine several commands with an alias.
+    correctChoice: 3
+  - description: What does 'git bisect' do?
+    choices:
+      - It creates binary files in a Git repository
+      - It runs a binary search through the commit history to identify the commit which introduced an issue
+      - It looks for binary files in a Git repository
+      - 
+    hint: 
+    explanation: You specify a range of commits and a script that the bisect command uses to identify whether a commit is good or bad.
+    correctChoice: 2
+  - description: What is a patch in Git?
+    choices:
+      - It is a text file that contains changes to other text files in a standarized format
+      - It is the same as a commit
+      - It is a file which is included in the staging area
+      - It is an unstaged file
+    hint: 
+    explanation: A patch created with the git format-patch command includes meta-information about the commit (committer, date, commit message, etc) and also contains the changes introduced in binary data in the commit.
+    correctChoice: 1
+
+ 
