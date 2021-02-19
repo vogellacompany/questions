@@ -31,7 +31,7 @@ questions:
   - description: When is it common to use the stash?
     choices:
       - Everytime before a commit and push of changes
-      - When merge or rebase is executed, but the local uncommitted changes should not get lost and aren’t quite ready to be commited on the current branch
+      - When merge or rebase is executed, but the local uncommitted changes should not get lost and are not quite ready to be commited on the current branch
       - If files are to be deleted
       - If a new commit should replace an oder commit
     hint: 
