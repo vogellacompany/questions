@@ -1,0 +1,21 @@
+categoryId: 8306 # CATEGORY NAME
+name: Including other repositories via Git submodules
+questions:
+  - description: What is a Git Submodule?
+    choices:
+      - It is a fork of a git repository
+      - It is a partial copy of a git repository
+      - It is when other Git repositories are included into a repository
+      - It is a set of branches
+    hint: 
+    explanation: This allows you to track changes in several repositories via a central one.
+    correctChoice: 3
+  - description: What is the benefit of using Git Submodules?
+    choices:
+      - There is none.
+      - Submodules allow you to keep projects in separate repositories but still be able to reference them as folders in the working directory of other repositories.
+      - This allows you to easily create forks of the repositories
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 2
