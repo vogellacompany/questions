@@ -9,7 +9,7 @@ questions:
       - Yes, by pulling a commit, do some changes and then push the changes with a new commmit message
     hint: 
     explanation: Interactive rebase is the standard way to change the local history before sharing. This is useful as it allows the user to cleanup or improve the history before sharing with colleagues.
-    correctChoice: 3
+    correctChoice: 2
   - description: What can be achieved with the interactive rebase?
     choices:
       - Several commits can be combined into one commit, reordered or skiped and the commit message can be edited
@@ -18,7 +18,7 @@ questions:
       - 
     hint: 
     explanation: This is useful as it allows the user to rewrite the commit history (cleaning it up) before pushing the changes to a remote repository.
-    correctChoice: 1
+    correctChoice: 0
   - description: In which scenario is it recommended to use the 'git filter-branch'?
     choices:
       - If you only want to clone certain branches of the repository
@@ -27,5 +27,5 @@ questions:
       - 
     hint: 
     explanation: Using the filter-branch command is dangerous as it changes the Git repository. It changes the commit IDs and reacting on such a change requires explicit action from the developer, e.g., trying to rebase the stale local branch onto the corresponding rewritten remote-tracking branch.
-    correctChoice: 2
+    correctChoice: 1
  

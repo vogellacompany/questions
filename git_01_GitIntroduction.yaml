@@ -12,13 +12,13 @@ questions:
     correctChoice: 0
   - description: Git stores ...
     choices:
-      - Full snapshots with all files referred to by each commit
       - Deltas of file changes to save disc space
-      - 
+      - Full snapshots with all files referred to by each commit
+      -
       - 
     hint: The duration of operations comparing files via the Git history are not dependent on time between the commits.
     explanation: Git stores always full version of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundacy.
-    correctChoice: 0
+    correctChoice: 1
   - description: To add a change in a file to your Git repository you ...
     choices:
       - Stage the change and commit it afterwards to your local Git repository

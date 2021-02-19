@@ -9,7 +9,7 @@ questions:
       - it is a short name for a Git branch
     hint: 
     explanation: You can define an alias which is a short form of your own favorite commands or you can combine several commands with an alias.
-    correctChoice: 3
+    correctChoice: 2
   - description: What does 'git bisect' do?
     choices:
       - It creates binary files in a Git repository
@@ -18,7 +18,7 @@ questions:
       - 
     hint: 
     explanation: You specify a range of commits and a script that the bisect command uses to identify whether a commit is good or bad.
-    correctChoice: 2
+    correctChoice: 1
   - description: What is a patch in Git?
     choices:
       - It is a text file that contains changes to other text files in a standarized format
@@ -27,6 +27,6 @@ questions:
       - It is an unstaged file
     hint: 
     explanation: A patch created with the git format-patch command includes meta-information about the commit (committer, date, commit message, etc) and also contains the changes introduced in binary data in the commit.
-    correctChoice: 1
+    correctChoice: 0
 
  

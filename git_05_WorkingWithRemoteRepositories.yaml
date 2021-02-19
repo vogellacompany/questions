@@ -9,7 +9,7 @@ questions:
       - 
     hint: 
     explanation: 
-    correctChoice: 2
+    correctChoice: 1
   - description: What happens if you delete a remote tracking branch in your local repostory?
     choices:
       - This is safe and does not affect a remote repository
@@ -18,7 +18,7 @@ questions:
       - 
     hint: 
     explanation: After deleting a remote tracking branch it can be recreated with the 'git fetch' command
-    correctChoice: 1
+    correctChoice: 0
   - description: What happens if you delete a remote branch?
     choices:
       - This is safe and does not affect a remote repository
@@ -27,7 +27,7 @@ questions:
       - 
     hint: 
     explanation: 
-    correctChoice: 2
+    correctChoice: 1
   - description: Is a tracking branch automatically created by git?
     choices:
       - No, this is a manual process
@@ -36,7 +36,7 @@ questions:
       - 
     hint: 
     explanation: If you clone a Git repository, your local master branch is created as a tracking branch for the master branch of the origin repository by Git.
-    correctChoice: 3
+    correctChoice: 2
   - description: Can multiple people work at the same remote repository?
     choices:
       - Yes, they can also push on the same branch as long as they only create a fast-forward merge on the server
@@ -45,5 +45,5 @@ questions:
       - 
     hint: 
     explanation: It is a common scenario that developers push to the same branch and typically, this branch evolves since the beginning of the development of a local feature and a push fails. But this situtation can be handled.
-    correctChoice: 1
+    correctChoice: 0
  

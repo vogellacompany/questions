@@ -9,7 +9,7 @@ questions:
       - It is a set of branches
     hint: 
     explanation: This allows you to track changes in several repositories via a central one.
-    correctChoice: 3
+    correctChoice: 2
   - description: What is the benefit of using Git Submodules?
     choices:
       - There is none.
@@ -18,4 +18,4 @@ questions:
       - 
     hint: 
     explanation: 
-    correctChoice: 2
+    correctChoice: 1

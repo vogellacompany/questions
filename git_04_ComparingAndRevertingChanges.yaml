@@ -9,7 +9,7 @@ questions:
       - It shows if a connection to the repository can be established or if networks exists 
     hint: 
     explanation: It shows which files have changed, which are staged and which are not part of the staging area. It also shows which files have merge conflicts and gives an indication what the user can do with these changes, e.g., add them to the staging area or remove them, etc.
-    correctChoice: 2
+    correctChoice: 1
   - description: Is it possible to compare changes between commits?
     choices:
       - Yes, but only if the commits are still in the staging area
@@ -18,7 +18,7 @@ questions:
       - No, this is not possible
     hint: 
     explanation: The git diff command allows you to compare changes between commits, the staging area and working tree, etc.
-    correctChoice: 3
+    correctChoice: 2
   - description: Why could the history of a git repository be of interest?
     choices:
       - Because you can then know since when it is hosted on GitHub 
@@ -27,7 +27,7 @@ questions:
       - In good coordinated teams, the history is not relevant, because everyone knows what the others did
     hint: 
     explanation: The git log command shows the history of the Git repository. If no commit reference is specified it starts from the commit referred to by the HEAD pointer.
-    correctChoice: 2
+    correctChoice: 1
   - description: What does the command 'git blame' do?
     choices:
       - It starts a cyber mobbing attac
@@ -36,7 +36,7 @@ questions:
       - It allows you to see which commit and author modified a file on a per line base
     hint: 
     explanation: This is very useful to identify the person or the commit which introduced a change.  
-    correctChoice: 4
+    correctChoice: 3
   - description: Is it possible to delete untracked files?
     choices:
       - Yes, with the command 'git clean -fdx'
@@ -45,7 +45,7 @@ questions:
       - 
     hint: 
     explanation: All untracked files are removed if you run this command. You will not be able to restore them, as they are not part of your Git repository.
-    correctChoice: 1
+    correctChoice: 0
   - description: On which tracked files can you revert uncommited changes?
     choices:
       - On no files, because the changes are still uncommited
@@ -54,7 +54,7 @@ questions:
       - 
     hint: 
     explanation: You can always recreate the file content of tracked files, based on the staging area or based on a previous commit. You can also remove staged changes from the staging area to avoid that these changes are included in the next commit.
-    correctChoice: 3
+    correctChoice: 2
   - description: What does the command 'git reset' do?
     choices:
       - It deletes all changes done to a repository
@@ -63,7 +63,7 @@ questions:
       - 
     hint: 
     explanation: This is for example useful to undo a particular change or to build up a different commit history.
-    correctChoice: 2
+    correctChoice: 1
   - description: Is it possible to undo changes done by a commit while keeping the original commit in the history?
     choices:
       - No, once commited it can not be withdrawn
@@ -72,6 +72,6 @@ questions:
       - Yes, with the command 'git revert commit_id'
     hint: 
     explanation: This command reverts the changes of a commit. Such commits are useful to document that a change was withdrawn.
-    correctChoice: 4
+    correctChoice: 3
 
   

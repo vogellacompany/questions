@@ -9,7 +9,7 @@ questions:
       - It is the server where the custom Git server is running
     hint: 
     explanation: GitHub provides hosting for publicly visible and private Git repositories. A public repository can be cloned by other people at any point in time.
-    correctChoice: 1
+    correctChoice: 0
   - description: What is Bitbucket?
     choices:
       - It is a cluster where all Git repositories are created by default
@@ -18,7 +18,7 @@ questions:
       - 
     hint: 
     explanation: Bitbucket provides hosting for publicly visible and private Git repositories. A public repository can be cloned by other people at any point in time.
-    correctChoice: 3
+    correctChoice: 2
   - description: Is an own Git server necessary to use Git for remote repositories?
     choices:
       - No, it isn't.      
@@ -27,5 +27,5 @@ questions:
       - 
     hint: 
     explanation: You can just use a file system or a public Git provider, such as GitHub or Bitbucket. Sometimes, however, it is convenient to have your own server.
-    correctChoice: 1
+    correctChoice: 0
  

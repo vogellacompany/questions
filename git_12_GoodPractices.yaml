@@ -9,7 +9,7 @@ questions:
       - It should be no longer than 10 words
     hint:
     explanation: The commit message can be read by everyone who has access to the repository and it should be written in a way that it is clear to everyone what the changes of the commit are.
-    correctChoice: 3
+    correctChoice: 2
   - description: Which sections can have a commit message?
     choices:
       - A short description named header
@@ -18,4 +18,4 @@ questions:
       - A header, body, and footer
     hint:
     explanation: The header ensures that the change is displayed well on command line or graphical tools. The body describes the reason for the change. The footer can contain metadata as key-value pairs.
-    correctChoice: 4
+    correctChoice: 3
