@@ -4,29 +4,29 @@ questions:
   - description: Can commits get lost in Git?
     choices:
       - Yes, if it is not reachable from any branch or reference
-      - No, nothing gets lost with Git
+      - No, commits do not get lost with Git, at least for a while. Commit which cannot be reached from other references (commits, tags, branches, etc) will eventually be removed by a garbage collector run after multiple weeks.
       - Yes, if you create an unreferenced commit by committing with a detached head
       - Yes, after using the 'git amend' or 'git reset' commands
     hint: 
-    explanation: To find 'lost' commits, use the so-called reflog functionality
+    explanation: Commit are never removed within a longer timeframe. To find 'lost' commits, use the reflog functionality
     correctChoice: 2
   - description: What is meant with the 'Detached HEAD state'
     choices:
       - It is when Git doesnt know which is the latest commit of a repository
       - It is when Git lost track of your repository
-      - It is when you checkout a branch and dont create a new local branch for it
+      - It is when you checkout a branch and do not create a new local branch for it
       - It is when the connection to the repository is interupted
     hint: 
     explanation: 
     correctChoice: 3
   - description: What is the stash?
     choices:
-      - It is a separate area where changes can be put if they are not yet ready to be commited to the current branch
+      - It is a separate area where changes can be put if they are not yet ready to be commited
       - It is where all deleted files end up
       - It is where the staged changes are collected
       - It is where the unstaged changes are collected
     hint: 
-    explanation: Committing to the stash does not create a new commit on the currently checked out branch but instead creates a new stashed commit which includes changes made in the working directory and staged in the index.
+    explanation: Committing to the stash does not create a new commit but instead saves all staged and unstaged chagnes in a new stash.
     correctChoice: 1
   - description: When is it common to use the stash?
     choices:
