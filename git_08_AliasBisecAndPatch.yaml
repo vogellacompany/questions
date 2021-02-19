@@ -8,7 +8,7 @@ questions:
       - It is a short form for one or several existing Git commands
       - it is a short name for a Git branch
     hint: 
-    explanation: For example, you can define an alias which is a short form of your own favorite commands or you can combine several commands with an alias.
+    explanation: You can define an alias which is a short form of your own favorite commands or you can combine several commands with an alias.
     correctChoice: 3
   - description: What does 'git bisect' do?
     choices:
