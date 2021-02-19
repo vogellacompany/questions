@@ -8,7 +8,7 @@ questions:
       - Yes, interactive rebase or filter branch can be used
       - Yes, by pulling a commit, do some changes and then push the changes with a new commmit message
     hint: 
-    explanation: This is useful as it allows the user to rewrite the commit history (cleaning it up) before pushing the changes to a remote repository.
+    explanation: Interactive rebase is the standard way to change the local history before sharing. This is useful as it allows the user to cleanup or improve the history before sharing with colleagues.
     correctChoice: 3
   - description: What can be achieved with the interactive rebase?
     choices:
@@ -22,7 +22,7 @@ questions:
   - description: In which scenario is it recommended to use the 'git filter-branch'?
     choices:
       - If you only want to clone certain branches of the repository
-      - If you want to remove a file which conatins a password from the Git history
+      - If you want to change the commit history, for example to remove a large file or a file which contains a password from the Git history
       - Everytime you want to remove files from a specific branch.
       - 
     hint: 
