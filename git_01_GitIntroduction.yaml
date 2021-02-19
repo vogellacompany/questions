@@ -36,4 +36,4 @@ questions:
       - 
     hint: Git was designed to be secure.
     explanation: Amend allows you to adjust the changes of the last commit in a new commit as Git commits are immutable
-    correctChoice: 0
+    correctChoice: 1
