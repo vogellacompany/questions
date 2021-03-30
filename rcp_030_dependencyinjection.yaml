@@ -1,0 +1,30 @@
+categoryId: 1687 # CATEGORY NAME
+name: Dependency injection
+questions:
+  - description: Dependency injection in Eclipse is... 
+    choices:
+      - Based on JSR 330 which is also used by other Java frameworks like Java Jakata and the Spring framework.
+      - Not supported
+      - Using an Eclipse specific implementation different to the standard from JSR 330 
+      -
+    hint: 
+    explanation: Dependency injection in Eclipsie is based on JSR 330 and extends it if necessary within the specification.
+    correctChoice: 0
+  - description: Dependency injection allows you
+    choices:
+      - To receive objects created by the runtime of the Eclipse framework
+      - To receive objects created by the runtime of the Eclipse framework and other custom code
+      - To define the relationship betweek classes in a kind of build hierarchy
+      - 
+    hint: 1
+    explanation: Dependency injection allows to access objects created by the framework or by your own code.
+    correctChoice: 0
+  - description: Why is dependency injection better and used by popular Java frameworks?
+    choices:
+      - It is not better than factories, as it allows to access the same objects.
+      - It results in simpler code which is decoupled and therefore easier to modify and test
+      - It results in code which is is less coupled and therefore easier to reused and harder to test
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 1
