@@ -13,7 +13,7 @@ questions:
   - description: Which element is needed in your application model to prevent the runtime to shutdown your application?
     choices:
       - At least one part
-	  - At least one window
+      - At least one window
       - At least one menu
       - 
     hint: 1

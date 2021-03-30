@@ -13,7 +13,7 @@ questions:
   - description: Using a target platform definition file should be preferred because:
     choices:
       - It decouples your IDE from your code base and can be re-used for your command line build with Maven Tycho.
-	  - It can be used from the command line build and you can still use the latest API from your IDE installation in your application.
+      - It can be used from the command line build and you can still use the latest API from your IDE installation in your application.
       - It allows you to commit the documentation file to your version control system
       - 
     hint: 1
