@@ -22,9 +22,28 @@ questions:
   - description: What is the main purpose for the OSGi module layer?
     choices:
       - It allows to integrate with the Java 9 module layer
-      - It allows to define dependencies of a plug-ins to other plug-in or Java packages and to define the exported API of a plug-in 
+      - It allows to define versionized dependencies of a plug-ins to other plug-in or Java packages and to define the exported API of a plug-in 
       - It allows to use multi plug-in builds similar to multi-module builds with Maven
       - 
     hint: 
-    explanation: 
+    explanation: The OSGi module layer allows to define versionized dependencies to other Java packages and plug-ins as well to define the API of plug-in, i.e. the packages which can be accessed from other plug-ins 
     correctChoice: 1
+  - description: What is the main purpose for the OSGi service layer?
+    choices:
+      - The OSGi service layer allows to use dependency injection via @Inject
+      - The OSGi service layer allows to define the usage of OSGI services in e4 components.
+      - The OSGi service layer allows to define OSGI services and immediate components which be consumed by other OSGi services and via the Eclipse dependency injection mechanimus.
+      - 
+    hint: 
+    explanation: The OSGi service layer allows to define OSGI services and immediate components which can be consumed via in other code without knowing the concrete implementation.
+    correctChoice: 2
+  - description: OSGi services
+    choices:
+      - are based on JSR 330 which defines dependency injection for Java applications.
+      - can be defined via compile-time annotations which Eclipse can use to generated the required meta-data for the OSGi runtime 
+      - can be defined via runtime-time annotations which Eclipse uses to provide the required meta-data for the OSGi runtime 
+      - 
+    hint: 
+    explanation: The OSGi declarative service functionality allows to use compile-time annotations which the Eclipse IDE can use to generate the required meta-data which OSGI uses at runtime to provide the services.
+    correctChoice: 1
+  
