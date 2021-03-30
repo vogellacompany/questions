@@ -1,0 +1,39 @@
+categoryId: 1684 # CATEGORY NAME
+name: Introduction to Eclipse plug-in development
+questions:
+  - description: What is the purpose of a target platform?
+    choices:
+      - It is define the project target which should be developed
+      - It defines the available plug-in to compile your software tests code
+      - It defines the available plug-ins for development, i.e. for compiling, feature and product definition
+      - It defines the server API which is accessed by the application
+    hint: 
+    explanation: The target definition file contains the plug-in which can be used in your Eclipse application.
+    correctChoice: 2
+  - description: Using a target platform definition file should be preferred because:
+    choices:
+      - It decouples your IDE from your code base and can be re-used for your command line build with Maven Tycho.
+	  - It can be used from the command line build and you can still use the latest API from your IDE installation in your application.
+      - It allows you to commit the documentation file to your version control system
+      - 
+    hint: 1
+    explanation: A target platform definition file can be used to configure the plug-in available to develop against in your IDE and be used for your command line build.
+    correctChoice: 0
+  - description: What is the purpose of a feature project in Eclipse?
+    choices:
+      - A feature project defines the software features which our users need
+      - A feature project groups plug-ins and other feature to a unit which can be used by the product configuration file.
+      - A feature project is used to define the runtime configuration for Eclipse applications 
+      - 
+    hint: 
+    explanation: Features allow to group plug-in and to include other features to use them in the product. This makes it easier to manage the content of your product
+    correctChoice: 1
+  - description: What is the purpose of the product configuration file?
+    choices:
+      - The product defines the features and is used only to start the application via the IDE. 
+      - The product defines the plug-ins (potentially via features) and additional configuration and is used for the start and export of the application. 
+      - At runtime the product configuration is read and used to start the application. 
+      - 
+    hint: 
+    explanation: The product is not used at runtime, its configuration is used to define the plug-ins available during runtime and the configuration. 
+    correctChoice: 1
