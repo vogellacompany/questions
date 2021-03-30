@@ -1,0 +1,30 @@
+categoryId: 1688 # CATEGORY NAME
+name: OSGi
+questions:
+  - description: OSGi stands for... 
+    choices:
+      - OSGi, it is not a abbreviation.
+      - Open Service Gateway interface
+      - Open Service Guarded  
+      -
+    hint: 
+    explanation: OSGi was orginally the abbreviation for Open Service Gateway interface but as the scope of OSGi broaded so these days OSGi stands only for OSGi.
+    correctChoice: 0
+  - description: OSGi is
+    choices:
+      - a specification for a module and service layer
+      - an implementation for a module and service layer
+      - 
+      - 
+    hint: 0
+    explanation: The OSGi core specification specifies a module and service layer
+    correctChoice: 0
+  - description: What is the main purpose for the OSGi module layer?
+    choices:
+      - It allows to integrate with the Java 9 module layer
+      - It allows to define dependencies of a plug-ins to other plug-in or Java packages and to define the exported API of a plug-in 
+      - It allows to use multi plug-in builds similar to multi-module builds with Maven
+      - 
+    hint: 
+    explanation: 
+    correctChoice: 1
