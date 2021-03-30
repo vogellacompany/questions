@@ -6,6 +6,7 @@ questions:
       - The application model describes the possible elements of your RCP application, e.g., the number of windows and views
       - The application model contains the application elements and their state for your application, e.g., the current number of windows and views, it is updated at runtime
       - The application model contains the static application elements for your application, e.g., the current number of windows and views, it is defined at development time
+      -
     hint: 
     explanation: The application model defines the current status of your application at runtime, it is based on your application model definition but updated at runtime and can be queried and adjusted at runtime via API.
     correctChoice: 1
