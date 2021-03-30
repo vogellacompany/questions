@@ -10,7 +10,7 @@ questions:
     hint: 
     explanation: The target definition file contains the plug-in which can be used in your Eclipse application.
     correctChoice: 2
-  - description: Using a target platform definition file should be preferred because:
+  - description: Using a target platform definition file should be preferred because
     choices:
       - It decouples your IDE from your code base and can be re-used for your command line build with Maven Tycho.
       - It can be used from the command line build and you can still use the latest API from your IDE installation in your application.
