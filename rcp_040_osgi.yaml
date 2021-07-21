@@ -5,10 +5,11 @@ questions:
     choices:
       - OSGi, it is not a abbreviation.
       - Open Service Gateway interface
+      - Open Service Gateway initiative
       - Open Service Guarded  
       -
     hint: 
-    explanation: OSGi was orginally the abbreviation for Open Service Gateway interface but as the scope of OSGi broaded so these days OSGi stands only for OSGi.
+    explanation: OSGi was originally the abbreviation for Open Service Gateway initiative but as the scope of OSGi broaded so these days OSGi stands only for OSGi.
     correctChoice: 0
   - description: OSGi is
     choices:
