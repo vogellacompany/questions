@@ -1,0 +1,30 @@
+categoryId: 89777 # CATEGORY NAME
+name: Using Assert Frameworks
+questions:
+  - description: What is the Hamcrest matcher framework?
+    choices:
+      - It is a framework which creates unit tests automatically
+      - It is a framework to run units tests 
+      - It is a framework which provides matcher methods for asserting conditions in your tests
+      - It is a framework which classifies init tests  
+    hint:
+    explanation: The Hamcrest matcher framework provides additional matcher classes which can be used in tests for example written with JUnit. You can also define custom matcher implementations.
+    correctChoice: 2
+  - description: What is AssertJ?
+    choices:
+      - It is a framework which creates unit tests automatically
+      - It is a framework which classifies init tests
+      - It is a framework to run units tests 
+      - It is a framework which provides matcher methods for asserting conditions in your tests
+    hint: 
+    explanation: 
+    correctChoice: 3
+  - description: What is the popuse of using Hamcrest or AssertJ?
+    choices:
+      - Make test code easier to read and write
+      - Make test code easier to write
+      - Make test code easier to read
+    hint: 
+    explanation:  
+    correctChoice: 0
+  

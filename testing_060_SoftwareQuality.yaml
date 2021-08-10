@@ -1,0 +1,25 @@
+categoryId: 74540 # CATEGORY NAME
+name: Sofware Quality
+questions:
+  - description: Does a high test coverage guarantee high software quality?
+    choices:
+      - No, test coverage is not the only metrics that counts for high software quality, but it is a big plus
+      - Yes, this is true 
+    hint:
+    explanation:  
+    correctChoice: 0
+  - description: Are there tools so see the test code coverage?
+    choices:
+      - No, but you can count the tests in your codebase
+      - Yes, Jacoco is one of them
+    hint: 
+    explanation: 
+    correctChoice: 1
+  - description: What is Checkstyle?
+    choices:
+      - It is a framework to check if your codebase is fancy
+      - It is a framework that checks code against a configurable set of rules
+    hint: 
+    explanation: It allows you to define your own set of rules and check your code against it. 
+    correctChoice: 1
+

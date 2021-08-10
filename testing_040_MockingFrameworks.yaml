@@ -1,0 +1,30 @@
+categoryId: 89778 # CATEGORY NAME
+name: Mocking Frameworks
+questions:
+  - description: Which one is a popular mocking framework?
+    choices:
+      - Moskito
+      - Hamcrest 
+      - Mockito
+      - AssertJ
+    hint:
+    explanation: Mockito is an popular open source framework for mocking in unit tests. 
+    correctChoice: 2
+  - description: What means to mock an object?
+    choices:
+      - To make a copy of an interface or class
+      - To make a dummy implementation of an interface or class, allowing to define the output of method calls and trace its interactions with the code
+      - To make a dummy implementation of an interface or class, not allowing to define the output of method calls
+      - To mark interfaces or classes which should be tested
+    hint: 
+    explanation: 
+    correctChoice: 1
+  - description: Is it possible to mock all kind of interfaces or classes?
+    choices:
+      - Yes, it is
+      - No, you can not mock private methods
+      - No, you can not mock final classes and static methods
+    hint: 
+    explanation: Mockito has certain limitations. 
+    correctChoice: 1
+  

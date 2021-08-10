@@ -1,0 +1,12 @@
+categoryId: 8977600 # CATEGORY NAME
+name: More on JUnit 5
+questions:
+  - description: No idea?
+    choices:
+      - 
+      - 
+      -  
+    hint:
+    explanation:  
+    correctChoice: 1
+

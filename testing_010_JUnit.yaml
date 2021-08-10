@@ -1,0 +1,61 @@
+categoryId: 74001 # CATEGORY NAME
+name: Getting started with JUnit
+questions:
+  - description: Are software tests important?
+    choices:
+      - Yes, they help others understand the code
+      - Yes, they can help to ensure that the software works as expected and can run automatically to ensure project stability
+      - No, test must be written and this takes a lot of time 
+    hint:
+    explanation: Running tests are crutial in all software phases. 
+    correctChoice: 1
+  - description: What is a unit test?
+    choices:
+      - It is a collection of tests to be run by the build server
+      - It is a piece of code that executes a specific functionality in the code to be tested and asserts a certain behavior or state
+      - It messures the performance of methods and classes
+    hint: 
+    explanation: 
+    correctChoice: 1
+  - description: What are integration tests?
+    choices:
+      - They test the behavior of a component or the integration between a set of components
+      - They integrate unit tests into the build system
+      - They test the behaviour of each component separately
+    hint: 
+    explanation: Integration tests check that the whole system works as intended, therefore they are reducing the need for intensive manual tests. 
+    correctChoice: 0
+  - description: Are performance tests relevant?
+    choices:
+      - They are only relevant if the software is designed to be run on a virtual server
+      - They are relevant to messure the development time of software components
+      - They are important to evaluate the impact of the code even if it is under high load
+      - They are only important for software which communicates with a DB
+    hint: 
+    explanation: Performance tests are used to benchmark software components repeatedly. 
+    correctChoice: 2
+  - description: Do software tests need a certain naming convention to work properly?
+    choices:
+      - Yes, tests should always have the Test suffix at the end of the test classes names
+      - Yes, the word 'should' should always be used in the the test classes names
+      - Yes, test classes names should be like this, given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]
+      - No, you can choose your prefered naming convention
+    hint: 
+    explanation: With the JUnit5 testing framework this convention is less important, as you can use the @DisplayName annotation to add a description for the test method.
+    correctChoice: 3
+  - description: What is a mock object?
+    choices:
+      - It supports creating a dummy implementation for an interface or a class, which allows to define the output of certain method calls
+      - It is the result of a performance, integration or unit test
+    hint: 
+    explanation: You can create mock objects manually (via code) or use a mock framework to simulate these classes.
+    correctChoice: 0
+  - description: What is JUnit?
+    choices:
+      - It is a popular proprietary test framework
+      - It is a popular open source test framework 
+      - It is a Java Version that works best with tests
+    hint: 
+    explanation: JUnit is hosted at Github
+    correctChoice: 1
+
