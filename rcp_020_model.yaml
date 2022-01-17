@@ -16,9 +16,9 @@ questions:
       - At least one window
       - At least one menu
       - 
-    hint: 1
+    hint:
     explanation: The runtime shutdowns the Eclipse application if the last window is closed (or if none is opened).
-    correctChoice: 0
+    correctChoice: 1
   - description: The application model...
     choices:
       - is updated at runtime via the user actions or via API calls and its latest state to stored and restored if the application starts again
