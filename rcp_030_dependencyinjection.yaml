@@ -14,7 +14,7 @@ questions:
     choices:
       - To receive objects created by the runtime of the Eclipse framework
       - To receive objects created by the runtime of the Eclipse framework and other custom code
-      - To define the relationship betweek classes in a kind of build hierarchy
+      - To define the relationship between classes in a kind of build hierarchy
       - 
     hint: 1
     explanation: Dependency injection allows to access objects created by the framework or by your own code.
