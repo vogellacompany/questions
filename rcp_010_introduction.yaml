@@ -3,7 +3,7 @@ name: Introduction to Eclipse plug-in development
 questions:
   - description: What is the purpose of a target platform?
     choices:
-      - It is define the project target which should be developed
+      - It defines the project target which should be developed
       - It defines the available plug-in to compile your software tests code
       - It defines the available plug-ins for development, i.e. for compiling, feature and product definition
       - It defines the server API which is accessed by the application
