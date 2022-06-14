@@ -33,7 +33,7 @@ questions:
     choices:
       - The OSGi service layer allows to use dependency injection via @Inject
       - The OSGi service layer allows to define the usage of OSGI services in e4 components.
-      - The OSGi service layer allows to define OSGI services and immediate components which be consumed by other OSGi services and via the Eclipse dependency injection mechanimus.
+      - The OSGi service layer allows to define OSGI services and immediate components which can be consumed by other OSGi services and via the Eclipse dependency injection mechanisms.
       - 
     hint: 
     explanation: The OSGi service layer allows to define OSGI services and immediate components which can be consumed via in other code without knowing the concrete implementation.
