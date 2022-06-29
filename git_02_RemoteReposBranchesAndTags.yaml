@@ -19,24 +19,7 @@ questions:
     hint: Checkout of a branch moves the HEAD pointer to this branch and updates your working tree with the snapshot describes by this commit
     explanation: 
     correctChoice: 2
-  - description: What are (annotated) tags?
-    choices:
-      - It is a short name for a git repository
-      - Is is the name of a specific branch
-      - It is the same as the commit message
-      - It is additional, immutable metadata for commits 
-    hint:  
-    explanation: 
-    correctChoice: 3
-  - description: What are tags frequently used for?
-    choices:
-       - To tag a sofware release
-       - To give multiple names to commits
-       - To find repositories easily
-       -
-    hint:
-    explanation: Tags are frequently used to tag a software release. In this case, they are called release tags. Convention is that release tags are labeled based on the [major].[minor].[patch] naming scheme. These release tags follow the semantic versioning of the software release.
-    correctChoice: 0
+ 
 
 
 
