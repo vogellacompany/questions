@@ -15,7 +15,7 @@ questions:
       - All merge conflicts. Git knows what is right and wrong
       - Git never handles merge conflicts itself
       - Only if changes are done in different files 
-      - If changes are done in different files or in same files but in different locations
+      - If changes are done in different files or in the same files but in different locations
     hint: 
     explanation: Git doesn't know which change is right if the change affects the same location. 
     correctChoice: 3
@@ -33,7 +33,7 @@ questions:
       - There is no difference at all as the working tree looks the same
       - The final result for the source code is the same, but the rebase operation moves the changes onto another commit as if these changes started from this commit
       - With rebase git solves all merge conficts itself
-      - Using rebase should be avoided as you loose the information how the branches was integrated
+      - Using rebase should be avoided as you lose the information how the branches was integrated
     hint: Same but different.
     explanation: Rebase moves the work done in one branch or commit onto the changes done in another branch. This results in less merge commits and a linear history. 
     correctChoice: 1
