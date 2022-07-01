@@ -6,13 +6,13 @@ questions:
       - No, there is none
       - Yes, the only way is by using the interactive rebase
       - Yes, interactive rebase or filter branch can be used
-      - Yes, by pulling a commit, do some changes and then push the changes with a new commmit message
+      - Yes, by pulling a commit, do some changes and then push the changes with a new commit message
     hint: 
     explanation: Interactive rebase is the standard way to change the local history before sharing. This is useful as it allows the user to cleanup or improve the history before sharing with colleagues.
     correctChoice: 2
   - description: What can be achieved with the interactive rebase?
     choices:
-      - Several commits can be combined into one commit, reordered or skiped and the commit message can be edited
+      - Several commits can be combined into one commit, reordered or skipped and the commit message can be edited
       - The commit messages of all pushed commits can be changed
       - The repository can be set to its last state
       - 
