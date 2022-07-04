@@ -30,7 +30,7 @@ questions:
     correctChoice: 1
   - description: What does the command 'git blame' do?
     choices:
-      - It starts a cyber mobbing attac
+      - It starts a cyber mobbing attack
       - It classifies the git repository as useless and allows to rebuild the Git commit history
       - It removes the Git repostory from the web server
       - It allows you to see which commit and author modified a file on a per line base
