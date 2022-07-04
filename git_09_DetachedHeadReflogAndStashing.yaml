@@ -26,14 +26,14 @@ questions:
       - It is where the staged changes are collected
       - It is where the unstaged changes are collected
     hint: 
-    explanation: Committing to the stash does not create a new commit but instead saves all staged and unstaged chagnes in a new stash.
+    explanation: Committing to the stash does not create a new commit but instead saves all staged and unstaged changes in a new stash.
     correctChoice: 0
   - description: When is it common to use the stash?
     choices:
       - Everytime before a commit and push of changes
       - When merge or rebase is executed, but the local uncommitted changes should not get lost and are not quite ready to be commited on the current branch
       - If files are to be deleted
-      - If a new commit should replace an oder commit
+      - If a new commit should replace an older commit
     hint: 
     explanation: 
     correctChoice: 1
