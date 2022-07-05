@@ -10,7 +10,7 @@ questions:
     hint:
     explanation: The commit message can be read by everyone who has access to the repository and it should be written in a way that it is clear to everyone what the changes of the commit are.
     correctChoice: 2
-  - description: Which sections can have a commit message?
+  - description: Which sections can a commit message have?
     choices:
       - A short description named header
       - A long description named body
