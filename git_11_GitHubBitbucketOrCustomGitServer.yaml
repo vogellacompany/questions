@@ -13,7 +13,7 @@ questions:
   - description: What is Bitbucket?
     choices:
       - It is a cluster where all Git repositories are created by default
-      - It is the space in GitHub for a Git repositors
+      - It is the space in GitHub for a Git repositories
       - It is a hosting provider for Git repositories
       - 
     hint: 
