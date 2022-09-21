@@ -1,0 +1,49 @@
+categoryId: 1689 # CATEGORY NAME
+name: SWT and JFace
+questions:
+  - description: SWT is ... 
+    choices:
+      - A user interface toolkit based on JavaFX
+      - A user interface toolkit based on native controls
+      - A Swing based theming for Java user interfaces
+      -
+    hint: 
+    explanation: The Standard Widget Toolkit uses native controls as much as possible to provide native look and feel on which support operating system.
+    correctChoice: 1
+  - description: JFace is ...
+    choices:
+      - An alternative to SWT
+      - A set of custom drawn widgets
+      - An extension for SWT based user interfaces to make common tasks simpler to implement
+      - 
+    hint: 
+    explanation: JFace extends SWT and makes common task simpler to implement
+    correctChoice: 2
+  - description: With SWT and JFace you can ...
+    choices:
+      - use only native widgets wrapped and provided by a Java interface
+      - use only native widgets and widgets provided by the Nebula project 
+      - use native widgets and in addition custom drawn widgets odule builds with Maven
+      - 
+    hint: 
+    explanation: SWT provides the common widgets based on native widgets but allows you to extend the user interface with custom drawn widgets. Eclipse Nebula provides lots of widgets already but you can create your own 
+    correctChoice: 2
+  - description: What is the main purpose for the OSGi service layer?
+    choices:
+      - The OSGi service layer allows to use dependency injection via @Inject
+      - The OSGi service layer allows to define the usage of OSGI services in e4 components.
+      - The OSGi service layer allows to define OSGI services and immediate components which be consumed by other OSGi services and via the Eclipse dependency injection mechanimus.
+      - 
+    hint: 
+    explanation: The OSGi service layer allows to define OSGI services and immediate components which can be consumed via in other code without knowing the concrete implementation.
+    correctChoice: 2
+  - description: OSGi services
+    choices:
+      - are based on JSR 330 which defines dependency injection for Java applications.
+      - can be defined via compile-time annotations which Eclipse can use to generated the required meta-data for the OSGi runtime 
+      - can be defined via runtime-time annotations which Eclipse uses to provide the required meta-data for the OSGi runtime 
+      - 
+    hint: 
+    explanation: The OSGi declarative service functionality allows to use compile-time annotations which the Eclipse IDE can use to generate the required meta-data which OSGI uses at runtime to provide the services.
+    correctChoice: 1
+  
