@@ -1,0 +1,32 @@
+categoryId: 1691 # CATEGORY NAME
+name: SWT and JFace
+questions:
+  - description: In Eclipse RCP you define menus, commands, handlers via
+    choices:
+      - the application model
+      - Java code
+      - the application model and code if necessary 
+      -
+    hint: 
+    explanation: The menus, command and handlers are typically defined via the application model or model fragments which are contributed at startup but you can modify, add, remove the entries also via code.
+    correctChoice: 2
+  - description: A handler is ...
+    choices:
+      - A scoped definition for a connection from a command to a Java class. The scope is the level of definition, e.g. application, window or part
+      - An application wide definition for a connection of a Java class to a command
+      - An abstract definition of something that can be executed 
+      - 
+    hint: 
+    explanation: A handler defines the class which is executed for a command, it can be specific to a part of the application, e.g. a part
+    correctChoice: 2
+  - description: You can have keybindings...
+    choices:
+      - statically defined and activated
+      - dynamically defined  and activated
+      - statically and dynamically defined and activated
+      - 
+    hint: 
+    explanation: Eclipse provides a service to activate and de-activate keybindings at runtime. You can also modify the application model at runtime to create, change or remove keybindings
+    correctChoice: 2
+
+  
