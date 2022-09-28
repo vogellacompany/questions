@@ -1,0 +1,22 @@
+categoryId: 1690 # CATEGORY NAME
+name: CSS
+questions:
+  - description: CSS in Eclipse allows you to ... 
+    choices:
+      - Use declarative styling for your Eclipse based application or Eclipse extension  with CSS files
+      - Integrate web pages into your SWT application
+      - Use JavaFX for styling
+      -
+    hint: 
+    explanation: The CSS engine of Eclipse want to enable Eclipse developers to define the styling of your application outside of the Java code using a similar approach like the web
+    correctChoice: 0
+  - description: CSS styling in Eclipse allows
+    choices:
+      - the same as styling for webpages
+      - is limited by the underlying SWT widget toolkit.
+      - 
+      - 
+    hint: 1
+    explanation: The CSS engine uses the SWT widgets and can only style what is supported by SWT and other Eclipse components
+    correctChoice: 0
+  
