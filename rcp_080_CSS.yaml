@@ -16,7 +16,7 @@ questions:
       - is limited by the underlying SWT widget toolkit.
       - 
       - 
-    hint: 1
+    hint:
     explanation: The CSS engine uses the SWT widgets and can only style what is supported by SWT and other Eclipse components
-    correctChoice: 0
+    correctChoice: 1
   
