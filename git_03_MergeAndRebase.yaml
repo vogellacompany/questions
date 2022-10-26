@@ -10,10 +10,10 @@ questions:
     hint: 
     explanation: You can merge based on branches, tags or commits. Other ways are using rebase or cherry-pick.
     correctChoice: 1
-  - description: Which merges can git handle itself?
+  - description: Which merges can git handle without user interaction?
     choices:
       - All merge conflicts. Git knows what is right and wrong
-      - Git never handles merge conflicts itself
+      - Git always handles merge conflicts itself
       - Only if changes are done in different files 
       - If changes are done in different files or in the same files but in different locations
     hint: 
