@@ -5,7 +5,7 @@ questions:
     choices:
       - No, there is none
       - Yes, the only way is by using the interactive rebase
-      - Yes, interactive rebase or filter branch can be used
+      - Yes, interactive rebase can be used
       - Yes, by pulling a commit, do some changes and then push the changes with a new commit message
     hint: 
     explanation: Interactive rebase is the standard way to change the local history before sharing. This is useful as it allows the user to cleanup or improve the history before sharing with colleagues.
