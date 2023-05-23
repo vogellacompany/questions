@@ -20,6 +20,13 @@ questions:
     hint: 0
     explanation: The OSGi core specification specifies a module and service layer
     correctChoice: 0
+  - description: What is a bundle in OSGi?
+    choices:
+     - A Java class 
+     - A Java package 
+     - A Java archive file
+     - A Java module / project with additional metadata
+    correctChoice: 3
   - description: What is the main purpose for the OSGi module layer?
     choices:
       - It allows to integrate with the Java 9 module layer
