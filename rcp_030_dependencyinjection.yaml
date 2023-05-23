@@ -18,7 +18,7 @@ questions:
       - 
     hint: 1
     explanation: Dependency injection allows to access objects created by the framework or by your own code.
-    correctChoice: 0
+    correctChoice: 1
   - description: Why is dependency injection better and used by popular Java frameworks?
     choices:
       - It is not better than factories, as it allows to access the same objects.
