@@ -23,7 +23,7 @@ questions:
     choices:
       - use only native widgets wrapped and provided by a Java interface
       - use only native widgets and widgets provided by the Nebula project 
-      - use native widgets and in addition custom drawn widgets odule builds with Maven
+      - use native widgets and in addition custom drawn widgets module builds with Maven
       - 
     hint: 
     explanation: SWT provides the common widgets based on native widgets but allows you to extend the user interface with custom drawn widgets. Eclipse Nebula provides lots of widgets already but you can create your own 

@@ -1,5 +1,5 @@
 categoryId: 1691 # CATEGORY NAME
-name: SWT and JFace
+name: Commands, handlers and menu
 questions:
   - description: In Eclipse RCP you define menus, commands, handlers via
     choices:
