@@ -8,7 +8,7 @@ questions:
       - Using an Eclipse specific implementation different to the standard from JSR 330 
       -
     hint: 
-    explanation: Dependency injection in Eclipsie is based on JSR 330 and extends it if necessary within the specification.
+    explanation: Dependency injection in Eclipse is based on JSR 330 and extends it if necessary within the specification.
     correctChoice: 0
   - description: Dependency injection allows you
     choices:
