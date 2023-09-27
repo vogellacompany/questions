@@ -3,7 +3,7 @@ name: Dependency injection
 questions:
   - description: Dependency injection in Eclipse is... 
     choices:
-      - Based on JSR 330 which is also used by other Java frameworks like Java Jakata and the Spring framework.
+      - Based on JSR 330 which is also used by other Java frameworks like Java Jakarta and the Spring framework.
       - Not supported
       - Using an Eclipse specific implementation different to the standard from JSR 330 
       -
