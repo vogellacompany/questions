@@ -16,7 +16,7 @@ questions:
       - To receive objects created by the runtime of the Eclipse framework and other custom code
       - To define the relationship between classes in a kind of build hierarchy
       - 
-    hint: 1
+    hint:
     explanation: Dependency injection allows to access objects created by the framework or by your own code.
     correctChoice: 1
   - description: Why is dependency injection better and used by popular Java frameworks?
