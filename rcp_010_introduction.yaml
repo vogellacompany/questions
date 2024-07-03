@@ -16,7 +16,7 @@ questions:
       - It can be used from the command line build and you can still use the latest API from your IDE installation in your application.
       - It allows you to commit the documentation file to your version control system
       - 
-    hint: 1
+    hint:
     explanation: A target platform definition file can be used to configure the plug-in available to develop against in your IDE and be used for your command line build.
     correctChoice: 0
   - description: What is the purpose of a feature project in Eclipse?
