@@ -17,7 +17,7 @@ questions:
       - an implementation for a module and service layer
       - 
       - 
-    hint: 0
+    hint:
     explanation: The OSGi core specification specifies a module and service layer
     correctChoice: 0
   - description: What is a bundle in OSGi?
