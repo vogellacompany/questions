@@ -1,0 +1,39 @@
+categoryId: 1692 # CATEGORY NAME
+name: CSS
+questions:
+  - description: Which of the following is not a standard SWT dialog? 
+    choices:
+      - FileDialog
+      - MessageBox
+      - TitleAreaDialog
+      - FontDialog
+    hint: 
+    explanation: 
+    correctChoice: 2
+  - description: What is a characteristic of JFace dialogs ?
+    choices:
+      - They are always based on native OS dialogs
+      - They allow creating custom buttons
+      - They cannot be customized
+      - They do not follow native platform semantics
+    hint:
+    explanation: 
+    correctChoice: 1
+  - description: Which method must be implemented when creating a custom dialog by extending the Dialog class in Eclipse?
+    choices:
+		- setTitleImage()
+		- openConfirm()
+		- setErrorMessage()
+		- createDialogArea()
+	hint:
+	explanation:
+	correctChoice: 3
+	- description: 
+	   choices:
+		- setTitleImage()
+		- createDialogArea()
+		- setErrorMessage()
+		- openConfirm()
+	hint:
+	explanation:
+	correctChoice: 1
