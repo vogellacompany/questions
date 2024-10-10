@@ -1,0 +1,42 @@
+categoryId: 1692 # CATEGORY NAME
+name: CSS
+questions:
+  - description: Which of the following is not a standard SWT dialog? 
+    choices:
+      - FileDialog
+      - MessageBox
+      - TitleAreaDialog
+      - FontDialog
+    hint: Consider which dialog types are commonly used in SWT applications and which one is more specialized.
+    explanation: The `TitleAreaDialog` is not a standard SWT dialog; it is a custom dialog that extends the functionality of SWT dialogs.
+    correctChoice: 2
+
+  - description: What is a characteristic of JFace dialogs?
+    choices:
+      - They are always based on native OS dialogs
+      - They allow creating custom buttons
+      - They cannot be customized
+      - They do not follow native platform semantics
+    hint: Think about the flexibility that JFace dialogs provide compared to standard SWT dialogs.
+    explanation: JFace dialogs allow creating custom buttons, enabling developers to tailor the user experience more closely to their application's needs.
+    correctChoice: 1
+
+  - description: Which method must be implemented when creating a custom dialog by extending the Dialog class in Eclipse?
+    choices:
+      - setTitleImage()
+      - openConfirm()
+      - setErrorMessage()
+      - createDialogArea()
+    hint: This method is crucial for defining the main content area of the dialog.
+    explanation: The `createDialogArea()` method must be implemented to define the main content of the dialog when extending the Dialog class in Eclipse.
+    correctChoice: 3
+
+  - description: Which method is used to set the title image for a dialog in Eclipse?
+    choices:
+      - setTitleImage()
+      - createDialogArea()
+      - setErrorMessage()
+      - openConfirm()
+    hint: This method is essential for providing a visual identity to your dialog.
+    explanation: The `setTitleImage()` method is used to set the title image of a dialog, enhancing its visual appearance.
+    correctChoice: 1
