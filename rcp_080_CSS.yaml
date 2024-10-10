@@ -1,13 +1,112 @@
 categoryId: 1690 # CATEGORY NAME
 name: CSS
 questions:
+  - description: Which of the following is an example of a valid CSS rule in Eclipse for styling an SWT Button?
+    choices:
+      - button { text-color: #0000FF; }
+      - swt-button { border: 1px solid black; }
+      - button[style="bold"] { color: green; }
+	  - Button { background-color: red; }
+    hint: Focus on how SWT components are styled in Eclipse using CSS.
+    explanation: SWT widgets in Eclipse, such as `Button`, are styled using CSS with valid properties like `background-color`.
+    correctChoice: 3
+
+  - description: How can you define a custom font size for a Label widget using CSS in Eclipse?
+    choices:
+      - Label { font-size: 14px; }
+      - label { font-size: 14pt; }
+      - label { size: 14px; }
+      - swt-label { font: 14px; }
+    hint: CSS follows the standard font-size property in Eclipse.
+    explanation: You can set the font size using `font-size` as it applies to SWT widgets in Eclipse.
+    correctChoice: 0
+
+  - description: In Eclipse, which file is used to define CSS styles for the UI?
+    choices:
+      - A .properties file
+      - A .css file
+      - A .xml file
+      - A .stylesheet file
+    hint: CSS uses the same file extension as it does on the web.
+    explanation: Eclipse allows you to define UI styles in a `.css` file.
+    correctChoice: 1
+
+  - description: Which of the following CSS properties is **not** supported in Eclipse SWT?
+    choices:
+      - background-color
+      - border-radius
+      - color
+      - font-size
+    hint: SWT does not support all modern web CSS properties.
+    explanation: `border-radius` is not natively supported by SWT in Eclipse.
+    correctChoice: 1
+
+  - description: How can you apply CSS styling to a specific widget in Eclipse RCP?
+    choices:
+      - By setting an ID using setData() method and targeting it with a CSS selector
+      - By directly adding the CSS styles to the widget’s Java code
+      - By calling applyCSS() on the widget
+      - By modifying the widget’s constructor
+    hint: Think about using the widget's ID in the CSS file.
+    explanation: You can assign an ID to the widget using the `setData()` method and then use a CSS selector in the `.css` file.
+    correctChoice: 0
+
+  - description: What happens if you define an invalid CSS rule in an Eclipse CSS file?
+    choices:
+      - The entire CSS file is ignored
+      - The application throws a runtime error
+	  - Only the invalid rule is ignored, and the rest of the styles are applied
+      - The Eclipse CSS engine tries to automatically correct the rule
+    hint: Invalid rules in CSS files are typically handled gracefully.
+    explanation: Only the invalid rule is ignored, while the rest of the CSS is applied.
+    correctChoice: 2
+
+  - description: How can you debug CSS styling issues in Eclipse?
+    choices:
+      - By using the Eclipse CSS Spy tool
+      - By checking the error logs in the console
+      - By inspecting the DOM elements of the UI
+      - By enabling the debug flag in the manifest file
+    hint: Eclipse provides a specific tool for debugging CSS.
+    explanation: The Eclipse CSS Spy tool allows you to inspect and debug CSS styles applied to SWT widgets.
+    correctChoice: 0
+
+  - description: Which CSS selector is used to apply styles to all Buttons in an Eclipse application?
+    choices:
+      - button
+      - .Button
+	  - Button
+      - *Button
+    hint: CSS in Eclipse SWT is case-sensitive when referring to widgets.
+    explanation: The correct selector for styling all `Button` widgets is `Button`, which matches the SWT widget type.
+    correctChoice: 2
+
+  - description: Can you change the padding of an SWT widget using CSS in Eclipse?
+    choices:
+      - Yes, by using the padding property
+      - Yes, but only for specific widgets like Labels and Texts
+      - No, padding is controlled programmatically in SWT
+	  - No, SWT does not support padding via CSS
+    hint: SWT has limitations compared to HTML/CSS standards.
+    explanation: SWT does not support padding via CSS. Padding must be controlled programmatically.
+    correctChoice: 3
+
+  - description: Which Eclipse RCP component does **not** support CSS styling out-of-the-box?
+    choices:
+      - Button
+      - Combo
+      - Shell
+      - Tree
+    hint: Some advanced components require manual styling in Java.
+    explanation: While most basic SWT widgets support CSS styling, the `Tree` widget does not fully support it out-of-the-box.
+    correctChoice: 3
   - description: CSS in Eclipse allows you to ... 
     choices:
       - Use declarative styling for your Eclipse based application or Eclipse extension  with CSS files
       - Integrate web pages into your SWT application
       - Use JavaFX for styling
       -
-    hint: 
+    hint: Think about how CSS is typically used in web development and its adaptation in Eclipse.
     explanation: The CSS engine of Eclipse want to enable Eclipse developers to define the styling of your application outside of the Java code using a similar approach like the web
     correctChoice: 0
   - description: CSS styling in Eclipse allows
@@ -16,7 +115,7 @@ questions:
       - is limited by the underlying SWT widget toolkit.
       - 
       - 
-    hint:
+    hint: Consider the compatibility between CSS and the underlying widget framework used in Eclipse.
     explanation: The CSS engine uses the SWT widgets and can only style what is supported by SWT and other Eclipse components
     correctChoice: 1
   

@@ -1,0 +1,102 @@
+categoryId: 1693 # CATEGORY NAME
+name: JFace Databinding
+questions:
+  - description: What is the primary role of JFace Data Binding in Eclipse RCP?
+    choices:
+      - To bind UI components directly to the database
+      - To bind UI components to data models
+      - To manage SWT layout options
+      - To facilitate database transactions
+    hint: Focus on the interaction between UI and model.
+    explanation: JFace Databinding is used to link UI components and the underlying model, abstracting data flow.
+    correctChoice: 1
+  
+  - description: Which class is most commonly used to manage data binding in JFace?
+    choices:
+      - DataBindingContext
+      - BindingManager
+      - ObservableValue
+      - WidgetBinder
+    hint: Look for the central class that handles binding in JFace.
+    explanation: `DataBindingContext` is the class that manages the binding between the model and the UI.
+    correctChoice: 0
+
+  - description: Which of the following methods is used to create a binding between a model and a widget in JFace?
+    choices:
+      - bindValue()
+      - bindWidget()
+      - createBinding()
+      - addObserver()
+    hint: It starts with "bind" and it's a core method.
+    explanation: The `bindValue()` method is used to bind a model's value to a widget in JFace Databinding.
+    correctChoice: 0
+
+  - description: What is the purpose of an IObservableValue in JFace Databinding?
+    choices:
+      - To represent observable UI widgets
+      - To monitor changes in SWT layouts
+      - To provide an observable data model value
+      - To manage binding lifecycle events
+    hint: It’s related to observability of a specific value in the model or widget.
+    explanation: `IObservableValue` represents an observable value, such as a property of a model or widget, that can be bound in the data binding framework.
+    correctChoice: 2
+
+  - description: In JFace Databinding, what is the role of a `Validator`?
+    choices:
+      - To modify the UI’s appearance based on data
+      - To enforce model validation rules
+      - To manage data flow between model and view
+      - To update the view when the model changes
+    hint: Validators are usually used in form fields to check input.
+    explanation: Validators are used to enforce rules on data and ensure it's valid before updating the model.
+    correctChoice: 1
+
+  - description: Which type of observable is used to bind to a collection in JFace Databinding?
+    choices:
+      - IObservableCollection
+      - IObservableList
+      - IObservableSet
+      - IObservableValue
+    hint: This type holds multiple elements and is commonly used with lists.
+    explanation: `IObservableList` is used for data binding when working with collections in JFace.
+    correctChoice: 1
+
+  - description: What is the purpose of the UpdateValueStrategy class in JFace Databinding?
+    choices:
+      - To control the data flow between the model and target widget
+      - To enforce validation rules on UI components
+      - To update the model based on user preferences
+      - To handle layout changes during data updates
+    hint: This class is used to manage the direction and strategy of data updates.
+    explanation: `UpdateValueStrategy` determines how data flows between the model and the UI component (widget) in data binding.
+    correctChoice: 0
+
+  - description: What is the function of the `ObservableListContentProvider` in JFace Databinding?
+    choices:
+      - To manage changes in observable lists and update the viewer
+      - To bind observable values to the UI
+      - To handle the update of a single observable value
+      - To manage observable sets in a data binding context
+    hint: It’s tied to list viewers and observable lists.
+    explanation: `ObservableListContentProvider` manages observable list changes and updates the viewer automatically.
+    correctChoice: 0
+
+  - description: How can you ensure that data binding only updates the model when the input data is valid?
+    choices:
+      - By using a Validator with UpdateValueStrategy
+      - By using an IObservableList
+      - By invoking the bindWidget() method
+      - By handling updates manually in the SWT event loop
+    hint: Look for a combination of a validator and strategy.
+    explanation: Validators combined with `UpdateValueStrategy` ensure that model data is updated only if the input is valid.
+    correctChoice: 0
+
+  - description: Which of the following classes can be used to observe changes in an object's property in JFace Databinding?
+    choices:
+      - WritableValue
+      - WritableMap
+      - BeanProperties
+      - WidgetProperties
+    hint: It's commonly used when observing JavaBeans properties.
+    explanation: `BeanProperties` is used to observe properties of JavaBeans in the JFace Databinding framework.
+    correctChoice: 2
