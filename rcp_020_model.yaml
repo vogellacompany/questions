@@ -37,7 +37,6 @@ questions:
     hint: The model is used at both design-time and runtime to manage the application’s UI structure.
     explanation: The application model represents the structure and behavior of the application’s UI, including windows, parts, menus, and handlers.
     correctChoice: 2
-
   - description: What is a Part in the Eclipse application model?
     choices:
       - A part defines a handler for keyboard shortcuts
@@ -47,7 +46,6 @@ questions:
     hint: Think of editors and views.
     explanation: Parts are key UI components in Eclipse RCP applications, used for content display like views or editors.
     correctChoice: 1
-
   - description: Which of the following is NOT an element of the Eclipse application model?
     choices:
       - Perspective
