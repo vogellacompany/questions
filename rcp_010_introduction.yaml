@@ -37,7 +37,7 @@ questions:
     hint: 
     explanation: The product is not used at runtime, its configuration is used to define the plug-ins available during runtime and the configuration. 
     correctChoice: 1
-   - description: What is the main purpose of an Eclipse plug-in?
+  - description: What is the main purpose of an Eclipse plug-in?
     choices:
       - To create a new Java project in Eclipse
       - To encapsulate and modularize functionality for Eclipse-based applications
