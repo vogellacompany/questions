@@ -28,3 +28,32 @@ questions:
     hint: 
     explanation: 
     correctChoice: 0
+     - description: What is the main purpose of the Eclipse application model?
+    choices:
+      - To define the class hierarchy for Eclipse plug-ins
+      - To configure the build process of the Eclipse product
+      - To describe and control the structure and behavior of the UI and core services of the application
+      - To define the list of available plug-ins and features
+    hint: The model is used at both design-time and runtime to manage the application’s UI structure.
+    explanation: The application model represents the structure and behavior of the application’s UI, including windows, parts, menus, and handlers.
+    correctChoice: 2
+
+  - description: What is a Part in the Eclipse application model?
+    choices:
+      - A part defines a handler for keyboard shortcuts
+      - A part represents a UI element, typically used for displaying or editing content
+      - A part is used to group several plug-ins into a UI container
+      - A part defines a command parameter in the command framework
+    hint: Think of editors and views.
+    explanation: Parts are key UI components in Eclipse RCP applications, used for content display like views or editors.
+    correctChoice: 1
+
+  - description: Which of the following is NOT an element of the Eclipse application model?
+    choices:
+      - Perspective
+      - Command
+      - Extension point
+      - Part
+    hint: One of these elements is not part of the model but of the traditional plug-in mechanism.
+    explanation: Extension points belong to the OSGi-based plug-in infrastructure, not to the application model.
+    correctChoice: 2
