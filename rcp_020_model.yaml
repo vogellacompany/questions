@@ -55,3 +55,4 @@ questions:
     hint: One of these elements is not part of the model but of the traditional plug-in mechanism.
     explanation: Extension points belong to the OSGi-based plug-in infrastructure, not to the application model.
     correctChoice: 2
+
