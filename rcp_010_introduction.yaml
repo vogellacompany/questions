@@ -56,7 +56,6 @@ questions:
     hint: This file contains metadata about the plug-in, such as its dependencies.
     explanation: The `MANIFEST.MF` file defines essential metadata like plug-in ID, version, and dependencies. It is mandatory in every Eclipse plug-in.
     correctChoice: 1
-
   - description: What is a key benefit of modularizing your application using plug-ins?
     choices:
       - It improves rendering performance of the UI
@@ -66,7 +65,6 @@ questions:
     hint: Think of software engineering principles.
     explanation: Modularizing using plug-ins supports separation of concerns, reuse, and maintainability of large applications.
     correctChoice: 3
-
   - description: What is the relationship between features and plug-ins?
     choices:
       - Plug-ins contain features and define their behavior
