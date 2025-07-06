@@ -51,7 +51,6 @@ questions:
       - plugin.xml
       - MANIFEST.MF
       - .project
-      - build.gradle
       - pom.xml
     hint: This file contains metadata about the plug-in, such as its dependencies.
     explanation: The `MANIFEST.MF` file defines essential metadata like plug-in ID, version, and dependencies. It is mandatory in every Eclipse plug-in.
