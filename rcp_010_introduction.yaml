@@ -37,4 +37,43 @@ questions:
     hint: 
     explanation: The product is not used at runtime, its configuration is used to define the plug-ins available during runtime and the configuration. 
     correctChoice: 1
- 
+   - description: What is the main purpose of an Eclipse plug-in?
+    choices:
+      - To create a new Java project in Eclipse
+      - To encapsulate and modularize functionality for Eclipse-based applications
+      - To define how the user interface of the application should look like
+      - To configure the runtime environment of Eclipse applications
+    hint: Think in terms of modular architecture.
+    explanation: Plug-ins are the building blocks of Eclipse applications and allow for modular development by encapsulating specific functionality.
+    correctChoice: 1
+  - description: Which file must exist in every Eclipse plug-in project?
+    choices:
+      - plugin.xml
+      - MANIFEST.MF
+      - .project
+      - build.gradle
+      - pom.xml
+    hint: This file contains metadata about the plug-in, such as its dependencies.
+    explanation: The `MANIFEST.MF` file defines essential metadata like plug-in ID, version, and dependencies. It is mandatory in every Eclipse plug-in.
+    correctChoice: 1
+
+  - description: What is a key benefit of modularizing your application using plug-ins?
+    choices:
+      - It improves rendering performance of the UI
+      - It reduces the size of the JRE required to run the app
+      - It increases test coverage automatically
+      - It allows separation of concerns and easier maintenance
+    hint: Think of software engineering principles.
+    explanation: Modularizing using plug-ins supports separation of concerns, reuse, and maintainability of large applications.
+    correctChoice: 3
+
+  - description: What is the relationship between features and plug-ins?
+    choices:
+      - Plug-ins contain features and define their behavior
+      - Features and plug-ins are unrelated concepts in Eclipse RCP
+      - Features are used to group plug-ins and can include other features
+      - Plug-ins can only be used inside features at runtime
+    hint: Features are used to bundle functionality.
+    explanation: Features act as containers that group multiple plug-ins and can be used to include them in a product configuration.
+    correctChoice: 2
+
