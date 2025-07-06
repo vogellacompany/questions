@@ -28,7 +28,7 @@ questions:
     hint: 
     explanation: 
     correctChoice: 0
-     - description: What is the main purpose of the Eclipse application model?
+  - description: What is the main purpose of the Eclipse application model?
     choices:
       - To define the class hierarchy for Eclipse plug-ins
       - To configure the build process of the Eclipse product
