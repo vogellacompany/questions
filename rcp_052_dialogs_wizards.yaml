@@ -1,0 +1,49 @@
+categoryId: 1692 # CATEGORY NAME
+name: Dialogs and Wizards
+questions:
+  - description: What is the purpose of the MessageDialog class in JFace?
+    choices:
+      - It allows editing structured data in a form-like UI
+      - It provides a simple way to show informational, warning, or error dialogs
+      - It is used to create multi-step wizard dialogs
+      - 
+    hint: Often used for user notifications or confirmations.
+    explanation: MessageDialog is a JFace class used to show standard dialogs like information, warning, and confirmation messages.
+    correctChoice: 1
+ - description: What is a Wizard in JFace?
+    choices:
+      - A graphical editor for SWT layouts
+      - A sequence of dialogs that guide the user through a series of steps
+      - A code generator for creating plug-in projects
+      - 
+    hint: Used to break complex input tasks into manageable steps.
+    explanation: A Wizard is a high-level abstraction for a series of pages that help the user complete a multi-step operation.
+    correctChoice: 1
+  - description: What must you implement to create a wizard page in JFace?
+    choices:
+      - A class that extends DialogPage
+      - A class that extends WizardDialog
+      - A class that extends WizardPage
+      - 
+    hint: This class provides methods for UI creation and validation per step.
+    explanation: WizardPage is the base class for pages in a JFace wizard and provides lifecycle methods for input and validation logic.
+    correctChoice: 2
+  - description: How do you open a wizard in JFace?
+    choices:
+      - By creating a shell and opening each WizardPage manually
+      - By creating a WizardDialog, passing the wizard to it, and calling open()
+      - By calling Wizard.openWizard(WizardPage) directly
+      - 
+    hint: This dialog manages the wizard page flow and buttons automatically.
+    explanation: A WizardDialog handles the display and navigation of wizard pages; you pass it a Wizard instance and call open().
+    correctChoice: 1
+
+  - description: What is the purpose of setPageComplete(false) in a WizardPage?
+    choices:
+      - It sets the page's title to incomplete
+      - It disables the Finish button until validation passes
+      - It hides the current wizard page
+      - 
+    hint: Commonly used during input validation.
+    explanation: setPageComplete(false) disables navigation (e.g., the Finish button) until the page's content is considered valid.
+    correctChoice: 1
