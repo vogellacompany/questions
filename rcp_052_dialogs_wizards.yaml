@@ -37,7 +37,6 @@ questions:
     hint: This dialog manages the wizard page flow and buttons automatically.
     explanation: A WizardDialog handles the display and navigation of wizard pages; you pass it a Wizard instance and call open().
     correctChoice: 1
-
   - description: What is the purpose of setPageComplete(false) in a WizardPage?
     choices:
       - It sets the page's title to incomplete
