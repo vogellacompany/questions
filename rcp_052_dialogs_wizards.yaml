@@ -10,7 +10,7 @@ questions:
     hint: Often used for user notifications or confirmations.
     explanation: MessageDialog is a JFace class used to show standard dialogs like information, warning, and confirmation messages.
     correctChoice: 1
- - description: What is a Wizard in JFace?
+  - description: What is a Wizard in JFace?
     choices:
       - A graphical editor for SWT layouts
       - A sequence of dialogs that guide the user through a series of steps
