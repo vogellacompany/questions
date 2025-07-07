@@ -57,31 +57,31 @@ questions:
   - description: How are OSGi services typically registered and consumed?
     choices:
       - Services are manually registered and looked up via the ServiceRegistry API
-      - Services are injected using `@Inject` in combination with a static service locator
-      - Services are registered and consumed using declarative services (DS) and annotations like `@Component` and `@Reference`
+      - Services are injected using @Inject in combination with a static service locator
+      - Services are registered and consumed using declarative services (DS) and annotations like @Component and @Reference
       - 
     hint: Consider how DS and annotations simplify service management.
-    explanation: Declarative Services (DS) allow automatic registration and injection of services using annotations like `@Component` and `@Reference`.
+    explanation: Declarative Services (DS) allow automatic registration and injection of services using annotations like @Component and @Reference.
     correctChoice: 2
   - description: Which annotation is used to declare a class as an OSGi service component?
     choices:
-      - `@Service`
-      - `@Injectable`
-      - `@Component`
-      - `@Bean`
-    hint: This annotation comes from the `org.osgi.service.component.annotations` package.
-    explanation: `@Component` is the annotation used to declare an OSGi Declarative Service component.
+      - @Service
+      - @Injectable
+      - @Component
+      - @Bean
+    hint: This annotation comes from the org.osgi.service.component.annotations package.
+    explanation: @Component is the annotation used to declare an OSGi Declarative Service component.
     correctChoice: 2
-  - description: What is the purpose of the `@Reference` annotation in OSGi Declarative Services?
+  - description: What is the purpose of the @Reference annotation in OSGi Declarative Services?
     choices:
       - To inject a service from another bundle into a field or method
       - To declare a logging service to be used in your plug-in
       - To define the bundle manifest headers for service wiring
       - 
     hint: It's used to express a dependency.
-    explanation: The `@Reference` annotation defines a dependency on another OSGi service, which the framework will resolve and inject automatically.
+    explanation: The @Reference annotation defines a dependency on another OSGi service, which the framework will resolve and inject automatically.
     correctChoice: 0
-  - description: What happens if a required `@Reference` service is not available at runtime?
+  - description: What happens if a required @Reference service is not available at runtime?
     choices:
       - The component is activated with a null reference
       - The component is not activated
