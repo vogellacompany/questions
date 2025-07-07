@@ -46,3 +46,4 @@ questions:
     hint: Commonly used during input validation.
     explanation: setPageComplete(false) disables navigation (e.g., the Finish button) until the page's content is considered valid.
     correctChoice: 1
+
