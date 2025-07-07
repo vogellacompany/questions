@@ -65,10 +65,10 @@ questions:
     correctChoice: 2
   - description: Which annotation is used to declare a class as an OSGi service component?
     choices:
-      - @Service
-      - @Injectable
-      - @Component
-      - @Bean
+      - \@Service
+      - \@Injectable
+      - \@Component
+      - \@Bean
     hint: This annotation comes from the org.osgi.service.component.annotations package.
     explanation: @Component is the annotation used to declare an OSGi Declarative Service component.
     correctChoice: 2
