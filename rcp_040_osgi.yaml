@@ -72,7 +72,7 @@ questions:
     hint: This annotation comes from the org.osgi.service.component.annotations package.
     explanation: "@Component is the annotation used to declare an OSGi Declarative Service component."
     correctChoice: 2
-  - description: What is the purpose of the @Reference annotation in OSGi Declarative Services?
+  - description: "What is the purpose of the @Reference annotation in OSGi Declarative Services?"
     choices:
       - To inject a service from another bundle into a field or method
       - To declare a logging service to be used in your plug-in
