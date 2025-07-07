@@ -28,3 +28,31 @@ questions:
     hint: 
     explanation: 
     correctChoice: 1
+  - description: How are objects typically injected in Eclipse RCP classes?
+    choices:
+      - By using the `@Inject` annotation on fields, constructors, or methods
+      - By calling a static factory method from the platform
+      - By declaring the injection in the plugin.xml
+      - 
+    hint: Consider standard Java annotations.
+    explanation: Eclipse uses the `@Inject` annotation from JSR 330 to declare dependencies for fields, methods, or constructors.
+    correctChoice: 0
+  - description: Which of the following is NOT a valid use of `@Inject` in Eclipse RCP?
+    choices:
+      - Injecting a `Shell` into a part or handler
+      - Injecting a `Logger` using `@Inject`
+      - Injecting a private method without parameters
+      - Injecting a `String` with the part’s label
+    hint: Consider what the Eclipse Context can provide automatically.
+    explanation: The Eclipse context cannot inject a `String` with the part’s label unless explicitly registered. Most types like `Shell`, `Logger`, or method injections are valid.
+    correctChoice: 3
+  - description: What happens if a required dependency cannot be resolved in Eclipse's dependency injection?
+    choices:
+      - Eclipse will ignore the missing dependency and continue silently
+      - An exception is thrown during class instantiation
+      - The field is left null and may cause a runtime error later
+      - 
+    hint: Missing context entries lead to immediate errors.
+    explanation: Eclipse's DI framework throws an exception if it cannot resolve a required dependency.
+    correctChoice: 1
+    
