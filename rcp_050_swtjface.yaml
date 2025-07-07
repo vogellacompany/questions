@@ -28,5 +28,31 @@ questions:
     hint: 
     explanation: SWT provides the common widgets based on native widgets but allows you to extend the user interface with custom drawn widgets. Eclipse Nebula provides lots of widgets already but you can create your own 
     correctChoice: 2
-
+  - description: What is a Display in SWT?
+    choices:
+      - A layout manager used to arrange widgets in a window
+      - A container for JFace viewers
+      - The connection between SWT and the underlying operating system’s GUI subsystem
+      - 
+    hint: Every SWT application must create one of these.
+    explanation: The Display manages event dispatching and is responsible for interfacing with the native GUI subsystem.
+    correctChoice: 2
+  - description: What is the purpose of a Viewer in JFace?
+    choices:
+      - It is a visual representation of a shell
+      - It wraps an SWT widget and provides higher-level functionality such as content and label providers
+      - It defines the layout of widgets in a composite
+      - 
+    hint: Think of TableViewer, TreeViewer, etc.
+    explanation: JFace viewers abstract the SWT widgets and manage things like data binding, selection, and rendering.
+    correctChoice: 1
+  - description: What is a LabelProvider in JFace used for?
+    choices:
+      - It defines how elements in a viewer are displayed as text and/or images
+      - It handles keyboard input in SWT widgets
+      - It provides labels for shell titles and dialog buttons
+      - 
+    hint: Often used with TableViewer and TreeViewer.
+    explanation: A LabelProvider supplies the text and/or images used to render elements in JFace viewers.
+    correctChoice: 0
   
