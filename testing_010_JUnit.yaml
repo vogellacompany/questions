@@ -37,7 +37,7 @@ questions:
   - description: Do software tests need a certain naming convention to work properly?
     choices:
       - Yes, tests should always have the Test suffix at the end of the test classes names
-      - Yes, the word 'should' should always be used in the the test classes names
+      - Yes, the word 'should' should always be used in the test classes names
       - Yes, test classes names should be like this, given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]
       - No, you can choose your prefered naming convention
     hint: 
