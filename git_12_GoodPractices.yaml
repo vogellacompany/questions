@@ -11,11 +11,12 @@ questions:
     explanation: The commit message can be read by everyone who has access to the repository and it should be written in a way that it is clear to everyone what the changes of the commit are.
     correctChoice: 2
   - description: Which sections can a commit message have?
+    type: MULTIPLE_CHOICE
     choices:
-      - A short description named header
-      - A long description named body
-      - A header and a body
-      - A header, body, and footer
+      - A short summary line named header
+      - A longer description named body
+      - A footer with metadata as key-value pairs
+      - A copy of the changed code
     hint:
-    explanation: The header ensures that the change is displayed well on command line or graphical tools. The body describes the reason for the change. The footer can contain metadata as key-value pairs.
-    correctChoice: 3
+    explanation: The header ensures that the change is displayed well on command line or graphical tools. The body describes the reason for the change. The footer can contain metadata as key-value pairs. The changed code is already part of the commit and does not belong into the message.
+    correctChoices: [0, 1, 2]

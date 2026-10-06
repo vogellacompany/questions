@@ -22,4 +22,13 @@ questions:
     hint: 
     explanation: It allows you to define your own set of rules and check your code against it. 
     correctChoice: 1
-
+  - description: Which tools analyze source or byte code for quality issues without running it?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Checkstyle
+      - SpotBugs
+      - PMD
+      - Mockito
+    hint:
+    explanation: Checkstyle, SpotBugs and PMD are static analysis tools. Mockito is a mocking framework used in tests.
+    correctChoices: [0, 1, 2]

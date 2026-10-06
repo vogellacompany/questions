@@ -1,14 +1,15 @@
 categoryId: 74001 # CATEGORY NAME
 name: Getting started with JUnit
 questions:
-  - description: Are software tests important?
+  - description: Why are software tests important?
+    type: MULTIPLE_CHOICE
     choices:
-      - Yes, they help others understand the code
-      - Yes, they can help to ensure that the software works as expected and can run automatically to ensure project stability
-      - No, test must be written and this takes a lot of time 
+      - They document the expected behavior and help others understand the code
+      - They help to ensure that the software works as expected and can run automatically to ensure project stability
+      - They are not important, writing them takes too much time
     hint:
-    explanation: Running tests are crutial in all software phases. 
-    correctChoice: 1
+    explanation: Running tests are crutial in all software phases. Tests also serve as executable documentation of the expected behavior.
+    correctChoices: [0, 1]
   - description: What is a unit test?
     choices:
       - It is a collection of tests to be run by the build server

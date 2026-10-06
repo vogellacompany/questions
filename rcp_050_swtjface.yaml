@@ -55,4 +55,13 @@ questions:
     hint: Often used with TableViewer and TreeViewer.
     explanation: A LabelProvider supplies the text and/or images used to render elements in JFace viewers.
     correctChoice: 0
-  
+  - description: Which of the following are JFace viewers?
+    type: MULTIPLE_CHOICE
+    choices:
+      - TableViewer
+      - TreeViewer
+      - Composite
+      - ComboViewer
+    hint: Viewers wrap an SWT widget.
+    explanation: TableViewer, TreeViewer and ComboViewer are JFace viewers. Composite is an SWT widget which contains other widgets.
+    correctChoices: [0, 1, 3]

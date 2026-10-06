@@ -90,4 +90,13 @@ questions:
     hint: Think of lifecycle management in DS.
     explanation: If a required service is missing, the Declarative Services runtime will not activate the component.
     correctChoice: 1
-  
+  - description: Which annotations belong to OSGi Declarative Services?
+    type: MULTIPLE_CHOICE
+    choices:
+      - "@Component"
+      - "@Reference"
+      - "@Inject"
+      - "@Activate"
+    hint: They are defined in the org.osgi.service.component.annotations package.
+    explanation: "@Component, @Reference and @Activate are Declarative Services annotations. @Inject is defined by JSR 330 and used by Eclipse dependency injection."
+    correctChoices: [0, 1, 3]

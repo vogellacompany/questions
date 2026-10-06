@@ -55,4 +55,13 @@ questions:
     hint: Missing context entries lead to immediate errors.
     explanation: Eclipse's DI framework throws an exception if it cannot resolve a required dependency.
     correctChoice: 1
-    
+  - description: Where can the `@Inject` annotation be used in Eclipse RCP classes?
+    type: MULTIPLE_CHOICE
+    choices:
+      - On fields
+      - On constructors
+      - On methods
+      - On local variables
+    hint: JSR 330 defines the possible injection points.
+    explanation: Eclipse supports constructor, field and method injection as defined by JSR 330. Local variables cannot be annotated for injection.
+    correctChoices: [0, 1, 2]

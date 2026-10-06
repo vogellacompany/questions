@@ -46,4 +46,13 @@ questions:
     hint: Commonly used during input validation.
     explanation: setPageComplete(false) disables navigation (e.g., the Finish button) until the page's content is considered valid.
     correctChoice: 1
-
+  - description: Which static methods does MessageDialog provide to open a standard dialog?
+    type: MULTIPLE_CHOICE
+    choices:
+      - openInformation
+      - openWarning
+      - openError
+      - openWizard
+    hint: Wizards are opened via a WizardDialog.
+    explanation: MessageDialog offers openInformation, openWarning, openError, openConfirm and openQuestion. Wizards are shown with a WizardDialog.
+    correctChoices: [0, 1, 2]

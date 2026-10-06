@@ -46,3 +46,13 @@ questions:
     hint: 
     explanation: Using the filter-branch command is dangerous as it changes the Git repository. It changes the commit IDs and reacting on such a change requires explicit action from the developer, e.g., trying to rebase the stale local branch onto the corresponding rewritten remote-tracking branch.
     correctChoice: 1
+  - description: Which changes does 'git stash' save by default?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Staged changes
+      - Unstaged changes of tracked files
+      - Untracked files
+      - Ignored files
+    hint:
+    explanation: Without options the stash contains the staged and unstaged changes of tracked files. Untracked files are only included with '--include-untracked', ignored files only with '--all'.
+    correctChoices: [0, 1]

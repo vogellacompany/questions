@@ -28,4 +28,13 @@ questions:
     hint: 
     explanation: You can just use a file system or a public Git provider, such as GitHub or Bitbucket. Sometimes, however, it is convenient to have your own server.
     correctChoice: 0
- 
+  - description: Which of the following are hosting providers for Git repositories?
+    type: MULTIPLE_CHOICE
+    choices:
+      - GitHub
+      - Bitbucket
+      - GitLab
+      - JaCoCo
+    hint:
+    explanation: GitHub, Bitbucket and GitLab host Git repositories. JaCoCo is a code coverage library for Java.
+    correctChoices: [0, 1, 2]

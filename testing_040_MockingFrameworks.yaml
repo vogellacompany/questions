@@ -1,15 +1,16 @@
 categoryId: 89778 # CATEGORY NAME
 name: Mocking Frameworks
 questions:
-  - description: Which one is a popular mocking framework?
+  - description: Which of the following are mocking frameworks?
+    type: MULTIPLE_CHOICE
     choices:
-      - Moskito
-      - Hamcrest 
       - Mockito
+      - Hamcrest
+      - EasyMock
       - AssertJ
     hint:
-    explanation: Mockito is an popular open source framework for mocking in unit tests. 
-    correctChoice: 2
+    explanation: Mockito and EasyMock are open source frameworks for mocking in unit tests. Hamcrest and AssertJ are assertion frameworks.
+    correctChoices: [0, 2]
   - description: What means to mock an object?
     choices:
       - To make a copy of an interface or class

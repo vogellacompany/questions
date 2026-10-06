@@ -91,4 +91,13 @@ questions:
     hint: 
     explanation: It is a common scenario that developers push to the same branch and typically, this branch evolves since the beginning of the development of a local feature and a push fails. But this situtation can be handled.
     correctChoice: 0
- 
+  - description: Which commands communicate with a remote repository?
+    type: MULTIPLE_CHOICE
+    choices:
+      - git fetch
+      - git push
+      - git commit
+      - git pull
+    hint:
+    explanation: Fetch and pull download changes from the remote repository, push uploads them. A commit is always created in the local repository.
+    correctChoices: [0, 1, 3]
