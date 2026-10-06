@@ -27,8 +27,14 @@ The following will give an introduction on how to create a quiz for a category i
 * `choices`: 2 to 4 choices can be defined. For number of choices less than 4, add missing choices as `NULL` at the end.
 * `hint`: a hint for user to get the answer, if does not exist then please put `NULL`
 * `explanation`: an explanation for the answer, if does not exist then please put `NULL`
-* `correctChoice`: the id for the correct choice, range 0-3
-  
+* `type`: optional, `SINGLE_CHOICE` (the default when absent) or `MULTIPLE_CHOICE`
+* `correctChoice`: for single-choice questions, the id of the correct choice, range 0-3
+* `correctChoices`: for multiple-choice questions, the list of all correct choice ids, e.g. `[0, 2]`, instead of `correctChoice`
+
+Choice ids are 0-based and must point at a non-empty choice.
+A multiple-choice question counts as answered correctly only if exactly the choices in `correctChoices` are selected.
+The app shows it as "select all that apply", so the description does not need to say so.
+
 ## Template
 
 ```yaml
@@ -62,5 +68,15 @@ questions:
     hint: # hint
     explanation: # explanation
     correctChoice: # choiceId
+  - description: # Question Description
+    type: MULTIPLE_CHOICE
+    choices:
+      - # Choice A
+      - # Chocie B
+      - # Choice C
+      - # Choice D
+    hint: # hint
+    explanation: # explanation
+    correctChoices: # list of choiceIds, e.g. [0, 2]
 ...
 ```

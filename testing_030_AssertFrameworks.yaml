@@ -19,12 +19,14 @@ questions:
     hint: 
     explanation: 
     correctChoice: 3
-  - description: What is the popuse of using Hamcrest or AssertJ?
+  - description: What is the purpose of using Hamcrest or AssertJ?
+    type: MULTIPLE_CHOICE
     choices:
-      - Make test code easier to read and write
-      - Make test code easier to write
       - Make test code easier to read
+      - Make test code easier to write
+      - Produce more descriptive failure messages
+      - Make tests run faster
     hint: 
-    explanation:  
-    correctChoice: 0
+    explanation: Fluent matchers read like sentences, are easy to discover via code completion and describe the mismatch in detail if an assertion fails. They do not affect the execution speed of tests.
+    correctChoices: [0, 1, 2]
   

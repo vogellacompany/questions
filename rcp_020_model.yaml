@@ -46,13 +46,14 @@ questions:
     hint: Think of editors and views.
     explanation: Parts are key UI components in Eclipse RCP applications, used for content display like views or editors.
     correctChoice: 1
-  - description: Which of the following is NOT an element of the Eclipse application model?
+  - description: Which of the following are elements of the Eclipse application model?
+    type: MULTIPLE_CHOICE
     choices:
       - Perspective
       - Command
       - Extension point
       - Part
     hint: One of these elements is not part of the model but of the traditional plug-in mechanism.
-    explanation: Extension points belong to the OSGi-based plug-in infrastructure, not to the application model.
-    correctChoice: 2
+    explanation: Perspectives, commands and parts are model elements. Extension points belong to the OSGi-based plug-in infrastructure, not to the application model.
+    correctChoices: [0, 1, 3]
 

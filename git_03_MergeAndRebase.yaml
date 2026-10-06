@@ -46,4 +46,13 @@ questions:
     hint: Just get the best of a branch
     explanation: The git cherry-pick command allows you to select the changes which was introduced with an individual commit and apply these changes on another branch. This is captured as a new commit on the other branch.
     correctChoice: 0
-  
+  - description: Which commands can integrate changes from another branch into the current branch?
+    type: MULTIPLE_CHOICE
+    choices:
+      - git merge
+      - git rebase
+      - git cherry-pick
+      - git blame
+    hint:
+    explanation: Merge combines the histories, rebase replays the commits of the current branch onto the other branch and cherry-pick applies the changes of individual commits. Blame only shows who changed which line.
+    correctChoices: [0, 1, 2]

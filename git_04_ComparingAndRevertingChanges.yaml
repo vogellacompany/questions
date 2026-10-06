@@ -73,5 +73,13 @@ questions:
     hint: 
     explanation: This command reverts the changes of a commit. Such commits are useful to document that a change was withdrawn.
     correctChoice: 3
-
-  
+  - description: Which commands can move the pointer of the current branch to another commit?
+    type: MULTIPLE_CHOICE
+    choices:
+      - git reset
+      - git status
+      - git commit
+      - git log
+    hint:
+    explanation: A commit moves the current branch to the new commit, reset moves it to the specified commit. Status and log only display information.
+    correctChoices: [0, 2]
