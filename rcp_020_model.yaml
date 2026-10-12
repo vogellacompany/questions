@@ -21,12 +21,11 @@ questions:
     correctChoice: 1
   - description: The application model...
     choices:
-      - is updated at runtime via the user actions or via API calls and its latest state to stored and restored if the application starts again
-      - is statically defines as a file by the developer
-      - is updated at runtime via the user actions and its latest state to stored and restored if the application starts again
-      - 
-    hint: 
-    explanation: 
+      - is updated at runtime via the user actions or via API calls and its latest state is stored and restored when the application starts again
+      - is statically defined as a file by the developer
+      - is updated at runtime via the user actions and its latest state is stored and restored when the application starts again
+    hint:
+    explanation: The application model is updated at runtime by user actions, such as moving or closing parts, and by API calls from your code. Its latest state is persisted on shutdown and restored on the next start.
     correctChoice: 0
   - description: What is the main purpose of the Eclipse application model?
     choices:
