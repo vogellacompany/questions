@@ -5,10 +5,10 @@ questions:
     choices:
       - The leading distributed version control system developed as open source software 
       - The leading centralized version control system developed as open source software 
-      - The leading distributed version control system developed by Github and Microsoft 
+      - The leading distributed version control system developed by GitHub and Microsoft 
       - A distributed version control system which is currently under development but planned to be replaced by another upcoming distributed version control system from Google
     hint:
-    explanation: Git is the leading DVCS still adapted by multiple clients and companies like Microsoft, IBM, Google and SAP and the main version control system for open source software like Android, Flutter, Eclipse, Visual Studio Code, Spring, etc.
+    explanation: Git is the leading DVCS still adopted by multiple clients and companies like Microsoft, IBM, Google and SAP and the main version control system for open source software like Android, Flutter, Eclipse, Visual Studio Code, Spring, etc.
     correctChoice: 0
   - description: Git stores ...
     choices:
@@ -16,8 +16,8 @@ questions:
       - Full snapshots with all files referred to by each commit
       -
       - 
-    hint: The duration of operations comparing files via the Git history are not dependent on time between the commits.
-    explanation: Git stores always full version of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundacy.
+    hint: The duration of operations comparing files via the Git history is not dependent on time between the commits.
+    explanation: Git always stores full versions of the files, it is still storage efficient due to its intelligent storage algorithm which reduces redundancy.
     correctChoice: 1
   - description: To add a change in a file to your Git repository you ...
     choices:

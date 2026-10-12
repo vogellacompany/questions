@@ -23,7 +23,7 @@ questions:
     choices:
       - It is not better than factories, as it allows to access the same objects.
       - It results in simpler code which is decoupled and therefore easier to modify and test
-      - It results in code which is less coupled and therefore easier to reused and harder to test
+      - It results in code which is less coupled and therefore easier to reuse and harder to test
       - 
     hint: 
     explanation: 

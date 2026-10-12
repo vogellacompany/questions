@@ -8,11 +8,11 @@ questions:
       - Use JavaFX for styling
       -
     hint: 
-    explanation: The CSS engine of Eclipse want to enable Eclipse developers to define the styling of your application outside of the Java code using a similar approach like the web
+    explanation: The CSS engine of Eclipse wants to enable Eclipse developers to define the styling of your application outside of the Java code using a similar approach like the web
     correctChoice: 0
-  - description: CSS styling in Eclipse allows
+  - description: CSS styling in Eclipse ...
     choices:
-      - the same as styling for webpages
+      - allows the same styling as for web pages
       - is limited by the underlying SWT widget toolkit.
       - 
       - 

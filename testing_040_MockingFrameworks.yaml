@@ -11,7 +11,7 @@ questions:
     hint:
     explanation: Mockito and EasyMock are open source frameworks for mocking in unit tests. Hamcrest and AssertJ are assertion frameworks.
     correctChoices: [0, 2]
-  - description: What means to mock an object?
+  - description: What does it mean to mock an object?
     choices:
       - To make a copy of an interface or class
       - To make a dummy implementation of an interface or class, allowing to define the output of method calls and trace its interactions with the code
@@ -20,7 +20,7 @@ questions:
     hint: 
     explanation: 
     correctChoice: 1
-  - description: Is it possible to mock all kind of interfaces or classes?
+  - description: Is it possible to mock all kinds of interfaces or classes?
     choices:
       - Yes, it is
       - No, you can not mock private methods

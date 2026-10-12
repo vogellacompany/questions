@@ -8,13 +8,13 @@ questions:
       - They help to ensure that the software works as expected and can run automatically to ensure project stability
       - They are not important, writing them takes too much time
     hint:
-    explanation: Running tests are crutial in all software phases. Tests also serve as executable documentation of the expected behavior.
+    explanation: Running tests is crucial in all software phases. Tests also serve as executable documentation of the expected behavior.
     correctChoices: [0, 1]
   - description: What is a unit test?
     choices:
       - It is a collection of tests to be run by the build server
       - It is a piece of code that executes a specific functionality in the code to be tested and asserts a certain behavior or state
-      - It messures the performance of methods and classes
+      - It measures the performance of methods and classes
     hint: 
     explanation: 
     correctChoice: 1
@@ -29,7 +29,7 @@ questions:
   - description: Are performance tests relevant?
     choices:
       - They are only relevant if the software is designed to be run on a virtual server
-      - They are relevant to messure the development time of software components
+      - They are relevant to measure the development time of software components
       - They are important to evaluate the impact of the code even if it is under high load
       - They are only important for software which communicates with a DB
     hint: 
@@ -37,10 +37,10 @@ questions:
     correctChoice: 2
   - description: Do software tests need a certain naming convention to work properly?
     choices:
-      - Yes, tests should always have the Test suffix at the end of the test classes names
-      - Yes, the word 'should' should always be used in the test classes names
-      - Yes, test classes names should be like this, given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]
-      - No, you can choose your prefered naming convention
+      - Yes, tests should always have the Test suffix at the end of the test class names
+      - Yes, the word 'should' should always be used in the test class names
+      - Yes, test class names should be like this, given[ExplainYourInput]When[WhatIsDone]Then[ExpectedResult]
+      - No, you can choose your preferred naming convention
     hint: 
     explanation: With the JUnit5 testing framework this convention is less important, as you can use the @DisplayName annotation to add a description for the test method.
     correctChoice: 3
@@ -57,6 +57,6 @@ questions:
       - It is a popular open source test framework 
       - It is a Java Version that works best with tests
     hint: 
-    explanation: JUnit is hosted at Github
+    explanation: JUnit is hosted at GitHub
     correctChoice: 1
 

@@ -8,7 +8,7 @@ questions:
       - A Swing based theming for Java user interfaces
       -
     hint: 
-    explanation: The Standard Widget Toolkit uses native controls as much as possible to provide native look and feel on which support operating system.
+    explanation: The Standard Widget Toolkit uses native controls as much as possible to provide native look and feel on each supported operating system.
     correctChoice: 1
   - description: JFace is ...
     choices:
@@ -17,13 +17,13 @@ questions:
       - An extension for SWT based user interfaces to make common tasks simpler to implement
       - 
     hint: 
-    explanation: JFace extends SWT and makes common task simpler to implement
+    explanation: JFace extends SWT and makes common tasks simpler to implement
     correctChoice: 2
   - description: With SWT and JFace you can ...
     choices:
       - use only native widgets wrapped and provided by a Java interface
       - use only native widgets and widgets provided by the Nebula project 
-      - use native widgets and in addition custom drawn widgets module builds with Maven
+      - use native widgets and in addition custom drawn widgets
       - 
     hint: 
     explanation: SWT provides the common widgets based on native widgets but allows you to extend the user interface with custom drawn widgets. Eclipse Nebula provides lots of widgets already but you can create your own 

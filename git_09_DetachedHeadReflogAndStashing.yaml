@@ -1,27 +1,27 @@
 categoryId: 8318 # CATEGORY NAME
-name: Detached head, reflow and stashing, filter-brach
+name: Detached head, reflog and stashing, filter-branch
 questions:
   - description: Can commits get lost in Git?
     choices:
       - Yes, if it is not reachable from any branch or reference
-      - No, commits do not get lost with Git, at least for a while. Commit which cannot be reached from other references (commits, tags, branches, etc) will eventually be removed by a garbage collector run after multiple weeks.
+      - No, commits do not get lost with Git, at least for a while. Commits which cannot be reached from other references (commits, tags, branches, etc) will eventually be removed by a garbage collector run after multiple weeks.
       - Yes, if you create an unreferenced commit by committing with a detached head
       - Yes, after using the 'git amend' or 'git reset' commands
     hint: 
-    explanation: Commit are never removed within a longer timeframe. To find 'lost' commits, use the reflog functionality
+    explanation: Commits are never removed within a longer timeframe. To find 'lost' commits, use the reflog functionality
     correctChoice: 1
   - description: What is meant with the 'Detached HEAD state'
     choices:
-      - It is when Git doesnt know which is the latest commit of a repository
+      - It is when Git doesn't know which is the latest commit of a repository
       - It is when Git lost track of your repository
-      - It is when you checkout a branch and do not create a new local branch for it
-      - It is when the connection to the repository is interupted
+      - It is when you check out a commit, a tag or a remote-tracking branch instead of a local branch, so HEAD points directly to a commit
+      - It is when the connection to the repository is interrupted
     hint: 
     explanation: 
     correctChoice: 2
   - description: What is the stash?
     choices:
-      - It is a separate area where changes can be put if they are not yet ready to be commited
+      - It is a separate area where changes can be put if they are not yet ready to be committed
       - It is where all deleted files end up
       - It is where the staged changes are collected
       - It is where the unstaged changes are collected
@@ -30,8 +30,8 @@ questions:
     correctChoice: 0
   - description: When is it common to use the stash?
     choices:
-      - Everytime before a commit and push of changes
-      - When merge or rebase is executed, but the local uncommitted changes should not get lost and are not quite ready to be commited on the current branch
+      - Every time before a commit and push of changes
+      - When merge or rebase is executed, but the local uncommitted changes should not get lost and are not quite ready to be committed on the current branch
       - If files are to be deleted
       - If a new commit should replace an older commit
     hint: 
@@ -41,7 +41,7 @@ questions:
     choices:
       - If you only want to clone certain branches of the repository
       - If you want to change the commit history, for example to remove a large file or a file which contains a password from the Git history
-      - Everytime you want to remove files from a specific branch.
+      - Every time you want to remove files from a specific branch.
       - 
     hint: 
     explanation: Using the filter-branch command is dangerous as it changes the Git repository. It changes the commit IDs and reacting on such a change requires explicit action from the developer, e.g., trying to rebase the stale local branch onto the corresponding rewritten remote-tracking branch.

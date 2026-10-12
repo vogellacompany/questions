@@ -32,8 +32,8 @@ questions:
     choices:
       - There is no difference at all as the working tree looks the same
       - The final result for the source code is the same, but the rebase operation moves the changes onto another commit as if these changes started from this commit
-      - With rebase git solves all merge conficts itself
-      - Using rebase should be avoided as you lose the information how the branches was integrated
+      - With rebase git solves all merge conflicts itself
+      - Using rebase should be avoided as you lose the information how the branches were integrated
     hint: Same but different.
     explanation: Rebase moves the work done in one branch or commit onto the changes done in another branch. This results in less merge commits and a linear history. 
     correctChoice: 1
@@ -44,7 +44,7 @@ questions:
       - To delete wrong commits
       - 
     hint: Just get the best of a branch
-    explanation: The git cherry-pick command allows you to select the changes which was introduced with an individual commit and apply these changes on another branch. This is captured as a new commit on the other branch.
+    explanation: The git cherry-pick command allows you to select the changes which were introduced with an individual commit and apply these changes on another branch. This is captured as a new commit on the other branch.
     correctChoice: 0
   - description: Which commands can integrate changes from another branch into the current branch?
     type: MULTIPLE_CHOICE

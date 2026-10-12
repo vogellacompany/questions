@@ -4,11 +4,11 @@ questions:
   - description: What is the purpose of a target platform?
     choices:
       - It defines the project target which should be developed
-      - It defines the available plug-in to compile your software tests code
+      - It defines the available plug-ins to compile your software tests code
       - It defines the available plug-ins for development, i.e. for compiling, feature and product definition
       - It defines the server API which is accessed by the application
     hint: 
-    explanation: The target definition file contains the plug-in which can be used in your Eclipse application.
+    explanation: The target definition file contains the plug-ins which can be used in your Eclipse application.
     correctChoice: 2
   - description: Using a target platform definition file should be preferred because
     choices:
@@ -22,11 +22,11 @@ questions:
   - description: What is the purpose of a feature project in Eclipse?
     choices:
       - A feature project defines the software features which our users need
-      - A feature project groups plug-ins and other feature to a unit which can be used by the product configuration file.
+      - A feature project groups plug-ins and other features to a unit which can be used by the product configuration file.
       - A feature project is used to define the runtime configuration for Eclipse applications 
       - 
     hint: 
-    explanation: Features allow to group plug-in and to include other features to use them in the product. This makes it easier to manage the content of your product
+    explanation: Features allow to group plug-ins and to include other features to use them in the product. This makes it easier to manage the content of your product
     correctChoice: 1
   - description: What is the purpose of the product configuration file?
     choices:

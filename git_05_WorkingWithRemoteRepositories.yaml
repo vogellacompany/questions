@@ -13,7 +13,7 @@ questions:
   - description: How do I get updates of remote-tracking branches?
     choices:
       - There is no way to get updates of remote-tracking branches
-      - Only the command git clone will can update them
+      - Only the command git clone can update them
       - The command git fetch will do so
       - 
     hint:
@@ -40,7 +40,7 @@ questions:
   - description: What is a bare repository?
     choices:
       - An empty repository without a commit
-      - A repository without a working tree to which other user can push their changes. It is typically hosted on a server
+      - A repository without a working tree to which other users can push their changes. It is typically hosted on a server
       - A normal repository with a fancy name
       - A repository with a working tree but with the option that other users can push their changes, it is typically hosted on a server
     hint: 
@@ -50,12 +50,12 @@ questions:
     choices:
       - It copies only the latest version of the git repository without its previous history
       - It creates a link to a git repository and updates the working tree with the latest changes from master
-      - It copies a git repository with its complete history, creates a link to the cloned repo named "origin" "and creates a local branch named master
-      - It creates a similiar version of a git repository
+      - It copies a git repository with its complete history, creates a link to the cloned repo named "origin" and creates a local branch named master
+      - It creates a similar version of a git repository
     hint: Nothing ever gets lost with git.
     explanation: 
     correctChoice: 2
-  - description: What happens if you delete a remote tracking branch in your local repostory?
+  - description: What happens if you delete a remote tracking branch in your local repository?
     choices:
       - This is safe and does not affect a remote repository
       - The branch will be deleted in the remote repository
@@ -67,7 +67,7 @@ questions:
   - description: What happens if you delete a remote branch?
     choices:
       - This is safe and does not affect a remote repository
-      - The remote branch is completly deleted
+      - The remote branch is completely deleted
       - The git repository which includes the branch gets deleted
       - 
     hint: 
@@ -76,20 +76,20 @@ questions:
   - description: Is a tracking branch automatically created by git?
     choices:
       - No, this is a manual process
-      - Yes, everytime you commit and push changes, git creates a tracking branch on the remote repository
+      - Yes, every time you commit and push changes, git creates a tracking branch on the remote repository
       - Yes, after cloning a repository or fetching the relevant remote branch information
       - 
     hint: 
     explanation: If you clone a Git repository, your local master branch is created as a tracking branch for the master branch of the origin repository by Git.
     correctChoice: 2
-  - description: Can multiple people work at the same remote repository?
+  - description: Can multiple people work on the same remote repository?
     choices:
       - Yes, they can also push on the same branch as long as they only create a fast-forward merge on the server
       - No, because of possible merge conflicts
       - Yes, but every developer has to create their own branch
       - 
     hint: 
-    explanation: It is a common scenario that developers push to the same branch and typically, this branch evolves since the beginning of the development of a local feature and a push fails. But this situtation can be handled.
+    explanation: It is a common scenario that developers push to the same branch and typically, this branch evolves since the beginning of the development of a local feature and a push fails. But this situation can be handled.
     correctChoice: 0
   - description: Which commands communicate with a remote repository?
     type: MULTIPLE_CHOICE
