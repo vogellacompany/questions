@@ -1,0 +1,76 @@
+categoryId: 1610
+name: Defining menus and toolbars
+questions:
+  - description: How do command, handler and menu item relate to each other in the application model?
+    choices:
+      - The menu item contains the code and the command only stores a label
+      - The handler references the menu item and the command is optional
+      - A menu item references a command and a handler provides the implementation for that command
+      - The command and the handler are the same model element
+    hint: The command is an abstract description of an action.
+    explanation: A command identifies an action, a handler implements it, and menu or tool items refer to the command. This allows replacing the handler without changing the UI.
+    correctChoice: 2
+  - description: Which annotation marks the method of a handler class that the framework calls when the command is executed?
+    choices:
+      - Execute
+      - Inject
+      - CanExecute
+      - Handler
+    hint: It has the verb of the action in its name.
+    explanation: The Execute annotation marks the method that runs when the command is triggered. Parameters of this method are injected.
+    correctChoice: 0
+  - description: What does a handler method annotated with CanExecute control?
+    choices:
+      - Whether the command is shown in the Keys preference page
+      - Whether the handler class is created lazily
+      - Whether the menu and tool items for the command are enabled
+      - Whether the command can be called from a different plug-in
+    hint: It returns a boolean value.
+    explanation: When the method returns false the framework disables the menu and tool items that point to the command.
+    correctChoice: 2
+  - description: You define a handler for the same command in the window and in the active part. Which one is used when the part is active?
+    choices:
+      - Both are called, the window handler first
+      - The handler of the part, as it is closest to the active element
+      - None, this is an error
+      - The handler of the window
+    hint: The most specific handler wins.
+    explanation: The framework selects the handler closest to the currently active model element, so a part-specific handler overrides a window handler.
+    correctChoice: 1
+  - description: In a model fragment you contribute a new command to the Eclipse IDE. Which feature of the application do you extend?
+    choices:
+      - commands
+      - bindingTables
+      - handlers
+      - menuContributions
+    hint: The feature has the same name as the element you add.
+    explanation: Commands are stored in the commands feature of the application, so the fragment extends this feature of the application element.
+    correctChoice: 0
+  - description: What is the effect of setting persistState to false on a contributed element?
+    choices:
+      - The element cannot be changed by the user
+      - The element is not stored in the persisted model and disappears once the plug-in is gone
+      - The element is only visible in the debugger
+      - The element is created only once per workspace
+    hint: Think about what happens with elements whose plug-in is uninstalled.
+    explanation: With persistState false the element is not saved in the persisted application model delta, so it does not remain after the contributing plug-in is removed.
+    correctChoice: 1
+  - description: Which statements about contributing a menu to the Eclipse IDE via a model fragment are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The model spy of the runtime Eclipse can help to find out why a contribution is missing
+      - Each part must contain its own copy of the menu
+      - Menus can only be created with plugin.xml action sets
+      - A menu without at least one entry is not displayed
+    hint: Think of what you validate in the runtime Eclipse.
+    explanation: Empty menus are not rendered, and the spy shows the model of the running IDE for diagnosis. Fragments contribute to the shared model, so no copy per part is needed.
+    correctChoices: [0, 3]
+  - description: Which model element and annotation do you use to fill a menu with entries that are computed when the menu is opened?
+    choices:
+      - DirectMenuItem with Execute
+      - HandledMenuItem with PostConstruct
+      - ToolControl with Focus
+      - DynamicMenuContribution with AboutToShow
+    hint: The method is called before the menu is shown.
+    explanation: A DynamicMenuContribution points to a class whose method annotated with AboutToShow adds menu items at runtime.
+    correctChoice: 3

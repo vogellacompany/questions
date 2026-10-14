@@ -1,0 +1,76 @@
+categoryId: 1335
+name: Using OSGi for Eclipse IDE development
+questions:
+  - description: Which manifest header makes the packages of a plug-in visible to other plug-ins?
+    choices:
+      - Bundle-ClassPath
+      - Import-Package
+      - Export-Package
+      - Require-Bundle
+    hint: Visibility for others is an outgoing declaration.
+    explanation: Export-Package lists the packages a bundle offers. Other bundles can only use those packages, which keeps internals hidden.
+    correctChoice: 2
+  - description: Which OSGi console command lists the installed bundles and their status?
+    choices:
+      - headers
+      - services
+      - ss
+      - install
+    hint: The name is a short form of "short status".
+    explanation: The ss command prints the bundle IDs, states and names. It can be filtered by a name fragment, for example ss vogella.
+    correctChoice: 2
+  - description: A bundle stays in the INSTALLED state. Which console command helps to find out which dependency is missing?
+    choices:
+      - scr:list
+      - stop with the bundle ID
+      - diag with the bundle ID
+      - headers with the bundle ID
+    hint: The command name suggests analysis of a single bundle.
+    explanation: diag reports the unresolved requirements of a bundle, so you can see which package or bundle is missing.
+    correctChoice: 2
+  - description: How do you get an OSGi console in the runtime Eclipse started from your IDE?
+    choices:
+      - Open the Error Log view
+      - Add the console launch argument to the run configuration, with the Equinox console bundles available
+      - Press F12 in the runtime Eclipse
+      - Install the console bundle into the workspace and restart
+    hint: A launch argument is needed, plus the bundles that implement the console.
+    explanation: The console argument activates the Equinox console, which requires the org.eclipse.equinox.console bundle and its dependencies in the runtime.
+    correctChoice: 1
+  - description: What happens when you annotate a class with Component and an implemented interface, but without immediate set to true?
+    choices:
+      - The component is never activated unless started manually in the console
+      - The component is activated at framework start for all bundles
+      - The service is registered and the component instance is created when the service is first requested
+      - The component is compiled into a separate bundle
+    hint: This is called a delayed component.
+    explanation: A component that provides a service is delayed by default. The service is registered, but class loading and instantiation happen when a consumer requests it.
+    correctChoice: 2
+  - description: Which statements about OSGi services are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Services can appear and disappear dynamically, so consumers must handle that
+      - A service is automatically available even if its bundle is not active
+      - Service implementations are published in the service registry under their service interface
+      - A service interface can have only one implementation in the whole runtime
+    hint: Two statements are about the dynamic nature of services.
+    explanation: The service registry maps interfaces to implementations. Multiple implementations are allowed and bundles can start and stop, so services come and go.
+    correctChoices: [0, 2]
+  - description: Why is it good practice to define a service interface in a different plug-in than its implementation?
+    choices:
+      - Because OSGi requires one class per bundle
+      - Because an interface is not allowed in the same bundle as a Component
+      - Because it makes the build faster
+      - Because you can then replace the implementation by another plug-in without changing the consumers
+    hint: Consumers should only depend on the contract.
+    explanation: Consumers depend only on the interface plug-in, so another bundle can provide a different implementation.
+    correctChoice: 3
+  - description: Why are OSGi tests often written in a fragment of the plug-in under test?
+    choices:
+      - Fragments are the only bundle type that can be exported
+      - JUnit only works inside fragments
+      - Fragments run faster than normal bundles
+      - A fragment shares the class loader with its host and can therefore access non-exported classes
+    hint: A plug-in may not export the implementation classes you want to test.
+    explanation: A fragment is attached to its host and uses the same class loader, so tests can use package-private and non-exported classes without changing the host's API.
+    correctChoice: 3

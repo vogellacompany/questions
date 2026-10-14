@@ -1,0 +1,76 @@
+categoryId: 6233
+name: Extending the Java development tools
+questions:
+  - description: Which two ways does JDT offer to access and manipulate Java source code?
+    choices:
+      - The Outline model and the Package model
+      - The Resource model and the Application model
+      - The Java model and the Abstract Syntax Tree
+      - The Compiler model and the Debug model
+    hint: One is lightweight and fast, the other contains every detail of the source.
+    explanation: JDT provides the Java model (IJavaProject, IType, IMethod and so on) and the AST (ASTNode subclasses in org.eclipse.jdt.core.dom). Both are defined in the org.eclipse.jdt.core plug-in.
+    correctChoice: 2
+  - description: Why does the Outline view use the Java model and not the AST?
+    choices:
+      - The Java model contains more details than the AST
+      - The AST cannot represent methods
+      - The Java model is lightweight, fault tolerant and fast to create
+      - The AST can only be created for binary classes
+    hint: Think about how often the view has to refresh while you type.
+    explanation: The Java model contains less information than the AST, but it is fast to create and tolerates broken code. The AST is more detailed and more expensive to build.
+    correctChoice: 2
+  - description: Which Java model element represents a single Java source file?
+    choices:
+      - ICompilationUnit
+      - IPackageFragment
+      - IJavaProject
+      - IPackageFragmentRoot
+    hint: The element sits below a package and contains the types.
+    explanation: ICompilationUnit represents a Java source file and is a child of an IPackageFragment. The types, fields and methods are found below it.
+    correctChoice: 0
+  - description: Which steps are typically needed to modify Java source code via the AST?
+    choices:
+      - Call IType.setSource() on the Outline view
+      - Edit the class file and let the JVM reload it
+      - Instantiate a MethodDeclaration with new and add it to the IJavaProject
+      - Parse the source with an ASTParser, change the nodes, for example with an ASTRewrite, and apply the resulting edits to the document
+    hint: The parser creates the tree, a rewrite records the changes.
+    explanation: The ASTParser creates the AST from source. An ASTRewrite records changes without modifying the tree directly and returns a TextEdit which you apply to an IDocument.
+    correctChoice: 3
+  - description: What is the best way to find specific nodes, such as all method declarations, in an AST?
+    choices:
+      - Use IResourceVisitor on the project
+      - Use a Java regular expression on the source file
+      - Walk through all levels of the tree manually with instanceof checks only
+      - Subclass ASTVisitor and override the visit method for the node type
+    hint: A classic design pattern is built into the AST API.
+    explanation: ASTVisitor implements the visitor pattern. You override visit(MethodDeclaration) and call accept(visitor) on a node to traverse the tree.
+    correctChoice: 3
+  - description: Which statements about quick fixes and quick assists in the Java editor are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A quick fix is registered via the org.eclipse.jdt.ui.quickFixProcessors extension point
+      - A quick fix is offered for problems, for example compiler errors or warnings
+      - A quick assist is only offered if the code contains an error
+      - A quick assist processor has to implement IQuickFixProcessor
+    hint: Compare in which situation each of them is offered and which interface each processor needs.
+    explanation: Quick fixes (IQuickFixProcessor) solve problems and use org.eclipse.jdt.ui.quickFixProcessors. Quick assists (IQuickAssistProcessor, org.eclipse.jdt.ui.quickAssistProcessors) enhance code and work without a problem.
+    correctChoices: [0, 1]
+  - description: What does the hasAssists method of IQuickAssistProcessor decide?
+    choices:
+      - Whether the quick assist is appropriate in the given context and should be offered
+      - Whether the file is saved before the assist is applied
+      - Whether the plug-in is activated
+      - Whether the proposal can be undone
+    hint: The method name asks a yes/no question about the current invocation context.
+    explanation: hasAssists(IInvocationContext) tells JDT if the processor has something to offer. Only then getAssists is called to compute the IJavaCompletionProposal objects.
+    correctChoice: 0
+  - description: How do you contribute additional Java templates for content assist from your plug-in?
+    choices:
+      - Extend the org.eclipse.jdt.core.compilationParticipant extension point
+      - Extend the org.eclipse.ui.editors.templates extension point and include a template XML file
+      - Add the templates to the MANIFEST.MF as header
+      - Subclass ICompilationUnit and register it as OSGi service
+    hint: Templates are not only used for Java, so the extension point is not JDT specific.
+    explanation: Templates are contributed with the org.eclipse.ui.editors.templates extension point. The context, for example java-statements or java-members, defines where they are proposed.
+    correctChoice: 1

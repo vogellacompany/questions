@@ -1,0 +1,67 @@
+categoryId: 40948
+name: Custom drawn widgets in Flutter
+questions:
+  - description: Which class must you extend to define the drawing commands used by a CustomPaint widget?
+    choices:
+      - CustomPainter
+      - RenderBox
+      - Painter
+      - CanvasWidget
+    hint: The class name matches the widget name.
+    explanation: CustomPaint receives an instance of a subclass of CustomPainter via its painter or foregroundPainter argument.
+    correctChoice: 0
+  - description: Which two methods must a CustomPainter subclass implement?
+    choices:
+      - build and dispose
+      - paint and shouldRepaint
+      - initState and draw
+      - layout and paint
+    hint: One does the drawing, the other decides whether to draw again.
+    explanation: paint(Canvas canvas, Size size) executes the drawing and shouldRepaint(oldDelegate) tells Flutter whether a new painter requires a repaint.
+    correctChoice: 1
+  - description: What is the difference between painter and foregroundPainter of CustomPaint?
+    choices:
+      - painter draws behind the child, foregroundPainter draws on top of the child
+      - foregroundPainter is used on iOS, painter on Android
+      - painter draws after the child, foregroundPainter before the child
+      - There is no difference
+    hint: Think of the order in which the child and the painter are drawn.
+    explanation: The painter is called before the child is painted, so it appears behind it, while the foregroundPainter is called after the child and paints over it.
+    correctChoice: 0
+  - description: Which statements about drawing with a Canvas are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The coordinate origin (0, 0) is at the bottom left of the canvas
+      - The color of a shape is a parameter of drawCircle
+      - A Paint with PaintingStyle.stroke draws only the outline, with the width given by strokeWidth
+      - canvas.drawCircle, canvas.drawLine and canvas.drawRect take a Paint object that defines how to draw
+    hint: Style information is not part of the shape methods, and the y axis grows downward.
+    explanation: Color, style and stroke width are set on the Paint object, which is passed to the draw methods. The origin is the top left corner of the canvas and y grows downward.
+    correctChoices: [2, 3]
+  - description: What is the purpose of canvas.save() and canvas.restore() when drawing the hands of a clock?
+    choices:
+      - They enable anti-aliasing
+      - They cache the widget so it is never painted again
+      - They write the drawing to a file and read it again
+      - They store and restore the transformation state, so translate and rotate for one hand do not affect the next drawing
+    hint: A rotation applies to everything drawn afterwards.
+    explanation: Transformations such as translate and rotate stay active on the canvas. save pushes the current state, and restore returns to it so each hand can start from an untouched canvas.
+    correctChoice: 3
+  - description: When should shouldRepaint return false?
+    choices:
+      - When the painter has to run once on the first frame
+      - When the canvas is empty
+      - When the new painter would draw exactly the same as the old one, so no repaint is needed
+      - Never, because returning false hides the widget
+    hint: It is a performance optimization.
+    explanation: shouldRepaint compares the new delegate with the old one. If nothing relevant changed, returning false avoids unnecessary repainting.
+    correctChoice: 2
+  - description: What is Impeller in the context of Flutter graphics?
+    choices:
+      - A replacement for the Dart language
+      - Flutter's rendering engine, which replaced Skia as the default renderer on iOS and on current Android devices
+      - A package for state management
+      - A tool to generate CustomPainter code from images
+    hint: It sits below the 2D canvas that CustomPaint uses.
+    explanation: Impeller is Flutter's rendering engine. Canvas calls from CustomPaint are rasterized by it, and it replaced Skia as the default renderer on iOS and on current Android versions.
+    correctChoice: 1

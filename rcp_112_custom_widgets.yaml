@@ -1,0 +1,67 @@
+categoryId: 236355
+name: Usage of custom widgets in SWT
+questions:
+  - description: Which SWT class is the usual base class for a custom-drawn widget that has no child widgets?
+    choices:
+      - Composite
+      - Layout
+      - Shell
+      - Canvas
+    hint: This class is designed for application-defined drawing via a paint listener.
+    explanation: A Canvas is used for widgets that draw themselves with a GC in a paint listener, while a Composite is the base for compound widgets that contain other widgets.
+    correctChoice: 3
+  - description: When you build a compound custom widget that extends Composite, which parent do you pass to its child widgets?
+    choices:
+      - The parent Composite that was passed to the constructor
+      - The Shell of the application
+      - null, because the layout assigns the parent later
+      - The custom widget itself (this)
+    hint: The children must live inside the widget you are building.
+    explanation: The children are created with this as parent, so they are part of the compound widget and are disposed together with it.
+    correctChoice: 3
+  - description: How should a custom widget make sure that fonts and images it created are disposed?
+    choices:
+      - Override the dispose method of the widget and release the resources there
+      - Do nothing, SWT always disposes every resource automatically
+      - Add a DisposeListener or use a LocalResourceManager which is bound to the widget
+      - Call System.gc() after the widget was closed
+    hint: The widget notifies interested parties when it is disposed, including when a parent is disposed.
+    explanation: A DisposeListener (or a LocalResourceManager, which registers one for you) is always called. Overriding dispose is not reliable, because dispose is not called for children when their parent is disposed.
+    correctChoice: 2
+  - description: Why should every public method of a custom widget start with a call to checkWidget()?
+    choices:
+      - To repaint the widget before it is used
+      - To fail fast if the widget is already disposed or is accessed from the wrong thread
+      - To check that the style bits of the widget are valid
+      - To register the widget with the layout manager
+    hint: Think about the two typical usage errors of widgets.
+    explanation: checkWidget() throws an SWTException if the widget is disposed or if it is accessed from a thread other than the UI thread.
+    correctChoice: 1
+  - description: The data of a custom-drawn widget changed. How do you make the widget show the new data?
+    choices:
+      - Dispose the widget and create a new instance
+      - Call the method of the paint listener directly from the setter
+      - Call layout() on the widget itself
+      - Call redraw() so that SWT triggers a new paint event
+    hint: Drawing should happen in one place, which SWT calls for you.
+    explanation: redraw() schedules a paint event and the framework can combine several requests. Painting must only happen in the paint listener, because SWT also repaints on its own, for example after the window was covered.
+    correctChoice: 3
+  - description: Which statements about developing custom widgets are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Overriding computeSize() lets layouts determine the preferred size of the widget
+      - Public methods call checkWidget() before they do anything else
+      - The widget sets its own layout data in the constructor
+      - Drawing is done in any method, as long as a GC is available
+    hint: One of the wrong statements mixes up who owns the layout data, the other ignores the paint cycle.
+    explanation: checkWidget() and computeSize() are part of the guidelines. The parent defines the layout data of a widget, and drawing belongs into the paint listener.
+    correctChoices: [0, 1]
+  - description: What does the style bit SWT.DOUBLE_BUFFERED achieve for a custom-drawn widget?
+    choices:
+      - The content is drawn off screen first, which avoids flickering
+      - It doubles the resolution on high-DPI monitors
+      - It makes the widget available in two windows
+      - It allows two paint listeners to draw at the same time
+    hint: The name refers to a buffer which is not visible while you draw.
+    explanation: With double buffering SWT draws into an off-screen image and copies the result to the screen, so the user does not see the intermediate drawing steps.
+    correctChoice: 0

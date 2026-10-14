@@ -1,0 +1,76 @@
+categoryId: 169003
+name: Flutter screen navigation
+questions:
+  - description: How does a detail screen return a value to the screen that opened it?
+    choices:
+      - It calls Navigator.pop with the value, and the caller awaits the result of Navigator.push
+      - It returns the value from its build method
+      - It calls Navigator.push with the value on the master screen
+      - It writes the value into the MaterialPageRoute after it was created
+    hint: Navigator.push gives you something to wait for.
+    explanation: Navigator.push returns a Future that completes when the pushed route is popped, and the value given to Navigator.pop becomes the result of that Future.
+    correctChoice: 0
+  - description: Why should you check the mounted property after awaiting Navigator.push in a State class before using the BuildContext?
+    choices:
+      - Because mounted starts the animation of the page transition
+      - Because the Future may return null otherwise
+      - Because the widget may have been removed from the tree while waiting, which makes the context invalid
+      - Because Navigator.pop only works if mounted is true
+    hint: Time passes between the call and the result.
+    explanation: After an asynchronous gap the State object may be disposed. Using its context then is unsafe, so you return early if mounted is false.
+    correctChoice: 2
+  - description: How do you register named routes in a MaterialApp?
+    choices:
+      - By listing the screens in the pubspec.yaml file
+      - By annotating each screen class with a route name
+      - By calling Navigator.register for each screen
+      - By passing a map from route names to builder functions to the routes parameter
+    hint: The map keys typically start with a slash.
+    explanation: The routes parameter takes a map whose keys are route names such as /second and whose values are functions that build the screen from a BuildContext.
+    correctChoice: 3
+  - description: How can you pass data to a screen that is opened with Navigator.pushNamed?
+    choices:
+      - By adding the data to the route name as a Dart map
+      - By assigning it to a global variable of MaterialApp
+      - By calling setState on the Navigator
+      - With the arguments parameter, which the target reads via ModalRoute.of(context).settings.arguments
+    hint: pushNamed has an optional named parameter for this purpose.
+    explanation: pushNamed accepts an arguments object, and the target screen reads it from the settings of its ModalRoute, typically through a cast to a wrapper class.
+    correctChoice: 3
+  - description: Which MaterialApp parameter lets you show a fallback page when a named route does not exist?
+    choices:
+      - onUnknownRoute
+      - fallbackRoute
+      - onNotFound
+      - errorBuilder
+    hint: The name describes the kind of route that is not registered.
+    explanation: onUnknownRoute receives the route settings and returns a Route, for example a MaterialPageRoute that builds a not-found page.
+    correctChoice: 0
+  - description: What is the simplest way to send data to a detail screen that is opened with Navigator.push and MaterialPageRoute?
+    choices:
+      - Pass it as a parameter to the constructor of the detail screen
+      - Store the data in a static field of the Navigator class
+      - Return it from the master screen's build method
+      - Write it to the pubspec.yaml file
+    hint: The builder of the route creates the detail widget itself.
+    explanation: The builder of MaterialPageRoute creates the detail widget, so the data can be handed to its constructor, for example DetailScreen(text).
+    correctChoice: 0
+  - description: Which statements about a navigation drawer in a Flutter app are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A Drawer can only contain ListTile widgets
+      - An explicit leading widget in the AppBar replaces the automatically shown menu icon of the drawer
+      - The drawer property of Scaffold defines the side navigation panel
+      - A Drawer must be opened with Navigator.push
+    hint: Think about how the menu icon in the app bar appears automatically.
+    explanation: Scaffold manages the drawer and shows a menu icon unless you override leading. A Drawer can contain any widget and Scaffold opens it itself.
+    correctChoices: [1, 2]
+  - description: What does Navigator.pop(context) do?
+    choices:
+      - It replaces all routes with the initial route
+      - It closes the whole application
+      - It opens the previous screen again as a new instance
+      - It removes the top route from the stack and shows the screen below it
+    hint: Navigator manages a stack of routes.
+    explanation: Navigator keeps routes on a stack. push adds a route on top, and pop removes the top route so the previous screen becomes visible again.
+    correctChoice: 3

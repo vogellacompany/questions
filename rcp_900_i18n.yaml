@@ -1,0 +1,76 @@
+categoryId: 1702
+name: Internationalization
+questions:
+  - description: What is the difference between internationalization (i18n) and localization (l10n)?
+    choices:
+      - Both terms describe the translation of an application into one additional language
+      - Internationalization applies to the user interface only, localization applies to the model only
+      - Internationalization prepares an application for several languages, localization provides the translations
+      - Internationalization is the translation of texts, localization is the preparation of the code
+    hint: One term describes the preparation of the application, the other describes the actual translation work.
+    explanation: Internationalization prepares the application so that it can be translated, for example by externalizing strings. Localization is the process of translating it for a certain language.
+    correctChoice: 2
+  - description: What is the default location and file prefix of the OSGi resource bundle that the Eclipse translation service uses?
+    choices:
+      - OSGI-INF/l10n/bundle
+      - messages/messages
+      - src/main/resources/messages
+      - META-INF/i18n/plugin
+    hint: The folder name l10n is an abbreviation for one of the two main terms of this topic.
+    explanation: By default, OSGI-INF/l10n/bundle.properties and its language variants such as bundle_de.properties are used. The Bundle-Localization header in the MANIFEST.MF file can point to another location.
+    correctChoice: 0
+  - description: How do you reference a translation key in the application model or in the plugin.xml file?
+    choices:
+      - "@key"
+      - "%key"
+      - ${key}
+      - "#{key}"
+    hint: The prefix is a single character, and the same one is used in the model editor and in the plugin.xml editor.
+    explanation: Prefixing the key with the percent sign tells the runtime to replace it with the value from the OSGi resource bundle, for example %part.overview.
+    correctChoice: 1
+  - description: Which service interface does Eclipse use to translate text, and which implementation reads property files by default?
+    choices:
+      - TranslationService with the implementation BundleTranslationProvider
+      - ILocaleChangeService with the implementation MessageRegistry
+      - IEclipseContext with the implementation ResourceBundleProvider
+      - IEventBroker with the implementation NLSProvider
+    hint: The default implementation has the word Bundle in its name.
+    explanation: TranslationService is the service, and BundleTranslationProvider is the default implementation based on property files. A custom implementation could read the translations from a database.
+    correctChoice: 0
+  - description: What do the fields of an injected Messages object contain if no matching resource bundle can be found?
+    choices:
+      - The keys in the form !key!
+      - The text of the default locale of the JVM
+      - An empty String
+      - The value null
+    hint: The result makes missing translations easy to spot in the user interface.
+    explanation: If the translation service finds no resource bundle, the field values are the field names wrapped in exclamation marks, for example !buttonLoadData!.
+    correctChoice: 0
+  - description: Which statements about changing the language of a running Eclipse 4 application are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Widgets are updated automatically without any code if the Messages object is injected
+      - The ILocaleChangeService can be used to change the locale at runtime
+      - A BaseMessageRegistry updates registered controls when the locale changes
+      - The -nl launch parameter switches the language of a running application without a restart
+    hint: The user interface only changes if your code reacts to the new messages, and one of the options is a launch argument.
+    explanation: The ILocaleChangeService changes the locale, and the BaseMessageRegistry reduces the code needed to re-apply the texts to registered controls. The -nl parameter is evaluated at startup, and widgets need a method that updates them.
+    correctChoices: [1, 2]
+  - description: What must you ensure for translation property files so that the translations also appear in an exported product?
+    choices:
+      - The files must be placed in the root of the exported archive
+      - The files must be signed together with the plug-in JAR
+      - The files must be registered in the product configuration file
+      - The files must be listed in the build.properties file
+    hint: Everything that is not listed in the build configuration of the plug-in is not packaged.
+    explanation: Only files that are part of the bin.includes of the build.properties file end up in the plug-in. Missing entries lead to missing translations in the exported application.
+    correctChoice: 3
+  - description: Which launch argument sets the language for testing the translations of an Eclipse application?
+    choices:
+      - -nl de
+      - -i18n de
+      - -locale de
+      - -lang de
+    hint: The argument is an abbreviation of national language.
+    explanation: The runtime parameter -nl, for example -nl de, defines the language of the application and is entered on the Arguments tab of the launch configuration.
+    correctChoice: 0

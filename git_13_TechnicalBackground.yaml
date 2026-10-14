@@ -1,0 +1,76 @@
+categoryId: 75348
+name: More information about Git
+questions:
+  - description: Which line endings do Windows and Linux or macOS use by default?
+    choices:
+      - Windows uses LF, Linux and macOS use CRLF
+      - All three systems use LF
+      - Windows uses CRLF, Linux and macOS use LF
+      - All three systems use CRLF
+    hint: CR stands for carriage return, LF for linefeed.
+    explanation: Windows ends a line with the two characters CR and LF, while Linux and macOS only use LF. This difference can cause noisy diffs if developers commit from different systems.
+    correctChoice: 2
+  - description: What does a .gitattributes file with the line "* text=auto" in the root of a repository do?
+    choices:
+      - It ignores all files in the repository
+      - It disables line ending conversion for all developers
+      - It lets Git detect text files and normalize their line endings for everyone working with the repository
+      - It converts all files to binary files
+    hint: The setting is committed, so it applies to every clone.
+    explanation: With text=auto Git detects text files and normalizes their line endings. Because the file is part of the repository it overrides the core.autocrlf setting of the individual developers.
+    correctChoice: 2
+  - description: Why is a .gitattributes file preferred over the core.autocrlf setting to handle line endings?
+    choices:
+      - The .gitattributes file is faster than the autocrlf conversion
+      - The .gitattributes file applies to all developers of the repository, while core.autocrlf must be configured by each developer
+      - The .gitattributes file makes the commits smaller
+      - The core.autocrlf setting does not exist on Windows
+    hint: Think about who has to configure what.
+    explanation: A committed .gitattributes file is shared via the repository and overrides local settings. The core.autocrlf setting is local, so one developer who forgets it can introduce wrong line endings.
+    correctChoice: 1
+  - description: What does a Git commit object contain?
+    choices:
+      - Only the commit message and a timestamp
+      - A pointer to a tree object, the parent commit(s), author and committer information and the commit message
+      - A full copy of every file in the repository as plain text
+      - Only the diff to the previous commit
+    hint: A commit points to a snapshot and to its history.
+    explanation: A commit references a tree object representing the state of all tracked files, and its parents capture the history. It also stores author, committer and message.
+    correctChoice: 1
+  - description: Which Git objects store the content of files and the directory structure?
+    choices:
+      - Blobs for file content and trees for directories
+      - Stashes and reflogs
+      - Branches and tags
+      - Remotes and submodules
+    hint: One of the two names sounds like a binary large object.
+    explanation: Git stores file content as blob objects and directories as tree objects, which point to blobs and other trees. Unchanged objects are reused by multiple commits.
+    correctChoice: 0
+  - description: Which statements about commit hashes are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The hash is calculated from the content, the history, the author and the commit message, among other things
+      - A modified commit message results in a different hash
+      - You must always use the full 40 digits to refer to a commit
+      - The hash identifies the commit only inside the branch it was created on
+    hint: Any change to a commit changes its identity, and short prefixes are often enough.
+    explanation: The hash covers the complete commit data, so changing anything creates a different hash. An abbreviated hash is allowed as long as it is unique in the repository, and hashes are valid across branches.
+    correctChoices: [0, 1]
+  - description: What does HEAD~3 refer to?
+    choices:
+      - The commit with the abbreviated hash 3
+      - The first parent of the first parent of the first parent of the commit that HEAD points to
+      - The last three commits as a range
+      - The third parent of the commit that HEAD points to
+    hint: The tilde follows the first parent repeatedly.
+    explanation: HEAD~3 is the same as HEAD^^^, which goes three steps back along the first parents. HEAD^3 would mean the third parent of a merge commit.
+    correctChoice: 1
+  - description: What does the command "git log main..feature" show?
+    choices:
+      - The commits which are in exactly one of the two branches
+      - The commits which are reachable from main but not from feature
+      - The commits which are reachable from feature but not from main
+      - The commits which are reachable from both branches
+    hint: Read the dots as "from the left up to the right, excluding what is already on the left".
+    explanation: The double dot operator c1..c2 selects the commits reachable from c2 but not from c1. The triple dot operator main...feature would show the commits which are in exactly one of the branches.
+    correctChoice: 2

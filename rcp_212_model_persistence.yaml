@@ -1,0 +1,77 @@
+categoryId: 1707
+name: Application model persistence and model extensions
+questions:
+  - description: How can you change the file that contains the application model of an RCP application?
+    choices:
+      - By setting the applicationXMI property on the product extension to bundle symbolic name and file name
+      - By renaming the Application.e4xmi file to model.xml
+      - By adding the file to the Bundle-ClassPath header
+      - By changing the name of the project
+    hint: Products define their configuration via properties of the extension.
+    explanation: The applicationXMI property points to the model file in the form bundleSymbolicName/fileName, for example com.vogella.tasks.ui/ApplicationNew.e4xmi.
+    correctChoice: 0
+  - description: Which interface do you implement to load and save the application model from a different source, such as a database?
+    choices:
+      - IEclipsePreferences
+      - IModelResourceHandler
+      - IApplicationModelProvider
+      - IModelStore
+    hint: The default implementation is the ResourceHandler class, which you can use as template.
+    explanation: IModelResourceHandler is referenced via the modelResourceHandler property of the product extension. Implementing it requires EMF knowledge.
+    correctChoice: 1
+  - description: Why does the handler clone a perspective via EModelService before it adds it to a Resource for saving?
+    choices:
+      - Because only clones can be serialized to XML
+      - Because adding an element to a resource removes it from the running application model
+      - Because the original perspective is immutable
+      - Because the clone gets a new ID that is required for the file name
+    hint: A model element can be contained in only one parent at a time.
+    explanation: In EMF, an object can have only one container. Adding the original to the resource would remove it from the running model and break the application.
+    correctChoice: 1
+  - description: Which class is used in the exercise to create a Resource that can store e4 model elements as XMI?
+    choices:
+      - ResourceSetImpl
+      - XMLResourceImpl
+      - ModelServiceImpl
+      - E4XMIResourceFactory
+    hint: The name contains the file format and the e4 prefix.
+    explanation: E4XMIResourceFactory creates a Resource that handles the e4 application model. Cloned elements are added to its contents and written with the save method.
+    correctChoice: 3
+  - description: Which statements about saving and restoring a perspective with snippets are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A snippet is a clone of a model element that is stored in a MSnippetContainer such as an MWindow
+      - The restored perspective replaces the snippet, which is deleted from the window
+      - Restoring adds a clone of the snippet, so the snippet can be used again
+      - Snippets are saved in the Eclipse preferences of the instance scope
+    hint: Think about whether a template should change when it is used.
+    explanation: Snippets are stored in the model, for example in the window, and are cloned when applied. The snippet itself stays unchanged, so the restore can be repeated.
+    correctChoices: [0, 2]
+  - description: What must be true for the placeholders of a perspective so that they find their shared part after restoring a clone?
+    choices:
+      - They must be listed in the plugin.xml file
+      - They must have the same ID as the part they reference
+      - They must be contained in the same part stack
+      - They must have the tag Placeholder
+    hint: The clone resolves the reference by ID.
+    explanation: A cloned placeholder resolves its part via the element ID. If the IDs differ, the part is missing in the restored perspective.
+    correctChoice: 1
+  - description: What is required to add a new model element type, such as a BrowserPart that extends Part, to the application model?
+    choices:
+      - A new EMF model with a generated model code, and a renderer for the new element
+      - Only a new entry in the Application.e4xmi file
+      - A subclass of MApplication with the new element
+      - Only an entry in the CSS file
+    hint: The application model is based on EMF, and the renderer framework turns model elements into widgets.
+    explanation: The model is extended via EMF, for example with an EClass that has Part as super type. The renderer framework needs a renderer for the new element, as it does not know how to display it.
+    correctChoice: 0
+  - description: Which steps are needed to make the generated classes of a custom EMF model extension usable in the application?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Make sure the generated package is declared via the org.eclipse.emf.ecore.generated_package extension point
+      - Export the packages of the generated model code in the MANIFEST.MF file
+      - Add the model plug-in dependencies, such as org.eclipse.e4.ui.model.workbench
+      - Store the generated classes in the Eclipse preferences
+    hint: Other bundles must see the classes, the EMF runtime must know the package, and the model extends an existing model.
+    explanation: The model plug-in depends on the e4 model, exports its packages, and registers the EMF package via the extension point. Preferences play no role for model classes.
+    correctChoices: [0, 1, 2]

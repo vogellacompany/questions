@@ -1,0 +1,67 @@
+categoryId: 1704
+name: Using Java libraries in Eclipse applications
+questions:
+  - description: Why can a standard Java library JAR not be used directly as a dependency of an Eclipse plug-in?
+    choices:
+      - It usually lacks the OSGi metadata in its MANIFEST.MF file
+      - Libraries are only allowed in the JRE system library
+      - Eclipse plug-ins can only use libraries written for the Eclipse platform
+      - The JAR files must be signed by the Eclipse Foundation
+    hint: The OSGi runtime resolves dependencies via the manifest headers.
+    explanation: OSGi-based applications need headers such as Bundle-SymbolicName, Bundle-Version and Export-Package. Many libraries do not provide them, so they must be converted or wrapped.
+    correctChoice: 0
+  - description: Which approach is the easiest way to make a Maven library available to your plug-ins in the target platform?
+    choices:
+      - Add the library as a Maven location to the target definition, so that missing manifests are generated
+      - Copy the JAR file into the plugins folder of the Eclipse installation
+      - Add the JAR file to the build path of each plug-in project
+      - Unzip the JAR file and copy the classes into your plug-in
+    hint: The target definition is the place that describes which libraries your plug-ins can use.
+    explanation: The Maven location of the target definition downloads the library and, via the missingManifest setting, generates the OSGi metadata for libraries that lack it. The M2E PDE integration is required in the IDE for this.
+    correctChoice: 0
+  - description: What does the Maven location of a target definition allow you to control for the dependencies of a library?
+    choices:
+      - Only the version of the library itself
+      - Only the license of the transitive dependencies
+      - Whether transitive dependencies are included and which ones are excluded
+      - The Java version in which the library was compiled
+    hint: Libraries often bring other libraries with them, which you may not want in your product.
+    explanation: The dependency depth and scope define how many transitive dependencies are included, and single artifacts can be excluded, for example if they are not needed at runtime.
+    correctChoice: 2
+  - description: After a library was added to the target platform, which further step is required so that it is part of the exported application?
+    choices:
+      - Add the library to the Application.e4xmi file
+      - Nothing, the target platform content is always included in the product
+      - Add the plug-in of the library to a feature that is included in the product
+      - Add the library name to the build.properties file of the product
+    hint: A product contains only the plug-ins that are referenced by its features or its configuration.
+    explanation: The target platform only makes the library available at development time. To ship it, the plug-in must be included in a feature or the product configuration.
+    correctChoice: 2
+  - description: Which statements about using Maven libraries in the target platform are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The M2E PDE integration must be installed in the IDE to add Maven locations in the target editor
+      - The library appears as a plug-in that can be added in the Dependencies tab of the MANIFEST.MF editor
+      - Libraries without OSGi metadata cannot be used in any way
+      - The library is automatically added to every plug-in of the workspace
+    hint: The library behaves like any other plug-in of the target platform once it is available.
+    explanation: The generated bundle can be selected as a dependency like any other plug-in, and the M2E PDE integration provides the Maven location in the target editor. Plug-ins still have to declare the dependency.
+    correctChoices: [0, 1]
+  - description: How do plug-ins make the packages of a converted library visible to other bundles?
+    choices:
+      - By copying the classes to the src folder
+      - By setting the Bundle-Activator header
+      - By using the Require-Capability header with the library name
+      - By listing the packages in the Export-Package header of the manifest
+    hint: The same header is used to publish the API packages of your own plug-ins.
+    explanation: Export-Package declares which packages other bundles can import or access via Require-Bundle. A generated manifest exports the packages of the library.
+    correctChoice: 3
+  - description: Why is it a problem to bundle a library JAR inside several plug-ins instead of providing it as a separate bundle?
+    choices:
+      - The classes are loaded by different class loaders, so multiple copies and version conflicts can occur
+      - The JAR files cannot be compressed
+      - Bundles that contain JAR files cannot be exported
+      - The Eclipse IDE can only open one JAR file at a time
+    hint: In OSGi, every bundle has its own class loader.
+    explanation: Each bundle that embeds the library gets its own copy, so types are not shared and versions can conflict. A separate bundle is wired once and shared.
+    correctChoice: 0

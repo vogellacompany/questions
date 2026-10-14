@@ -1,0 +1,76 @@
+categoryId: 1711
+name: IDE - Eclipse Adapter
+questions:
+  - description: What is the purpose of the Adapter pattern?
+    choices:
+      - It converts the interface of an object into another interface expected by the client
+      - It notifies observers when the state of an object changes
+      - It ensures that only one instance of a class exists
+      - It adds new functionality to an object without changing its interface
+    hint: Think of a power plug adapter for a foreign socket.
+    explanation: The Adapter pattern lets incompatible interfaces work together by wrapping an object and exposing the interface the client expects. Adding functionality is the Decorator pattern.
+    correctChoice: 0
+  - description: What does the getAdapter(Class) method of IAdaptable return if the object cannot provide the requested type?
+    choices:
+      - It returns null
+      - It returns the Object class
+      - It returns an empty object of the requested type
+      - It throws an IllegalArgumentException
+    hint: Callers have to check the result.
+    explanation: IAdaptable.getAdapter returns null if no adapter can be determined, so callers must handle the null case.
+    correctChoice: 0
+  - description: What does the static method Adapters.adapt(Object, Class) check?
+    choices:
+      - Whether the object is already an instance of the type, then IAdaptable, then the adapter manager
+      - Only whether the object implements IAdaptable
+      - Only whether the object is already an instance of the requested type
+      - Only the adapter manager
+    hint: It tries several sources in sequence.
+    explanation: Adapters.adapt returns the object itself if it is an instance of the type. Otherwise it asks IAdaptable and finally the IAdapterManager, and returns null if none helps.
+    correctChoice: 0
+  - description: Which extension point do you use to register an IAdapterFactory declaratively?
+    choices:
+      - org.eclipse.core.runtime.products
+      - org.eclipse.e4.workbench.model
+      - org.eclipse.core.runtime.adapters
+      - org.eclipse.ui.views
+    hint: The extension point is named after what you register.
+    explanation: The org.eclipse.core.runtime.adapters extension point registers a factory with the adaptable type, the adapter types and the factory class.
+    correctChoice: 2
+  - description: Why is registering an IAdapterFactory a good fit if your data model should not depend on the Eclipse framework?
+    choices:
+      - The model class has to implement IAdapterFactory itself
+      - The model class has to extend PlatformObject
+      - The adapter code lives outside of the model class, which stays free of Eclipse dependencies
+      - The factory removes the need for the adapter classes
+    hint: Where does the Eclipse specific code live in this approach?
+    explanation: With a factory, the model class stays a plain class and the adapter is provided from a separate plug-in. Implementing IAdaptable would make the model depend on Eclipse API.
+    correctChoice: 2
+  - description: What is the role of IWorkbenchAdapter?
+    choices:
+      - It lets the workbench label providers and content providers get label, image and children of an object
+      - It adapts SWT widgets to JavaFX controls
+      - It loads the e4 application model
+      - It defines the layout of the workbench window
+    hint: WorkbenchLabelProvider and WorkbenchContentProvider rely on it.
+    explanation: IWorkbenchAdapter defines the appearance (label, image) and the children of an object, so generic viewers using WorkbenchLabelProvider and WorkbenchContentProvider can show the object.
+    correctChoice: 0
+  - description: Which conditions must be fulfilled so that a custom object appears in the Properties view?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The object has to be stored in a project of the workspace
+      - The object is part of the selection of the workbench
+      - The object can be adapted to IPropertySource
+      - The object has to implement IResource
+    hint: The view reacts to selections and asks for an adapter.
+    explanation: The Properties view listens to workbench selection changes and asks the selected object for an IPropertySource adapter. The object does not have to be a resource.
+    correctChoices: [1, 2]
+  - description: Why does the exercise adapter for tasks list IWorkbenchAdapter in the adapter factory registration?
+    choices:
+      - Because the adapter type defines the class of the adaptable objects
+      - Because it enables drag and drop automatically
+      - Because the factory is only asked for the adapter types it declares
+      - Because the extension point requires every factory to list exactly one adapter type
+    hint: The framework needs to know in advance what a factory can deliver.
+    explanation: The factory registration declares the adapter types it supports. The adapter manager only consults the factory for those types, and getAdapterList tells which types are available.
+    correctChoice: 2

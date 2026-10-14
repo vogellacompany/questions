@@ -1,0 +1,67 @@
+categoryId: 1695
+name: Asynchronous processing
+questions:
+  - description: What happens if a background thread modifies an SWT widget directly?
+    choices:
+      - The application is restarted by the platform
+      - The change is applied with a short delay
+      - The change is silently ignored
+      - An SWTException with the message "Invalid thread access" is thrown
+    hint: Only one thread is allowed to interact with the user interface.
+    explanation: SWT widgets can only be accessed from the main (UI) thread. Access from another thread throws an SWTException, so a job must synchronize with the UI thread.
+    correctChoice: 3
+  - description: What is the difference between syncExec() and asyncExec() of UISynchronize?
+    choices:
+      - There is no difference, because both are names for the same method
+      - syncExec() waits until the runnable finished, asyncExec() does not
+      - asyncExec() blocks the calling thread, syncExec() does not
+      - syncExec() starts a new background thread, asyncExec() uses the UI thread
+    hint: One of them lets the calling thread continue immediately.
+    explanation: Both execute the runnable in the UI thread. syncExec() waits for the result, while asyncExec() only queues the runnable and returns at once.
+    correctChoice: 1
+  - description: Which method of a Job hands it over for asynchronous execution by the job manager?
+    choices:
+      - execute()
+      - start()
+      - schedule()
+      - run()
+    hint: The job manager decides when the job runs, based on priority and available resources.
+    explanation: schedule() queues the job. Calling run() directly would execute the code in the calling thread, which defeats the purpose of a job.
+    correctChoice: 2
+  - description: Why should you convert the IProgressMonitor of a job to a SubMonitor via SubMonitor.convert()?
+    choices:
+      - It gives a consistent API to set the total work and report progress for child tasks
+      - It runs the job in a separate thread
+      - It makes the job cancel itself after a timeout
+      - It hides the progress from the user
+    hint: The result is the same type for the main task and its children.
+    explanation: SubMonitor.convert() defines the number of work units and calls beginTask() implicitly. Child tasks get their share of the work via split().
+    correctChoice: 0
+  - description: When is SubMonitor.setWorkRemaining() useful?
+    choices:
+      - To cancel the remaining work of the job
+      - To increase the priority of the job
+      - To pause the job for a number of milliseconds
+      - When the work done earlier was less than planned, or the real amount of work is only known later
+    hint: It adjusts the planned work after the plan has changed.
+    explanation: setWorkRemaining() redistributes the remaining work units, for example if an optional step was skipped or if the number of items is only known after a query.
+    correctChoice: 3
+  - description: Which statements about SubMonitor and job progress are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The job body must always call done() on the monitor itself
+      - split(n) creates a child monitor which represents n work units of the parent
+      - Methods called by the job should receive the SubMonitor itself instead of a split() child
+      - SubMonitor.convert() calls beginTask() implicitly
+    hint: The Jobs framework takes care of finishing the monitor, and children are created from the parent.
+    explanation: convert() sets up the monitor, and split() creates children for part of the work. The Jobs framework calls done() on the root monitor after the job, and called methods should get a child monitor.
+    correctChoices: [1, 3]
+  - description: What does BusyIndicator.showWhile() do?
+    choices:
+      - It runs the given code as a background job
+      - It shows a progress dialog with a cancel button
+      - It shows a busy cursor until the given runnable has finished
+      - It blocks all other jobs of the application
+    hint: It is the simplest way to give feedback to the user and needs no progress monitor.
+    explanation: BusyIndicator.showWhile() changes the cursor to a busy indicator while the runnable runs. It does not move the work to a background thread and shows no progress.
+    correctChoice: 2

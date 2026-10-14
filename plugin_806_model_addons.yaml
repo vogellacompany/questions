@@ -1,0 +1,67 @@
+categoryId: 67331
+name: Model add-ons and supplementary application model data in the IDE
+questions:
+  - description: What is a model add-on in an Eclipse 4 application such as the Eclipse IDE?
+    choices:
+      - A CSS file that is added to the theme
+      - A Java class registered in the application model that adds or changes behavior and can use dependency injection
+      - A plug-in that contributes a new perspective via plugin.xml
+      - A product configuration file
+    hint: Add-ons are objects that live in the application model.
+    explanation: Add-ons are model elements which reference a class. The class is instantiated with dependency injection and can enhance or replace default behavior without changing the Eclipse code.
+    correctChoice: 1
+  - description: You contribute a model add-on to the running Eclipse IDE from your plug-in. How do you register it?
+    choices:
+      - Use a model fragment that contributes to the addons feature of the application
+      - Add it to the build.properties file
+      - Declare it in the plugin.xml via the org.eclipse.ui.addons extension point
+      - Copy it into the dropins folder
+    hint: The IDE has an application model that other plug-ins can extend.
+    explanation: A model fragment can contribute elements to a feature of an existing parent element. For add-ons, the feature is addons and the parent is the application.
+    correctChoice: 0
+  - description: A model add-on of your plug-in wants to react when the application has finished starting, for example to add views to a perspective of the IDE. Which approach fits best?
+    choices:
+      - Subscribe to UIEvents.UILifeCycle.APP_STARTUP_COMPLETE with an @Inject @Optional method using @UIEventTopic
+      - Register an IWorkbenchListener in plugin.xml
+      - Use a static initializer in the add-on class
+      - Call System.exit in the constructor
+    hint: Add-ons are created after the event service exists.
+    explanation: Add-ons are created after the event service, so they can use injected methods with event topic annotations. APP_STARTUP_COMPLETE signals that the application has started.
+    correctChoice: 0
+  - description: You want a part stack to stay visible instead of being collapsed automatically when its last part is removed. Which tag do you add in the Supplementary tab?
+    choices:
+      - NoAutoCollapse
+      - shellMaximized
+      - FORCE_TEXT
+      - NoMove
+    hint: Interpreted by the CleanupAddon and the MinMaxAddon.
+    explanation: The NoAutoCollapse tag on a part stack keeps the container from collapsing, and it is interpreted by the CleanupAddon and the MinMaxAddon. NoMove blocks moving a part, FORCE_TEXT shows text on tool items.
+    correctChoice: 0
+  - description: Which statements about data in the Supplementary tab of the model editor are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Tags are persisted between restarts and can be used as CSS class selectors
+      - Transient data is persisted and can be set in the model editor
+      - Persisted state values are objects of any Java type
+      - Variables become modifiable context variables in the context of the model element
+    hint: One of the data types exists only at runtime, and one is restricted to strings.
+    explanation: Tags are stored as a list of strings and the CSS engine treats them as class selectors. Variables are created as modifiable keys in the element's context. Transient data lives only at runtime and persisted state stores strings.
+    correctChoices: [0, 3]
+  - description: Your model add-on should show a toolbar only in certain perspectives. How do you let the model author decide which perspective?
+    choices:
+      - Set the persistState flag of the toolbar to false
+      - Hard-code the toolbar ID in the add-on
+      - Move the toolbar into the perspective stack
+      - Tag the toolbar with a prefix like perspective followed by the perspective ID and evaluate the tags in the add-on
+    hint: Tags are a flexible way to attach information to model elements without changing their model type.
+    explanation: Tags are free-form strings which add-ons can interpret. The add-on can read the tag, compare it with the active perspective and set the visibility of the toolbar accordingly.
+    correctChoice: 3
+  - description: What does setting the persisted state key persistState to false on a model element, for example a command or a handler contributed by your plug-in, achieve?
+    choices:
+      - The element is not stored when the workbench model is saved at shutdown, so it only exists if the contributing plug-in is present
+      - The element is hidden in the user interface
+      - The element cannot be edited with the model spy
+      - The element is created lazily on first use
+    hint: The element depends on the plug-in that contributes it.
+    explanation: The persistState flag excludes the element from the persisted model, so it is re-contributed from its plug-in on every startup and does not remain when the plug-in is removed.
+    correctChoice: 0

@@ -1,0 +1,76 @@
+categoryId: 1988
+name: IDE - Editor
+questions:
+  - description: You want to provide editor support for a new file type .tasks in the Eclipse IDE with as little code as possible. What is the recommended starting point?
+    choices:
+      - Create a new perspective for the file type
+      - Extend the Java editor
+      - Define a content type and bind it to the generic editor
+      - Write an editor from scratch based on EditorPart
+    hint: Eclipse provides a ready-made editor for text-based files that you can extend step by step.
+    explanation: Extending the generic editor is the preferred choice for new file types. You define a content type and bind it to the generic editor using the org.eclipse.ui.editors extension point with an editorContentTypeBinding.
+    correctChoice: 2
+  - description: How do you add syntax highlighting for your content type in the generic editor?
+    choices:
+      - Add a theme element category for the content type
+      - Implement an IMarkerResolution
+      - Register an IPresentationReconciler via the org.eclipse.ui.genericeditor.presentationReconcilers extension point for your content type
+      - Add a CSS rule for the file extension
+    hint: The component repairs the visual presentation whenever the document changes.
+    explanation: A presentation reconciler uses rules (IRule) to decide how the text is styled, and the extension point binds it to a content type.
+    correctChoice: 2
+  - description: Why does the JFace text framework separate IDocument and ITextViewer?
+    choices:
+      - Both interfaces are identical, one is only kept for backwards compatibility
+      - IDocument draws the text while ITextViewer stores it
+      - IDocument stores the text and offers line, position and partition support, while ITextViewer presents it using a StyledText widget
+      - ITextViewer is only used for read-only files
+    hint: One is the model and one is the controller of the view.
+    explanation: The IDocument models the text with support for lines, positions, partitions and listeners. The ITextViewer is the controller which uses a StyledText widget for display and editing.
+    correctChoice: 2
+  - description: Your tasks editor must show warnings in the Problems view for missing keys in the file. Which approach does the exercise use for reacting to changes of the document?
+    choices:
+      - A JFace WizardPage
+      - A resource change listener in the Activator
+      - A PaintListener on the StyledText widget
+      - An IDocumentSetupParticipant registered via org.eclipse.core.filebuffers.documentSetup that adds a document listener and creates markers in a Job
+    hint: It is called when a document is set up for a content type.
+    explanation: The document setup participant is called for documents of its content type and can register a listener. The markers are created in a delayed Job so that the UI thread is not blocked and rapid changes can cancel pending work.
+    correctChoice: 3
+  - description: Which statements about content assist in the generic editor are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A processor can only propose a single static list and cannot access OSGi services
+      - You register an IContentAssistProcessor via the org.eclipse.ui.genericeditor.contentAssistProcessors extension point for a content type
+      - Content assist is usually triggered with Ctrl+Space
+      - The proposals are computed in the UI thread, so a slow processor blocks the editor
+    hint: The generic editor computes proposals asynchronously, and processors are normal Java code.
+    explanation: A processor is registered per content type via the extension point and is invoked with Ctrl+Space. The generic editor computes proposals asynchronously, so slow processors do not freeze the editor, and the code can look up services such as a TaskService.
+    correctChoices: [1, 2]
+  - description: You want Ctrl+click navigation for the text vogella in all text editors, including the Java editor. How do you register the hyperlink detector?
+    choices:
+      - Via the org.eclipse.core.contenttype.contentTypes extension point
+      - Via a key binding for the command org.eclipse.ui.edit.text.openHyperlink only
+      - Via the org.eclipse.ui.editors extension point
+      - Via the org.eclipse.ui.workbench.texteditor.hyperlinkDetectors extension point with the target ID org.eclipse.ui.DefaultTextEditor
+    hint: The target ID covers editors based on the default text editor configuration.
+    explanation: The hyperlinkDetectors extension point connects an IHyperlinkDetector to a target ID. The DefaultTextEditor target covers all text editors based on this configuration, including the Java editor.
+    correctChoice: 3
+  - description: Which API do you use to show additional, non-persistent information inline in a text editor, for example a line header with the number of references?
+    choices:
+      - IHyperlink
+      - Code mining via ICodeMiningProvider
+      - Line number ruler
+      - Spell checking engine
+    hint: The information is shown inline but not saved in the file.
+    explanation: Code minings are extra information shown inside the text, for example above a line. They are provided by an ICodeMiningProvider and are not saved in the file.
+    correctChoice: 1
+  - description: You add a TextMate grammar and a language configuration in separate folders of your plug-in to get syntax highlighting with TM4E. What must you do so that they are also available in the exported plug-in?
+    choices:
+      - Nothing, folders are included automatically
+      - Copy the files to the workspace manually
+      - Add the folders to bin.includes in build.properties
+      - Register the folders in the Bundle-ClassPath only
+    hint: Only what is listed for the build ends up in the plug-in jar.
+    explanation: The build.properties file controls what is packaged, so folders with resources such as grammars must be listed in bin.includes. Otherwise they are missing at runtime when the plug-in is exported.
+    correctChoice: 2

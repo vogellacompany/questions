@@ -1,0 +1,76 @@
+categoryId: 25455
+name: Flutter - Platform Specific Code
+questions:
+  - description: What is a platform channel in Flutter used for?
+    choices:
+      - To share state between two widgets
+      - To load images from the network
+      - To compile Dart code into Java
+      - To pass messages between Dart code and the native code of the host platform
+    hint: Flutter code runs in the Dart VM or as compiled Dart, the platform APIs are native.
+    explanation: Platform channels send asynchronous messages between the Dart side and the host platform code, for example Kotlin or Swift, so that native APIs can be used.
+    correctChoice: 3
+  - description: Which class do you use on the Dart side to call a named native method and get a single result back?
+    choices:
+      - EventChannel
+      - StreamController
+      - MethodChannel
+      - BasicMessageChannel
+    hint: The class name contains what you want to call.
+    explanation: MethodChannel invokes named methods on the platform side with invokeMethod and returns a Future with the result.
+    correctChoice: 2
+  - description: Which channel type is intended for a continuous stream of events from the platform to Dart, such as sensor updates?
+    choices:
+      - FutureChannel
+      - AssetBundle
+      - EventChannel
+      - MethodChannel
+    hint: On the Dart side it is exposed as a Stream.
+    explanation: EventChannel exposes platform events as a Dart Stream via receiveBroadcastStream.
+    correctChoice: 2
+  - description: Which statements about detecting the platform are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - kIsWeb is a constant from the foundation library that is true when running on the web
+      - Platform.isAndroid and Platform.isIOS come from dart:io
+      - Platform from dart:io can safely be used in a Flutter web app
+      - Theme.of(context).platform is only available on Android
+    hint: Web does not have dart:io in the same sense as native platforms.
+    explanation: Platform from dart:io is available for native targets, and kIsWeb tells you about the web, where dart:io Platform must not be used. Theme.of(context).platform returns a TargetPlatform value on every platform and can be overridden for testing.
+    correctChoices: [0, 1]
+  - description: How do Cupertino widgets relate to Material widgets?
+    choices:
+      - They follow the iOS design language, and both sets are part of the Flutter SDK
+      - They require a separate native iOS project to compile
+      - They are deprecated and replaced by Material widgets
+      - They are Android only and cannot be used on iOS
+    hint: Think about the iOS look and feel.
+    explanation: The cupertino library offers widgets that imitate iOS design, such as CupertinoButton and CupertinoAlertDialog. Both libraries ship with Flutter and run on all platforms.
+    correctChoice: 0
+  - description: What is the difference between a Dart package and a plugin?
+    choices:
+      - There is no difference
+      - A plugin is written in Dart only, a package must contain native code
+      - A package is for web only, a plugin is for mobile only
+      - A plugin is a package with platform specific implementation code, while a package contains only Dart code
+    hint: The path_provider package is a typical example of a plugin.
+    explanation: A package contains Dart code only, whereas a plugin package additionally contains platform specific code for Android, iOS or other platforms, usually connected via platform channels.
+    correctChoice: 3
+  - description: What is the idea of a federated plugin?
+    choices:
+      - The plugin automatically converts Dart to native code at runtime
+      - The plugin is hosted on several websites at the same time
+      - The plugin is split into an app-facing package, a platform interface and separate packages per platform
+      - The plugin is only available to Google employees
+    hint: The aim is that different teams can add support for a platform independently.
+    explanation: A federated plugin consists of an app-facing package, a platform interface package and platform implementation packages, so support for a platform can be added by different authors.
+    correctChoice: 2
+  - description: Which tool or approach reduces handwritten channel code by generating type safe communication code between Dart and native code?
+    choices:
+      - dart format
+      - flutter clean
+      - Pigeon
+      - dart pub get
+    hint: It is a code generator from the Flutter team for the platform interface.
+    explanation: Pigeon generates code for both sides from a Dart definition, so the messages are type safe and no manual string based channel handling is needed.
+    correctChoice: 2

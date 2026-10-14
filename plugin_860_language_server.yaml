@@ -1,0 +1,76 @@
+categoryId: 186894
+name: Language Server Protocol
+questions:
+  - description: What is the main goal of the Language Server Protocol (LSP)?
+    choices:
+      - To compile Java code to native binaries
+      - To describe the layout of user interfaces in a language independent way
+      - To replace the Git protocol for source code management
+      - To define a common protocol between editors and language servers, so language features can be reused in many tools
+    hint: One language server should work with many different editors.
+    explanation: LSP standardizes the communication between a tool (client) and a language server which offers features like completion, hover and go to definition. Without it each editor needs its own implementation per language.
+    correctChoice: 3
+  - description: Which Eclipse project provides Java bindings for LSP so you can write a language server without handling JSON yourself?
+    choices:
+      - LSP4J
+      - JSON4Eclipse
+      - TM4E
+      - LSP4E
+    hint: The name ends with the letter for Java.
+    explanation: LSP4J implements LSP and the underlying JSON-RPC in Java. LSP4E is the client side integration into the Eclipse IDE.
+    correctChoice: 0
+  - description: Which Eclipse project integrates language servers into the Eclipse IDE, for example via the generic editor?
+    choices:
+      - JDT
+      - LSP4J
+      - SWTBot
+      - LSP4E
+    hint: The name ends with the letter for Eclipse.
+    explanation: LSP4E is the Eclipse client for language servers. It connects a language server to the generic editor and views like Outline.
+    correctChoice: 3
+  - description: How does a language server tell the client which features it supports?
+    choices:
+      - By implementing the Serializable interface
+      - Through the file name of the server JAR
+      - Through the ServerCapabilities it returns from the initialize request
+      - Through a plugin.xml file of the client
+    hint: Think about the first request sent from the client to the server.
+    explanation: In the initialize method the server returns an InitializeResult with ServerCapabilities, for example setHoverProvider(true) or setDefinitionProvider(true). The client only requests features which the server announced.
+    correctChoice: 2
+  - description: Which statements about the communication between client and server are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The client must always load the language server as OSGi bundle
+      - LSP is based on JSON-RPC
+      - A language server often runs as a separate process and talks to the client via standard input and output
+      - The language server has to be written in the same language as the editor
+    hint: The protocol is independent of programming languages and process boundaries.
+    explanation: LSP uses JSON-RPC messages, commonly over the standard streams of a separate process. Server and client can be implemented in different languages.
+    correctChoices: [1, 2]
+  - description: Which capability and method of the server do you implement for a hover popup?
+    choices:
+      - setCodeActionProvider and codeAction
+      - setHoverProvider and hover
+      - setDefinitionProvider and definition
+      - setCodeLensProvider and codeLens
+    hint: Match the feature name to the capability setter.
+    explanation: A server announces setHoverProvider(true) in the capabilities and implements the hover method of the TextDocumentService, which returns a Hover with MarkupContent.
+    correctChoice: 1
+  - description: How does a language server report errors and warnings for a document to the client?
+    choices:
+      - By throwing exceptions in didOpen
+      - By writing a problem marker file into the workspace
+      - By calling publishDiagnostics on the client with the document URI and a list of Diagnostic objects
+      - By returning them from the shutdown method
+    hint: The server pushes the information, the client does not ask for it.
+    explanation: The server pushes diagnostics with the client proxy of LanguageClient. Each Diagnostic has a range, severity and message. It typically does this after didOpen and didChange.
+    correctChoice: 2
+  - description: Which feature lets a server offer quick fixes that change the document, for example replacing a placeholder after a warning?
+    choices:
+      - Hover
+      - Code lenses
+      - Document symbols
+      - Code actions with a WorkspaceEdit
+    hint: In Eclipse you trigger them with Ctrl+1 at a warning.
+    explanation: A CodeAction of kind quickfix can carry a WorkspaceEdit with TextEdit objects. Code lenses show commands inline, document symbols fill the Outline view and hover shows information.
+    correctChoice: 3

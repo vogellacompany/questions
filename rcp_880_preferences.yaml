@@ -1,0 +1,76 @@
+categoryId: 1701
+name: Persisting data with preferences
+questions:
+  - description: Which preference scope holds values that are specific to a single workspace of an Eclipse application?
+    choices:
+      - InstanceScope
+      - ConfigurationScope
+      - UserScope
+      - DefaultScope
+    hint: The scope is named after the running instance of the application, which uses one workspace.
+    explanation: InstanceScope stores values per workspace. ConfigurationScope is shared by all workspaces of one installation, and DefaultScope values are not persisted at all.
+    correctChoice: 0
+  - description: What does the flush() method of an IEclipsePreferences node do?
+    choices:
+      - It reloads the values from the file system and discards local changes
+      - It writes the changed preference values to the file system
+      - It removes all keys of the node
+      - It resets all keys to their default scope values
+    hint: Calling put() alone only changes the values in memory.
+    explanation: flush() persists the changes of the node to the .prefs file and may throw a BackingStoreException. Removing keys is done via clear() or remove().
+    correctChoice: 1
+  - description: In which directory of the workspace does Eclipse store instance scope preferences by default?
+    choices:
+      - configuration/org.eclipse.equinox.simpleconfigurator
+      - The OSGI-INF folder of the plug-in
+      - .settings in the application installation folder
+      - .metadata/.plugins/org.eclipse.core.runtime/.settings
+    hint: The files are named after the node path, which is by default the Bundle-SymbolicName of the plug-in.
+    explanation: Each node is stored as a nodePath.prefs file below .metadata/.plugins/org.eclipse.core.runtime/.settings of the workspace.
+    correctChoice: 3
+  - description: What gets injected if you use the @Preference annotation together with @Inject without specifying a value attribute?
+    choices:
+      - The String value of the first key in the node
+      - The IPreferenceStore of the JFace preference page
+      - The IEclipsePreferences object of the node
+      - A Map with all key-value pairs of the node
+    hint: Without a key, the framework cannot inject a single value.
+    explanation: Without the value parameter, the IEclipsePreferences object is injected and can be used to store or change values. With the value parameter, the preference value itself is injected.
+    correctChoice: 2
+  - description: Which statements about preferences and dependency injection in Eclipse 4 applications are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - New values stored via the injected IEclipsePreferences end up in the default scope
+      - Changes in the ConfigurationScope and DefaultScope are also tracked and re-injected automatically
+      - The @Preference annotation must be combined with @Inject or another annotation that implies injection, such as @Execute
+      - Injected preference values are re-injected if the value changes in the instance scope
+    hint: Think about which scope the injection support observes and which scope is written to.
+    explanation: "@Preference is a qualifier and needs an injection trigger. The framework tracks the instance scope only, and values stored via the injected node are written to the instance scope."
+    correctChoices: [2, 3]
+  - description: When does the framework call a method annotated with @PersistState in a part class?
+    choices:
+      - When the part or the application is closed
+      - When the part gets the focus
+      - Every time the user changes the selection in the part
+      - Only when the application starts
+    hint: The method is meant for saving state such as the status of a checkbox or the width of table columns.
+    explanation: The framework calls @PersistState methods when the part or the application closes. The stored information can then be restored in the @PostConstruct method.
+    correctChoice: 0
+  - description: How do you register a plugin_customization.ini file that provides default preference values for a product?
+    choices:
+      - By listing it in the build.properties file
+      - By adding it to the OSGI-INF folder of the application plug-in
+      - By setting the preferenceCustomization property on the product extension in plugin.xml
+      - By naming it config.ini and placing it next to the executable
+    hint: Products are defined via an extension point, and their properties also point to the CSS file and the lifecycle class.
+    explanation: The preferenceCustomization property of the org.eclipse.core.runtime.products extension points to the file. Its entries use the format plug-in id/setting=value.
+    correctChoice: 2
+  - description: Where is a good place to restore saved table column widths when a part is created?
+    choices:
+      - In the constructor of the part before any widget is created
+      - In the method annotated with @PreDestroy
+      - In the method annotated with @PersistState
+      - In the method annotated with @PostConstruct after the columns exist
+    hint: The columns must exist before their width can be set, and saving happens at the opposite end of the part lifecycle.
+    explanation: The columns are created in the @PostConstruct method, so the stored widths are applied there. The @PersistState method is the counterpart that saves the widths when the part closes.
+    correctChoice: 3

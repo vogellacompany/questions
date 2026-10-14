@@ -1,0 +1,76 @@
+categoryId: 1763
+name: IDE - Eclipse Resources and markers
+questions:
+  - description: Which type represents the root of the workspace and gives access to all projects?
+    choices:
+      - IWorkspaceRunnable
+      - IProject
+      - IWorkspaceRoot
+      - IContainer
+    hint: You obtain it via ResourcesPlugin.getWorkspace().
+    explanation: IWorkspaceRoot is the top-level resource of the workspace and is returned by IWorkspace.getRoot(). From it you can get projects, for example via getProject(name).
+    correctChoice: 2
+  - description: How do you register to be informed about changes to resources in the workspace?
+    choices:
+      - Register an IResourceChangeListener via IWorkspace.addResourceChangeListener()
+      - Extend WorkspaceJob and override the run() method
+      - Add a JobChangeAdapter to the IWorkspaceRoot
+      - Implement IResourceVisitor and pass it to IProject.open()
+    hint: The listener receives an event object with a delta.
+    explanation: An IResourceChangeListener registered at the workspace receives an IResourceChangeEvent, for example of type POST_CHANGE, including the resource delta.
+    correctChoice: 0
+  - description: What does the resource delta in an IResourceChangeEvent describe?
+    choices:
+      - Only the markers which were created by the current user
+      - The complete content of every file in the workspace
+      - The resources that were added, removed or changed, as a tree that mirrors the resource tree
+      - The difference between two versions of a file in Git
+    hint: Think of it as the before and after of one operation, with unchanged parts left out.
+    explanation: The delta tree contains only the affected resources, so the notification size depends on the size of the change and not on the size of the workspace.
+    correctChoice: 2
+  - description: Why should you wrap many resource modifications into an ICoreRunnable passed to IWorkspace.run()?
+    choices:
+      - It makes the code run in the UI thread
+      - It is required, otherwise the files cannot be created
+      - It automatically saves all open editors
+      - Only one resource change broadcast occurs at the end instead of one per modification
+    hint: Think about how many listeners are notified when you create thousands of files.
+    explanation: Batching the changes reduces the notifications to a single resource change event, which improves performance substantially. The code works without it, but slower.
+    correctChoice: 3
+  - description: How do you create a task marker for a given IResource?
+    choices:
+      - ResourcesPlugin.getWorkspace().addMarker(resource)
+      - IMarker.create(resource, "task")
+      - resource.createMarker(IMarker.TASK)
+      - new IMarker(IMarker.TASK, resource)
+    hint: The resource itself is the factory.
+    explanation: IResource.createMarker(String type) creates a marker of the given type. Afterwards you set attributes such as IMarker.MESSAGE and IMarker.PRIORITY on it.
+    correctChoice: 2
+  - description: Which statements about markers are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A marker has to be created with the UI thread
+      - Markers can carry attributes like message and priority
+      - Markers are attached to resources
+      - Markers are stored inside the source code of the file
+    hint: Markers are metadata, not file content.
+    explanation: Markers are metadata attached to workspace resources and hold attributes such as IMarker.MESSAGE. They are not part of the file content and can be created from any thread.
+    correctChoices: [1, 2]
+  - description: Where do the markers of type IMarker.TASK appear in the Eclipse IDE?
+    choices:
+      - In the Tasks view
+      - In the Console view
+      - In the Problems view
+      - In the Error Log view
+    hint: The view name matches the marker type.
+    explanation: Markers of type IMarker.TASK are shown in the Tasks view. Problem markers are shown in the Problems view.
+    correctChoice: 0
+  - description: In an e4 handler, how can an element of the current selection be converted to an IResource without a hard dependency on the element type?
+    choices:
+      - Create a new IResource via the workspace root
+      - Cast it with (IResource)
+      - Call getResource() on it
+      - Use the Adapter service, for example adapter.adapt(element, IResource.class)
+    hint: The element may only be adaptable to IResource, not an IResource itself.
+    explanation: The Adapter service (or Adapters.adapt) uses the adapter framework and returns null if the element cannot be adapted, so no cast can fail.
+    correctChoice: 3

@@ -1,0 +1,67 @@
+categoryId: 1703
+name: Using custom annotations for dependency injection
+questions:
+  - description: Which abstract class do you extend to process a custom injection annotation in Eclipse dependency injection?
+    choices:
+      - AbstractAnnotationProcessor
+      - IInjectionProvider
+      - ContextFunction
+      - ExtendedObjectSupplier
+    hint: The class name says that it provides objects for an extended set of qualifiers.
+    explanation: ExtendedObjectSupplier from org.eclipse.e4.core.di.suppliers is called by the injection engine if it finds the annotation it is registered for.
+    correctChoice: 3
+  - description: How is an ExtendedObjectSupplier registered so that the injection engine finds it?
+    choices:
+      - By listing it in the Export-Package header of the MANIFEST.MF file
+      - By adding a class to the Application.e4xmi file
+      - Via an extension in the plugin.xml file
+      - As an OSGi service with the dependency.injection.annotation property naming the annotation
+    hint: The supplier is not part of the application model, and it is discovered like other pluggable implementations.
+    explanation: The supplier is registered as an OSGi service, for example via the @Component annotation, and the dependency.injection.annotation property tells the injection engine which annotation it handles.
+    correctChoice: 3
+  - description: What must a custom annotation fulfill so that it can be used as an injection qualifier together with @Inject?
+    choices:
+      - It must extend the Annotation interface
+      - It must be annotated with @Qualifier and have runtime retention
+      - It must be declared in the Eclipse context
+      - It must be annotated with @Documented only
+    hint: The Java injection standard defines how qualifiers are marked, and the annotation must be readable at runtime.
+    explanation: The annotation is marked with jakarta.inject.Qualifier and uses RetentionPolicy.RUNTIME. Otherwise the injection engine cannot find it via reflection.
+    correctChoice: 1
+  - description: How does the ExtendedObjectSupplier read the attributes of the annotation, for example an id value, at the injection point?
+    choices:
+      - By reading the MANIFEST.MF file of the plug-in
+      - By calling the getQualifier(Class) method on the IObjectDescriptor
+      - By injecting the annotation into the supplier
+      - By calling the getAnnotation(String) method on the IEclipseContext
+    hint: The descriptor describes the element that should be injected.
+    explanation: The get method receives an IObjectDescriptor, and getQualifier returns the annotation instance with the values that the developer specified at the injection point.
+    correctChoice: 1
+  - description: Which statements about an ExtendedObjectSupplier implementation are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The supplier is created once for each injection target and then disposed
+      - The supplier has no access to the IEclipseContext of the object that receives the injection
+      - The package of the annotation does not have to be visible to the plug-ins that use it
+      - Dependency injection can be used inside the supplier, for example to get a service injected
+    hint: The supplier is an OSGi service, and the annotation is used in other plug-ins.
+    explanation: The supplier can use injection for its own services but cannot see the context of the target object. It is a singleton service, and the annotation package must be exported so that other plug-ins can use it.
+    correctChoices: [1, 3]
+  - description: What is returned by the get method of the supplier for a field of type Optional<Task> annotated with a custom qualifier?
+    choices:
+      - The ID of the task as long value
+      - The Task object itself
+      - An Optional<Task> instance
+      - A Supplier<Task> instance
+    hint: The injected object must match the type of the injection point.
+    explanation: The supplier returns the object that is injected, so for an Optional<Task> field it must return an Optional<Task>. Returning another type leads to an injection error.
+    correctChoice: 2
+  - description: Which annotation is typically used to publish the supplier class as an OSGi declarative service?
+    choices:
+      - "@Creatable"
+      - "@Singleton"
+      - "@Reference"
+      - "@Component"
+    hint: The annotation comes from the org.osgi.service.component.annotations package.
+    explanation: "@Component(service = ExtendedObjectSupplier.class, property = ...) makes the DS runtime register the class as service. The DS annotation processing must be enabled in the PDE preferences to generate the descriptor."
+    correctChoice: 3

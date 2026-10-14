@@ -1,0 +1,67 @@
+categoryId: 168887
+name: Flutter example applications
+questions:
+  - description: In a task list app, a checkbox of a task is toggled and the UI has to update. What is the usual way in a StatefulWidget?
+    choices:
+      - Change the field, the UI refreshes automatically without further calls
+      - Create a new MaterialApp for each change
+      - Call runApp again with the changed data
+      - Change the field and call setState so the framework rebuilds the widget
+    hint: Plain Dart fields do not notify the framework.
+    explanation: Changing a field of the State does not trigger a rebuild. Calling setState with the change tells the framework that the widget is dirty.
+    correctChoice: 3
+  - description: Which widget creates list items lazily, only for the entries that are about to be displayed?
+    choices:
+      - Stack
+      - Column with a children list
+      - ListView.builder
+      - Row
+    hint: It takes an itemBuilder and an itemCount.
+    explanation: ListView.builder calls itemBuilder only for the visible items and a few around them, which keeps long lists efficient.
+    correctChoice: 2
+  - description: How can a dialog opened with showDialog return a result such as a new Task object to the caller?
+    choices:
+      - The dialog calls Navigator.pop with the value, and the awaited showDialog Future completes with it
+      - By calling setState on the parent widget from inside the dialog
+      - By returning the value from the build method of the dialog
+      - By assigning the result to a static variable of the Navigator
+    hint: showDialog returns a Future.
+    explanation: showDialog pushes a route and returns a Future that completes with the value passed to Navigator.pop, which is null if the dialog is dismissed without a value.
+    correctChoice: 0
+  - description: Which statements about persisting the task list as JSON are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - getApplicationDocumentsDirectory from path_provider returns a directory in which the app can store files
+      - jsonEncode turns a list of Task objects into a String without any further conversion rule
+      - Files must be written synchronously on the UI thread, asynchronous file access is not possible in Dart
+      - The data class provides toJson and a fromJson factory to convert between objects and maps
+    hint: One statement misjudges Dart's async API, one assumes automatic conversion of custom classes.
+    explanation: Custom classes need a toJson method (or a map conversion) and a matching fromJson, and path_provider supplies platform specific locations. File access in Dart is available asynchronously through Futures, which is the recommended way.
+    correctChoices: [0, 3]
+  - description: Where is the best place to start loading saved data when a StatefulWidget is created?
+    choices:
+      - In the build method, so it is repeated on every rebuild
+      - In initState
+      - In the constructor of the Text widget
+      - In the dispose method
+    hint: The method is called once when the State object is inserted into the tree.
+    explanation: initState runs once per State object, which makes it the right place to start loading data. Loading in build would repeat the work whenever the widget rebuilds.
+    correctChoice: 1
+  - description: Why is a large widget such as a screen refactored into smaller widgets like a list widget or a dialog widget?
+    choices:
+      - The code becomes easier to understand, test and change, and parts can be reused
+      - StatefulWidget cannot contain a ListView
+      - Smaller widgets are faster by definition
+      - Flutter limits every file to one widget class
+    hint: Think about maintainability.
+    explanation: Extracting widgets reduces the complexity of each class and lets them be reused and changed independently. There is no technical limit on the number of classes in a file.
+    correctChoice: 0
+  - description: In a typing challenge app, how is the time the user needed measured?
+    choices:
+      - By calling DateTime.now at the start and at the end and using the difference
+      - By reading the frame rate of the Scaffold
+      - By asking the Navigator for the route duration
+      - By counting the characters in the TextField
+    hint: Dart has a type for points in time and a type for spans of time.
+    explanation: Storing DateTime.now at the start and at the end and calling difference returns a Duration, from which inSeconds can be read.
+    correctChoice: 0

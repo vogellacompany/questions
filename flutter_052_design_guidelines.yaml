@@ -1,0 +1,67 @@
+categoryId: 25460
+name: Flutter - Design Guidelines
+questions:
+  - description: How can you read whether the device is in portrait or landscape orientation inside a build method?
+    choices:
+      - MediaQuery.of(context).orientation
+      - Theme.of(context).orientation
+      - Scaffold.of(context).orientation
+      - Navigator.of(context).orientation
+    hint: The class also provides the screen size and the text scale factor.
+    explanation: MediaQuery provides the screen size and orientation, and widgets that use it are rebuilt when these values change.
+    correctChoice: 0
+  - description: Which widget builds its child depending on the orientation of the available space?
+    choices:
+      - Builder
+      - StreamBuilder
+      - FutureBuilder
+      - OrientationBuilder
+    hint: The name is a combination of the property and the builder pattern.
+    explanation: OrientationBuilder calls its builder with the current Orientation and rebuilds when it changes.
+    correctChoice: 3
+  - description: What does a LayoutBuilder provide to its builder function?
+    choices:
+      - The pixel density of the screen only
+      - A reference to the native view
+      - The list of all children of the parent
+      - The BoxConstraints of the parent, so the layout can depend on the available space
+    hint: The widget helps to decide based on how much space the parent offers.
+    explanation: LayoutBuilder passes the parent constraints, for example maxWidth, so a widget can choose between layouts such as a single column or two columns.
+    correctChoice: 3
+  - description: Which statements about a master-detail layout in a responsive app are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - On a narrow screen it can show only the list and navigate to the detail page
+      - It requires a separate app for tablets
+      - The decision can be based on the width from MediaQuery or LayoutBuilder constraints
+      - On a wide screen it can show list and detail side by side
+    hint: One widget tree can adapt to the available size.
+    explanation: A responsive app picks the layout at build time based on the available size or orientation, so no separate app is needed for tablets.
+    correctChoices: [0, 2, 3]
+  - description: Which approach is more suitable for a layout that adapts to different screen sizes?
+    choices:
+      - Use fixed width Containers everywhere
+      - Disable rotation of the screen
+      - Use flexible widgets such as Expanded and Flexible and base decisions on the available size
+      - Hardcode pixel positions for one phone model
+    hint: Think about widgets that distribute space relative to what is available.
+    explanation: Expanded and Flexible share the available space of a Row or Column, and combined with size queries they adapt to different devices.
+    correctChoice: 2
+  - description: In a Row, what does wrapping a child in Expanded do?
+    choices:
+      - The child gets the remaining main axis space, shared with other expanded children according to flex
+      - The child ignores the constraints of the parent
+      - The child is hidden when the screen is small
+      - The child is forced to the intrinsic size
+    hint: The widget helps with overflow errors in Rows.
+    explanation: Expanded makes a child fill the remaining space along the main axis, and several Expanded widgets share it by their flex factors.
+    correctChoice: 0
+  - description: Why should responsive decisions be made in the build method instead of once in initState?
+    choices:
+      - The size and orientation can change at runtime, and build is executed again then
+      - It does not matter, both give the same result
+      - initState cannot be used with StatefulWidget
+      - Dart does not allow reading constraints at all
+    hint: Think about rotating the device or resizing a desktop window.
+    explanation: MediaQuery and LayoutBuilder trigger rebuilds when the available space changes, so decisions in build stay up to date. A value computed once in initState would become outdated.
+    correctChoice: 0

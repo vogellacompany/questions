@@ -1,0 +1,67 @@
+categoryId: 1507
+name: CSS styling for the Eclipse IDE
+questions:
+  - description: How do you contribute a new theme which the user can select in the preferences of the Eclipse IDE?
+    choices:
+      - By extending org.eclipse.e4.ui.css.swt.theme with a theme element that points to a CSS file
+      - By editing the e4xmi file of the IDE
+      - By setting a system property in the config.ini file
+      - By adding a CSS file to the dropins folder
+    hint: Themes are defined in the plugin.xml of a plug-in.
+    explanation: Themes are registered through the org.eclipse.e4.ui.css.swt.theme extension point. Each theme has an ID, a label and a pointer to its CSS file.
+    correctChoice: 0
+  - description: Your Eclipse 4 application should allow theme switching with IThemeEngine. What must the product definition contain?
+    choices:
+      - Nothing, the theme engine is always available
+      - The applicationCSS property
+      - The cssTheme property with the ID of the default theme
+      - The preferenceCustomization property
+    hint: The service is only created if a default theme is configured.
+    explanation: Without the cssTheme property of the product extension the theming service is not available at runtime. applicationCSS defines a fixed styling instead.
+    correctChoice: 2
+  - description: You created a plug-in with the extension for org.eclipse.e4.ui.css.swt.theme and css files in a css folder. In the exported IDE the themes are missing. What is the most likely reason?
+    choices:
+      - The extension requires the org.eclipse.ui.ide plug-in
+      - CSS files are not allowed in plug-ins
+      - The themes must be written in uppercase
+      - The css folder is not listed in bin.includes of build.properties
+    hint: The runtime launch works from the workspace, the export only packages what is declared.
+    explanation: The css files must be part of the build output, so the folder has to be listed in bin.includes. Otherwise the theme points to files which do not exist in the exported plug-in.
+    correctChoice: 3
+  - description: You want to add additional styling to the existing dark theme of the Eclipse IDE for your own widgets without replacing the theme. What can you do?
+    choices:
+      - Use the applicationCSS property
+      - Register an additional style sheet for the org.eclipse.e4.ui.css.theme.e4_dark theme in your plugin.xml
+      - Copy the whole dark theme into your plug-in
+      - Edit the CSS files in the org.eclipse.platform plug-in
+    hint: Themes can be extended by other plug-ins.
+    explanation: A plug-in can contribute additional style sheets for a theme ID in the theme extension. The sheets are applied together with the original theme.
+    correctChoice: 1
+  - description: Which statements about styling custom widgets via CSS are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Property handlers can only be registered for the Shell class
+      - A property handler registered via org.eclipse.e4.ui.css.core.propertyHandler maps CSS properties to widget setters
+      - The class AbstractCSSPropertySWTHandler can be extended to implement such a handler
+      - A custom widget must dispose every color it receives from the CSS engine in its own dispose method
+    hint: One extension point and one base class are involved.
+    explanation: A property handler is registered with an adapter, the handler class and the property names, and it can extend AbstractCSSPropertySWTHandler. The handler only maps CSS values to the widget and does not manage the lifecycle of the colors itself.
+    correctChoices: [1, 2]
+  - description: Which tool do you use in the running Eclipse IDE to inspect the CSS properties and classes of widgets?
+    choices:
+      - Plug-in Registry view
+      - CSS spy
+      - Model editor of the IDE
+      - Error Log view
+    hint: It is opened via Window and Spies or via Shift+Alt+F5.
+    explanation: The CSS spy from PDE shows the style settings and the CSS classes of selected widgets. The CSS scratch pad (Shift+Alt+F6) allows you to try out rules interactively.
+    correctChoice: 1
+  - description: You want to prevent users from closing a part in your IDE contribution. What is the right place for that setting, since the old CSS property swt-show-close was removed?
+    choices:
+      - A CSS rule with the property swt-close
+      - A key binding
+      - The cssTheme property of the product
+      - The closeable flag of the MPart in the application model
+    hint: Whether a part can be closed is not a styling concern.
+    explanation: The swt-show-close property is no longer supported by the CSS engine. Whether a part can be closed is part of the application model, controlled by the closeable attribute of the MPart.
+    correctChoice: 3

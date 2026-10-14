@@ -1,0 +1,67 @@
+categoryId: 1608
+name: Databinding
+questions:
+  - description: You want to bind a Text widget and a ComboViewer in your plug-in view to a model with JFace data binding. Which plug-in provides WidgetProperties and ViewerSupport and must therefore be added to the MANIFEST.MF?
+    choices:
+      - org.eclipse.jface.databinding
+      - org.eclipse.swt
+      - org.eclipse.core.databinding.beans
+      - org.eclipse.ui.databinding
+    hint: The plug-in name contains the UI toolkit that provides the viewers.
+    explanation: org.eclipse.jface.databinding contains the SWT and JFace specific data binding classes such as WidgetProperties and ViewerSupport, while org.eclipse.core.databinding.beans only handles Java beans.
+    correctChoice: 0
+  - description: A bean property is bound with bindValue(target, model) to a Text widget. The bean is later changed by a background job through its setter, but the Text widget never shows the new value. What is the most likely cause?
+    choices:
+      - The bean has no default constructor
+      - The bean does not fire PropertyChangeEvents in its setter
+      - The Text widget was created without the SWT.BORDER style
+      - The DataBindingContext was created in the createPartControl method
+    hint: Data binding needs a notification mechanism to learn about model changes.
+    explanation: BeanProperties observes a bean through PropertyChangeListeners. If the setter does not call firePropertyChange (for example via PropertyChangeSupport), the observable never learns about the change.
+    correctChoice: 1
+  - description: In the IDE you build a settings dialog where the model must only be changed when the user presses the Apply button. How do you configure the binding and write the input back?
+    choices:
+      - Use POLICY_NEVER for the target-to-model strategy and call updateTargets() on Apply
+      - Use POLICY_CONVERT for the model-to-target strategy and call updateModels() on Apply
+      - Use POLICY_UPDATE for both strategies and call dispose() on Apply
+      - Use POLICY_ON_REQUEST for the target-to-model strategy and call updateModels() on Apply
+    hint: One policy tracks nothing and updates only when asked, and one DataBindingContext method pushes widget values to the model.
+    explanation: POLICY_ON_REQUEST performs validation, conversion and update only when explicitly requested, and DataBindingContext.updateModels() triggers this for all bindings in the direction target to model.
+    correctChoice: 3
+  - description: Which statements about converters and validators in data binding are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - WizardPageSupport shows the validation status of a DataBindingContext on a wizard page
+      - A single UpdateValueStrategy object is used for both directions of a binding
+      - A validator can reject a value before it is written to the other side of the binding
+      - IConverter can only be implemented as a named class, lambdas are not supported
+    hint: Think about how many strategies bindValue() takes and what a wizard page needs to know about errors.
+    explanation: Validators run before the value is propagated, and WizardPageSupport maps the validation result to the completion state and message of a wizard page. bindValue() takes one strategy per direction, and IConverter.create(Function) creates converters from lambdas.
+    correctChoices: [0, 2]
+  - description: Your Eclipse view shows a form for the currently selected task. When the selection changes, the bindings should stay in place and only the displayed object should be exchanged. Which observable supports this?
+    choices:
+      - AggregateValidationStatus
+      - SelectObservableValue
+      - ComputedValue
+      - WritableValue used with observeDetail
+    hint: You need a holder whose content can be replaced.
+    explanation: A WritableValue holds a reference to an object. Properties observed via observeDetail follow the object in the WritableValue, so setting a new value updates all existing bindings.
+    correctChoice: 3
+  - description: Which statement describes ISideEffect correctly?
+    choices:
+      - It creates a viewer content provider from a list of observables
+      - It converts values between the widget type and the model type
+      - It validates the value of a widget before it is written to the model
+      - It runs code whenever an observable value it read changes, without attaching a listener to a specific component
+    hint: It is a reactive alternative to manually registering listeners.
+    explanation: An ISideEffect tracks the observables it reads and re-runs automatically when one of them changes, and it avoids excessive updates when many events fire quickly.
+    correctChoice: 3
+  - description: Your editor-like part uses a DataBindingContext. How can it mark the part as dirty whenever the user changes bound input?
+    choices:
+      - Call setDirty(true) from a ModifyListener registered on every widget
+      - Bind the dirty state to the Shell title
+      - Register an IChangeListener on the targets of the validation status providers and call setDirty(true) on the MPart
+      - Override the dispose method of the DataBindingContext
+    hint: The context can report changes of all its bindings in one place, so you do not need listeners per widget.
+    explanation: A change listener on the targets of the context's validation status providers is called for every binding change, so the part can mark itself dirty centrally. Individual ModifyListeners would duplicate what data binding already tracks.
+    correctChoice: 2

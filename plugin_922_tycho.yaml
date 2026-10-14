@@ -1,0 +1,76 @@
+categoryId: 41822
+name: IDE - Using a command line build with Maven Tycho
+questions:
+  - description: What is Tycho?
+    choices:
+      - A graphical designer for plug-in manifests
+      - An Eclipse update site mirror
+      - A set of Maven plugins for building Eclipse plug-ins, features and products
+      - A JUnit extension for SWT tests
+    hint: It is part of the Maven ecosystem.
+    explanation: Tycho extends Maven so that Eclipse and OSGi projects can be built headless, for example on a build server.
+    correctChoice: 2
+  - description: How does Tycho find the dependencies of a plug-in?
+    choices:
+      - It reads them from the MANIFEST.MF file and resolves them against the target platform
+      - It requires each dependency to be repeated in the dependencies section of the pom file
+      - It downloads every plug-in from Maven Central
+      - It scans all import statements of the Java sources
+    hint: OSGi metadata already contains the information.
+    explanation: Tycho uses the OSGi metadata and the configured p2 repositories or target platform, so the manifest stays the single source of truth.
+    correctChoice: 0
+  - description: What does registering the Tycho pomless extension in .mvn/extensions.xml enable?
+    choices:
+      - Building standard Eclipse components without a pom.xml in each of them
+      - Building without any Maven installation
+      - Running tests without JUnit
+      - Skipping the compilation of the Java sources
+    hint: The build information is derived from existing files.
+    explanation: With pomless builds Tycho derives the pom model from the MANIFEST.MF and build.properties, so only special modules need their own pom.xml.
+    correctChoice: 0
+  - description: Which packaging type is used for a project that contains JUnit plug-in tests?
+    choices:
+      - eclipse-feature
+      - eclipse-test-plugin
+      - jar
+      - eclipse-repository
+    hint: Such tests run inside an OSGi runtime and need a dedicated Tycho packaging.
+    explanation: The eclipse-test-plugin packaging makes Tycho execute the tests with the tycho-surefire-plugin in an OSGi runtime.
+    correctChoice: 1
+  - description: Which of these test class names is picked up by the default test selection of the tycho-surefire-plugin?
+    choices:
+      - TaskServiceSpec
+      - TaskServiceCheck
+      - TaskServiceIT
+      - TaskServiceTest
+    hint: The defaults use common suffixes and prefixes with the word Test.
+    explanation: By default classes named Test*, *Test, *Tests and *TestCase are selected. Other suffixes require an explicit configuration.
+    correctChoice: 3
+  - description: Which statements about building an Eclipse product with Tycho are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The packaging eclipse-repository can create a p2 update site and the product archives
+      - Tycho replaces the Java compiler with Ant
+      - Tycho resolves bundles from p2 repositories that are configured as target platform
+      - A Tycho build only works inside the Eclipse IDE
+    hint: Tycho is Maven based and headless.
+    explanation: An eclipse-repository module produces the p2 repository and products, and Tycho resolves bundles from p2. It runs from the command line without the IDE and uses a normal Maven build.
+    correctChoices: [0, 2]
+  - description: Which packaging does a normal plug-in module use in a Tycho build?
+    choices:
+      - pom
+      - eclipse-plugin
+      - eclipse-target-definition
+      - eclipse-feature
+    hint: The name matches the Eclipse term for the module type.
+    explanation: A plug-in is built with the eclipse-plugin packaging. Features use eclipse-feature.
+    correctChoice: 1
+  - description: What does the entry pom.model.property.my-property = a-value in build.properties do?
+    choices:
+      - It defines a Java compiler option
+      - It adds a bundle to the target platform
+      - It passes a system property to the test runtime only
+      - It sets a property in the pomless generated pom of that module
+    hint: Pomless builds derive the pom from existing files.
+    explanation: In pomless builds properties with the pom.model.property prefix become properties in the generated pom of the module.
+    correctChoice: 3

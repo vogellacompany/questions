@@ -1,0 +1,67 @@
+categoryId: 1700
+name: Eclipse application life cycle
+questions:
+  - description: Which product property registers a class as lifecycle handler?
+    choices:
+      - lifeCycleURI
+      - appName
+      - applicationXMI
+      - applicationCSS
+    hint: The property value uses a bundleclass:// URI.
+    explanation: The lifeCycleURI property of the org.eclipse.core.runtime.products extension points to the lifecycle class, for example bundleclass://com.vogella.tasks.ui/com.vogella.tasks.ui.lifecycle.Manager.
+    correctChoice: 0
+  - description: When is a method annotated with @PostContextCreate called?
+    choices:
+      - Before the application model is saved
+      - After the application model was loaded
+      - After the first window is shown
+      - After the IEclipseContext of the application was created
+    hint: The method can be used to add objects and services to the application context.
+    explanation: The method is called when the context of the MApplication exists, so you can add objects to it, show a login dialog or prepare services before the model is processed.
+    correctChoice: 3
+  - description: Which lifecycle annotation marks a method that can add elements to the model once it is loaded?
+    choices:
+      - "@PostContextCreate"
+      - "@ProcessAdditions"
+      - "@ProcessRemovals"
+      - "@PreSave"
+    hint: The name describes what the method does with the model.
+    explanation: Methods annotated with ProcessAdditions are called after the model was loaded. Methods annotated with ProcessRemovals are called afterwards to remove elements.
+    correctChoice: 1
+  - description: What is the purpose of a method annotated with @PreSave?
+    choices:
+      - To prevent the application model from being saved
+      - To modify the application model before it is persisted
+      - To save the data of all dirty parts at startup
+      - To create a backup of the workspace
+    hint: The method is called at shutdown.
+    explanation: The @PreSave annotation marks a method that is called before the application model is saved, so you can still clean up or change the model before it is persisted.
+    correctChoice: 1
+  - description: What does the applicationRunning() method of IApplicationContext do?
+    choices:
+      - It closes the static splash screen
+      - It returns the startup parameters
+      - It restarts the application
+      - It starts the application
+    hint: A lifecycle class that shows its own dialog calls it so that two windows are not visible at the same time.
+    explanation: applicationRunning() signals that the application is running and closes the static splash screen, which is useful if you replace it with a login dialog.
+    correctChoice: 0
+  - description: Which statements about lifecycle classes are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - An IApplicationContext can be injected to read the startup arguments
+      - The framework calls the annotated methods, you do not call them yourself
+      - The class has to extend E4Application
+      - The class is registered in the Application.e4xmi file as a handler
+    hint: A lifecycle class is a plain class that works with dependency injection.
+    explanation: The lifecycle class is a plain class registered via the product extension. The framework calls its annotated methods, and IApplicationContext.getArguments() gives access to the startup parameters.
+    correctChoices: [0, 1]
+  - description: What is the instance location of an RCP application, which a lifecycle class can set if the user selected a workspace?
+    choices:
+      - The folder where the application stores its configuration and preferences
+      - The folder from which the application binaries are started
+      - The URL of the update site of the product
+      - The location of the Application.e4xmi file in the plug-in
+    hint: In the Eclipse IDE the user selects it in a dialog at startup.
+    explanation: The instance location is the workspace area. Platform.getInstanceLocation().set(url, false) can set it, as long as it was not set before.
+    correctChoice: 0

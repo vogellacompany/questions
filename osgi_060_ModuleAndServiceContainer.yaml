@@ -1,0 +1,76 @@
+categoryId: 72223
+name: OSGi as module and service container
+questions:
+  - description: Why is the id field of the Task model class declared final in the exercise?
+    choices:
+      - Because a final field is faster to read
+      - Because fields in OSGi bundles must be final
+      - Because the field is used in equals() and hashCode(), so it should stay immutable
+      - Because final fields are required by Declarative Services
+    hint: Think about what happens to an object in a HashSet when a field used for hashing changes.
+    explanation: Changing a field used in equals() and hashCode() can make an object unfindable in hash-based collections. A final id avoids this class of bugs.
+    correctChoice: 2
+  - description: What does the service plug-in need to declare to use the Task model class from another bundle?
+    choices:
+      - An Import-Package entry for the package, which the model bundle must export
+      - A dependency on the consumer bundle
+      - An Export-Package entry for the model package
+      - A copy of the model class in its own source folder
+    hint: The providing bundle makes a package visible, the using bundle requests it.
+    explanation: The model bundle exports its API package, and the service bundle imports it in its MANIFEST.MF so that the framework can wire the two.
+    correctChoice: 0
+  - description: What does enabling "Generate descriptors from annotated sources" in the DS Annotations preferences do?
+    choices:
+      - It generates Javadoc for all components
+      - It generates the OSGi component XML files and the Service-Component header from annotations like @Component
+      - It converts all Java classes to OSGi bundles
+      - It starts the Service Component Runtime in the IDE
+    hint: The framework does not read annotations at runtime.
+    explanation: The annotations are compile-time only. The tooling turns them into OSGI-INF XML files and a manifest header that the Service Component Runtime evaluates.
+    correctChoice: 1
+  - description: Why is the import of org.osgi.service.component.annotations marked as resolution:=optional?
+    choices:
+      - The annotations are only needed at build time, so the bundle must resolve without them at runtime
+      - The Service Component Runtime does not support the package
+      - The annotations are loaded dynamically from the network
+      - The package is deprecated and will be removed
+    hint: The runtime reads generated XML, not the annotations.
+    explanation: The component annotations are not required to run the bundle, since the generated XML contains the metadata. An optional import avoids a needless runtime dependency.
+    correctChoice: 0
+  - description: What is the role of the org.apache.felix.scr bundle in the OSGi runtime of the exercise?
+    choices:
+      - It builds the bundles with Maven
+      - It implements the Service Component Runtime that creates and wires the declared components
+      - It contains the OSGi framework
+      - It provides the OSGi console
+    hint: SCR stands for Service Component Runtime.
+    explanation: SCR reads the component descriptors of the bundles and activates the components, and it injects services into @Reference fields and methods.
+    correctChoice: 1
+  - description: Why is the org.apache.felix.scr bundle configured with a start level and auto-start in the product?
+    choices:
+      - Because the OSGi console requires SCR to be started first
+      - Because bundles in Equinox are only activated on demand and nothing requests a class from SCR directly
+      - Because its start level defines the version of the services
+      - Because start levels are only supported for the SCR bundle
+    hint: Equinox does not activate bundles by itself.
+    explanation: Equinox activates a bundle when a class is requested from it, but no bundle uses SCR classes directly. Without auto-start the declarative services would never be processed.
+    correctChoice: 1
+  - description: Which statements about the properties eclipse.ignoreApp=true and osgi.noShutdown=true are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - They must be added to the MANIFEST.MF of every bundle
+      - eclipse.ignoreApp=true tells Equinox not to try to start an Eclipse application
+      - osgi.noShutdown=true keeps the OSGi framework running after the application ended
+      - osgi.noShutdown=true shuts down all bundles after startup
+    hint: A headless OSGi application has no Eclipse application to run, but should keep running.
+    explanation: The two properties prevent the framework from looking for an Eclipse application and from shutting down immediately. They are runtime configuration, not manifest entries.
+    correctChoices: [1, 2]
+  - description: What is an immediate component in Declarative Services?
+    choices:
+      - A component that can only be used within the IDE
+      - A component that is created at the time the bundle is installed, even if its references are missing
+      - A component that is created lazily when another bundle requests its service
+      - A component without a service interface that is activated as soon as its mandatory references are satisfied
+    hint: Nobody consumes it, so nobody can request it.
+    explanation: A component that provides no service is activated when all of its mandatory dependencies are satisfied, for example a consumer that prints the number of tasks in its @Activate method.
+    correctChoice: 3

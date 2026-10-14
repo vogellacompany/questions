@@ -1,0 +1,76 @@
+categoryId: 1286
+name: IDE - Introduction into Eclipse plug-in development
+questions:
+  - description: What is a runtime Eclipse?
+    choices:
+      - The Java runtime environment that the Eclipse IDE needs to start
+      - The part of the Eclipse installation that contains only the OSGi framework
+      - A second Eclipse IDE instance started from your development IDE to test and debug your plug-ins
+      - A packaged product that you deliver to your end users
+    hint: You start it via Run As from the context menu of your plug-in.
+    explanation: The runtime Eclipse is a new Eclipse instance that contains your workspace plug-ins and lets you test and debug your extensions like a normal Java program.
+    correctChoice: 2
+  - description: A plug-in exists both in your workspace and in the target platform. Which version does the runtime Eclipse use?
+    choices:
+      - The one with the higher qualifier in its version
+      - The one from the workspace
+      - Both are loaded and the first one wins at random
+      - The one from the target platform
+    hint: Think about what you want when you develop and change a plug-in.
+    explanation: Workspace plug-ins take precedence over identical plug-ins from the target platform, so your local changes are what you test.
+    correctChoice: 1
+  - description: What does the launch argument consoleLog do?
+    choices:
+      - It writes log messages of the started application to the Console view of the starting IDE
+      - It disables all logging of the runtime Eclipse
+      - It opens an interactive OSGi console in a separate window
+      - It deletes the log file of the runtime workspace on every start
+    hint: Without it you may see strange behavior but no error message.
+    explanation: With consoleLog the log output of the runtime Eclipse also goes to standard output, so errors appear in the Console view of your development IDE.
+    correctChoice: 0
+  - description: Why should you start an Eclipse application via its product configuration file instead of reusing an old run configuration?
+    choices:
+      - Old run configurations cannot be used a second time
+      - The product file compiles the code faster
+      - Only the product file can start a debugger
+      - Starting via the product updates the run configuration with the current content of the product
+    hint: Think about what happens to a derived artifact when its source changes.
+    explanation: A run configuration is generated from the product. Starting a stored run configuration directly ignores later changes in the product, which is a common cause of confusing errors.
+    correctChoice: 3
+  - description: "A startup fails with \"Could not resolve module ... Unresolved requirement: Require-Bundle\". What is the typical cause?"
+    choices:
+      - The workspace of the runtime Eclipse is locked
+      - The icons folder is missing from build.properties
+      - The Java compiler found a syntax error in your plug-in
+      - A bundle required by your plug-in is missing in the run configuration or product
+    hint: The message names a dependency from the MANIFEST.MF file.
+    explanation: OSGi cannot resolve a bundle if one of its required bundles is not part of the runtime. Add the missing plug-in to the product or a feature it uses and start again via the product.
+    correctChoice: 3
+  - description: Which statements about the target platform are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - It replaces the MANIFEST.MF file of each plug-in
+      - It always has to be identical to the plug-ins of the IDE you develop with
+      - It can be stored in a target definition file and shared with other developers
+      - It defines the plug-ins your workspace plug-ins are compiled and launched against
+    hint: One statement is about content, one about sharing, and two make false claims about coupling.
+    explanation: A target definition lists software sites and plug-ins and can be shared in a project. It is independent from the plug-ins of the development IDE, and it does not replace manifests.
+    correctChoices: [2, 3]
+  - description: What is the purpose of the clearPersistedState launch argument?
+    choices:
+      - It resets the user preferences of the development IDE
+      - It deletes the stored runtime changes of the Eclipse 4 application model
+      - It clears the workspace metadata folder of your projects
+      - It removes all plug-ins from the runtime configuration
+    hint: Your new menu entry does not show up although the code is correct.
+    explanation: Eclipse stores user changes of the application model and restores them at startup. Clearing this state makes sure new model contributions are applied during development.
+    correctChoice: 1
+  - description: What is an Eclipse feature?
+    choices:
+      - A single Java class that adds a menu entry
+      - A group of plug-ins that is installed, updated and referenced as one unit
+      - A configuration file that selects the Java version
+      - A test fragment attached to a host plug-in
+    hint: Products and update sites refer to these units instead of listing every single plug-in.
+    explanation: A feature bundles related plug-ins so that they can be installed, updated and added to a product together.
+    correctChoice: 1

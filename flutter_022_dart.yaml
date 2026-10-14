@@ -1,0 +1,76 @@
+categoryId: 29207
+name: Using the Dart Programming Language
+questions:
+  - description: What is the difference between final and const variables in Dart?
+    choices:
+      - A final variable is a compile-time constant, a const variable can be set only once at run time
+      - Both are identical, const is only used for numbers
+      - A final variable can be set only once, a const variable is a compile-time constant
+      - A final variable can be reassigned, a const variable cannot
+    hint: Think about when the value of each variable has to be known.
+    explanation: A final variable is assigned once and can be initialized at run time. The value of a const variable must be known at compile time.
+    correctChoice: 2
+  - description: How do you declare a String variable that is allowed to hold null in Dart with null safety?
+    choices:
+      - String name = null;
+      - nullable String name;
+      - String name?;
+      - String? name;
+    hint: The question mark is part of the type.
+    explanation: Under sound null safety all types are non-nullable by default. Adding a question mark after the type, as in String?, allows null.
+    correctChoice: 3
+  - description: How do you mark a named constructor parameter as mandatory in Dart with null safety?
+    choices:
+      - By declaring it with the final keyword
+      - By adding the required keyword in front of it
+      - By placing it in square brackets
+      - By adding an exclamation mark after its name
+    hint: Named parameters are optional unless you say otherwise.
+    explanation: Named parameters in curly braces are optional by default. With null safety you add the required keyword to force callers to provide them.
+    correctChoice: 1
+  - description: What does prefixing an identifier with an underscore, such as _counter, do in Dart?
+    choices:
+      - It makes the identifier private to its library, which is usually the file
+      - It makes the variable static
+      - It makes the variable nullable
+      - It makes the variable a compile-time constant
+    hint: Dart has no private keyword.
+    explanation: Dart has no access modifiers like private or protected. A leading underscore restricts the identifier to the library in which it is declared.
+    correctChoice: 0
+  - description: Which statements about the Dart language are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Every value is an object and all classes inherit from Object
+      - Dart is statically typed and var lets the compiler infer the type
+      - Dart has the keywords public, private and protected
+      - A class can extend several classes at the same time
+    hint: Dart uses a different mechanism than keywords for visibility, and it has single inheritance.
+    explanation: Dart is statically typed with type inference, and everything is an object. It has no visibility keywords and supports only single inheritance, with mixins for code reuse.
+    correctChoices: [0, 1]
+  - description: What does the expression x ??= "Hello" do?
+    choices:
+      - It throws an exception if x is null
+      - It always overwrites x with the string
+      - It assigns the string to x only if x is currently null
+      - It compares x with the string and returns a boolean
+    hint: The operator combines the null check and the assignment.
+    explanation: The ??= operator is a null-aware assignment that only assigns the right-hand side when the variable is null.
+    correctChoice: 2
+  - description: "Given the record var user = (name: 'Bob', age: 30); how do you access the age?"
+    choices:
+      - user->age
+      - user[1]
+      - user.get('age')
+      - user.age
+    hint: Fields of a record with names are accessed like properties.
+    explanation: Named record fields are accessed by their name, for example user.age. Positional fields use $1, $2 and so on.
+    correctChoice: 3
+  - description: What does a method with the signature Future<List<Task>> fetchTasks() async tell the caller?
+    choices:
+      - The list is delivered later and the caller can wait for it with await
+      - The method returns a List of Future objects
+      - The method can only be called from the main method
+      - The list is returned immediately and the method blocks the UI until it is filled
+    hint: The Future wraps a result that is not available yet.
+    explanation: A Future represents a value that becomes available later. With async and await the caller continues once the result is there, without blocking the main thread.
+    correctChoice: 0

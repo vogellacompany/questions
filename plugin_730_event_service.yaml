@@ -1,0 +1,76 @@
+categoryId: 1796
+name: Event management system
+questions:
+  - description: Two views of your IDE plug-in should be decoupled but still notify each other about new data. Which approach does the Eclipse platform provide for this?
+    choices:
+      - A publish and subscribe event bus based on the OSGi Event Admin
+      - Direct method calls via static singletons
+      - Sharing a public static field in a utility class
+      - Polling the file system for changes
+    hint: Components should not know each other directly.
+    explanation: The Eclipse event service IEventBroker is built on the OSGi Event Admin and lets components publish and subscribe to topics without referencing each other.
+    correctChoice: 0
+  - description: You call IEventBroker.send() to publish a topic in a UI handler. How does it differ from post()?
+    choices:
+      - send() delivers only to subscribers in the same plug-in
+      - send() delivers asynchronously on a new thread, post() blocks
+      - send() delivers synchronously and blocks the caller until delivery, post() delivers asynchronously
+      - send() works only for String payloads
+    hint: One name sounds like fire and forget.
+    explanation: send() blocks the calling code until the event was delivered, while post() returns immediately and delivers the event asynchronously.
+    correctChoice: 2
+  - description: A view updates a SWT Table when it receives an event which may be sent from a background job. Which injection annotation is the right choice?
+    choices:
+      - "@UIEventTopic, because it ensures notification in the UI thread"
+      - "@Persist, because it stores the event for later"
+      - "@Named, because it routes events to widgets"
+      - "@EventTopic, because it always runs in the main thread"
+    hint: SWT widgets may only be accessed from one specific thread.
+    explanation: "@UIEventTopic guarantees that the annotated method is called in the main thread, so widgets can be updated safely. @EventTopic does not give this guarantee."
+    correctChoice: 0
+  - description: What is a benefit of subscribing to events with dependency injection instead of calling IEventBroker.subscribe()?
+    choices:
+      - Events can be sent to plug-ins which are not started
+      - The framework removes the subscription when the object is disposed
+      - No event topic needs to be defined
+      - The event handler is called more often
+    hint: Think about who is responsible for cleanup.
+    explanation: With injected @EventTopic or @UIEventTopic methods the framework manages the registration and automatically unregisters the object on disposal. With subscribe() you must call unsubscribe() yourself.
+    correctChoice: 1
+  - description: An OSGi service, which is not part of the Eclipse context, sends an event with EventAdmin to a view which uses @UIEventTopic on a method parameter. What must the service do so the parameter receives the payload?
+    choices:
+      - Register the service as a handler with the command service
+      - Use the topic org/eclipse/e4/data
+      - Wrap the payload in an MPart
+      - Put the payload in the event properties under the key org.eclipse.e4.data (IEventBroker.DATA)
+    hint: The injection looks for the payload under one fixed property key.
+    explanation: IEventBroker is based on Event Admin. It reads the payload from the event property org.eclipse.e4.data, which is available as the constant IEventBroker.DATA.
+    correctChoice: 3
+  - description: You want your plug-in to react when the user switches to another perspective in the IDE. In Eclipse 3.x you used an IPerspectiveListener. What do you do in the Eclipse 4 based IDE?
+    choices:
+      - Subscribe to the model event for the selectedElement attribute change of the MPerspectiveStack and read NEW_VALUE and OLD_VALUE
+      - Register a PropertyChangeListener on the Shell
+      - Call EPartService.getActivePerspective() in a timer
+      - Subscribe to the UILifeCycle.ACTIVATE topic only
+    hint: There is no dedicated perspective-changed event, the model attribute change is the event.
+    explanation: Eclipse 4 reports changes of model attributes as events. A perspective switch is a change of the selectedElement attribute of the perspective stack, and the event carries the new and the old perspective.
+    correctChoice: 0
+  - description: Which statements about the event data of model events (UIEvents) are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - UIEvents.isADD() returns false for ADD_MANY events
+      - EventTags.NEW_VALUE always contains a single element, never a list
+      - EventTags.ELEMENT contains the model element associated with the event
+      - EventTags.ATTNAME contains the name of the model attribute which was changed
+    hint: A bulk add of children results in a collection as new value.
+    explanation: ATTNAME names the changed attribute and ELEMENT the affected element. isADD() covers both ADD and ADD_MANY, and NEW_VALUE contains a list for ADD_MANY events, which is why asIterable() is helpful.
+    correctChoices: [2, 3]
+  - description: When does a plug-in need to import the package org.osgi.service.event?
+    choices:
+      - Only for plug-ins which contain a plugin.xml file
+      - Only if the plug-in contains no Activator
+      - Always, when IEventBroker is injected
+      - Only if the plug-in uses OSGi types such as EventHandler or Event directly
+    hint: IEventBroker itself comes from a different plug-in.
+    explanation: IEventBroker is contributed by org.eclipse.e4.core.services. The OSGi package is only required if you use OSGi event types such as EventHandler directly.
+    correctChoice: 3

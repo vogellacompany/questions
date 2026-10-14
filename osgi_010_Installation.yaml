@@ -1,0 +1,76 @@
+categoryId: 72512
+name: Installation and Setup for OSGi development
+questions:
+  - description: What is the difference between the Eclipse SDK download and the Eclipse IDE for Eclipse Committers package regarding the Java runtime?
+    choices:
+      - Neither of them needs a Java runtime
+      - The SDK includes a Java runtime, the Committers package does not
+      - Both of them include a Java runtime
+      - The SDK does not include a Java runtime, the Committers package does
+    hint: One package is the minimal one.
+    explanation: The Eclipse SDK provides the minimal functionality and requires a separately installed Java runtime, while the Committers package ships with one and adds tools such as Git support.
+    correctChoice: 3
+  - description: What is the target platform in Eclipse plug-in and OSGi development?
+    choices:
+      - The Java version used to run the IDE
+      - The set of plug-ins and libraries against which you develop and compile
+      - The operating system on which the application is finally deployed
+      - The server that hosts the update site
+    hint: It defines what is available to your projects at compile time.
+    explanation: The target platform is the set of bundles your workspace projects can use. It is defined by a target definition file or, without one, by the running Eclipse IDE.
+    correctChoice: 1
+  - description: Why is it good practice to use a target definition file instead of the running Eclipse IDE as target platform?
+    choices:
+      - The IDE cannot be used as target platform at all
+      - The target file makes the project run faster at runtime
+      - The target file contains the source code of your bundles
+      - The development no longer depends on the version of the IDE and the file can be shared with all developers
+    hint: Think about a team where everybody has a different IDE installed.
+    explanation: A shared target file gives every developer and the build the same libraries and versions, independent of the installed IDE.
+    correctChoice: 3
+  - description: Which sources can you add as a location to a target definition?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Arbitrary Git branches
+      - Directories with JAR files
+      - Eclipse p2 update sites
+      - Maven repositories (with the Maven extension installed)
+    hint: Think about places that provide bundles or JAR files.
+    explanation: Target locations can be p2 software sites, file system locations and Maven artifacts. A Git branch is a source repository and not a provider of binary bundles.
+    correctChoices: [1, 2, 3]
+  - description: What is the effect of includeMode="planner" for an update site location in a target definition?
+    choices:
+      - The location is ignored during the build
+      - Only the explicitly listed units are included
+      - Dependencies of the selected units are included automatically
+      - The source bundles of all units are removed
+    hint: The alternative value is slicer.
+    explanation: With planner the p2 planner resolves and adds the required dependencies. With slicer only the listed units are added and dependencies are not included automatically.
+    correctChoice: 2
+  - description: What is the benefit of using https://download.eclipse.org/releases/latest as the repository of a target location?
+    choices:
+      - It contains only the bundles of the OSGi framework
+      - It pins the target to a fixed version of every bundle
+      - It always points to the most recent Eclipse release, while a release URL such as releases/2026-06 pins a specific one
+      - It works without a network connection
+    hint: The name of the URL gives it away.
+    explanation: The latest URL follows the newest release, and a release-specific URL lets you develop against a specific release.
+    correctChoice: 2
+  - description: What must you do to use a new target definition for your workspace?
+    choices:
+      - Rename the file to config.ini
+      - Set it as the active target platform, either in the editor or in the Target Platform preferences
+      - Restart the OSGi framework with the -console option
+      - Copy the file to the dropins folder of the IDE
+    hint: Saving the file does not change what your projects compile against.
+    explanation: Activating the target (Set as Active Target Platform) resolves it, downloads the bundles and makes them available to your projects.
+    correctChoice: 1
+  - description: What does the preference "Include all plug-ins from target in Java workspace scope" change?
+    choices:
+      - All target plug-ins are started when the IDE starts
+      - The target plug-ins are copied into each project
+      - Java search and Open Type find classes from all plug-ins of the target platform, not only from your projects
+      - The target platform is updated automatically every day
+    hint: It affects the Java tooling such as the Open Type dialog.
+    explanation: By default only classes from your open projects and their dependencies are searched. The setting adds the whole target platform to the Java search scope.
+    correctChoice: 2

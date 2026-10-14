@@ -1,0 +1,67 @@
+categoryId: 25444
+name: Flutter - Installation
+questions:
+  - description: Which command checks your Flutter installation and reports missing tools or configuration problems?
+    choices:
+      - flutter validate
+      - flutter diagnose
+      - flutter doctor
+      - flutter devices
+    hint: It is a diagnostic command that reports on the whole setup.
+    explanation: flutter doctor inspects the Flutter SDK, the Android toolchain, the editors and connected devices and prints a summary with the issues it found.
+    correctChoice: 2
+  - description: Which tools are required to develop Flutter apps for Android?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Xcode
+      - A computer running macOS
+      - The Flutter SDK
+      - The Android SDK
+    hint: Two of the options are only needed for iOS development.
+    explanation: Android development needs the Flutter SDK and the Android SDK. Xcode and macOS are only required to build iOS apps.
+    correctChoices: [2, 3]
+  - description: On which operating system can you build iOS apps with Flutter?
+    choices:
+      - Windows, Linux and macOS
+      - Any system with Android Studio installed
+      - Linux and macOS only
+      - macOS only
+    hint: The iOS build chain depends on a tool that Apple only ships for its own platform.
+    explanation: iOS apps need Xcode, which only runs on macOS, so iOS builds are only possible on macOS devices.
+    correctChoice: 3
+  - description: Which command lets you view and accept the Android SDK package licenses?
+    choices:
+      - flutter doctor --android-licenses
+      - flutter sdk --licenses
+      - flutter licenses --accept
+      - flutter android --accept-licenses
+    hint: It is an option of the command that complained about the missing licenses.
+    explanation: flutter doctor reports unsigned Android licenses, and flutter doctor --android-licenses shows them and lets you accept them.
+    correctChoice: 0
+  - description: After creating an Android Virtual Device, how can you check that Flutter recognizes it?
+    choices:
+      - Run flutter pub get in the project folder
+      - Run flutter doctor and check the connected device line
+      - Run flutter create in the emulator folder
+      - Run flutter clean and restart the emulator
+    hint: The same command that validates the installation also lists devices.
+    explanation: flutter doctor lists the connected devices, so a running emulator shows up as one available device.
+    correctChoice: 1
+  - description: How do you enable USB debugging on a physical Android phone so that Flutter can use it as a target?
+    choices:
+      - Enable the Developer options by tapping the build number seven times, then switch on USB debugging
+      - Install the Flutter app from the Play Store and pair it
+      - Connect the phone and run flutter doctor --enable-usb
+      - Enable the Android emulator mode in the phone settings
+    hint: The Developer options menu is hidden until you perform a special gesture in the About phone screen.
+    explanation: Tapping the build number seven times unlocks the Developer options, where USB debugging can be enabled.
+    correctChoice: 0
+  - description: How do you check from a terminal that the Dart SDK is installed and available on the path?
+    choices:
+      - dart install --check
+      - dart doctor
+      - dart --version
+      - dart verify
+    hint: Many command line tools report their release with a version option.
+    explanation: dart --version prints the installed Dart SDK version, which also confirms that the executable is found on the path.
+    correctChoice: 2

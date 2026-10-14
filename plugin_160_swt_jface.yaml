@@ -1,0 +1,76 @@
+categoryId: 1444
+name: UI programming for the Eclipse IDE with SWT and JFace
+questions:
+  - description: Which SWT resources must you dispose yourself because they are not disposed with their parent?
+    choices:
+      - Image and Font objects that you created
+      - Composite
+      - Button
+      - Label
+    hint: Widgets follow the parent hierarchy, but operating system resources do not.
+    explanation: Widgets are disposed with their parent. Resources such as Image and Font allocate native handles and must be disposed by the creator, or managed with a LocalResourceManager. Color objects no longer need disposal since Eclipse 4.16.
+    correctChoice: 0
+  - description: A background job updates a Label directly and you get an SWTException "Invalid thread access". What is the correct fix?
+    choices:
+      - Catch the exception and ignore it
+      - Call setVisible(true) before the update
+      - Run the UI update through Display.asyncExec or syncExec
+      - Wrap the update in synchronized
+    hint: SWT widgets may only be accessed from one specific thread.
+    explanation: Widgets can only be accessed from the UI thread. Display.asyncExec and syncExec schedule a Runnable on that thread.
+    correctChoice: 2
+  - description: Which JFace API creates SWT widgets with a fluent builder style, for example TextFactory.newText(SWT.BORDER).create(parent)?
+    choices:
+      - org.eclipse.jface.widgets factories
+      - org.eclipse.swt.custom.StyledText
+      - org.eclipse.swt.layout.GridData
+      - org.eclipse.jface.viewers.Viewer
+    hint: The package name contains the word widgets.
+    explanation: The factories in org.eclipse.jface.widgets, such as TextFactory and ButtonFactory, reduce boilerplate when creating widgets.
+    correctChoice: 0
+  - description: What is the role of a content provider in a JFace TableViewer?
+    choices:
+      - It paints the cell background
+      - It defines the text and image of each cell
+      - It sorts the rows when the user clicks on a header
+      - It converts the input into the elements that the viewer displays
+    hint: The viewer separates how data is obtained from how it is shown.
+    explanation: The content provider adapts the input of the viewer to the elements that are displayed, while the label provider defines how an element is shown. ArrayContentProvider is a common choice for collections.
+    correctChoice: 3
+  - description: How do you get the selected domain object from a ComboViewer?
+    choices:
+      - viewer.getStructuredSelection().getFirstElement()
+      - combo.getText() and parse the result
+      - viewer.getInput()
+      - viewer.getControl().getSelection()
+    hint: A viewer works with model objects, not with strings of the widget.
+    explanation: The selection of a viewer contains the model elements. The first element of the structured selection is the selected object.
+    correctChoice: 0
+  - description: Which approaches for custom widgets are valid in SWT?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Extend Button and change how it is painted
+      - Extend Canvas and draw the widget yourself, for example with a PaintListener
+      - Extend Shell so that the widget fits into any parent
+      - Extend Composite to combine existing widgets into a reusable component
+    hint: SWT restricts which classes may be subclassed.
+    explanation: Composite and Canvas are meant to be extended. Native widgets such as Button reject subclassing, and a Shell is a window and cannot be embedded into a Composite.
+    correctChoices: [1, 3]
+  - description: Which tool lets you design SWT user interfaces visually and keeps the generated code in sync?
+    choices:
+      - Plug-in Spy
+      - Tycho
+      - Model Spy
+      - WindowBuilder
+    hint: The name refers to building windows.
+    explanation: WindowBuilder provides a visual designer for SWT and JFace with two-way synchronization between the design and the source code.
+    correctChoice: 3
+  - description: What does the Nebula project provide?
+    choices:
+      - A remote debugger for SWT applications
+      - Additional SWT widgets, such as a grid or a calendar, beyond the SWT core
+      - A new version of the Java compiler
+      - A replacement for the OSGi runtime
+    hint: It extends the standard widget set.
+    explanation: Nebula is an Eclipse project with extra widgets. You add the required bundles to your target platform and plug-in dependencies to use them.
+    correctChoice: 1

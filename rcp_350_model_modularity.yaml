@@ -1,0 +1,67 @@
+categoryId: 1774
+name: Application model modularity
+questions:
+  - description: How is a model fragment of a plug-in registered with the application?
+    choices:
+      - Via the Model-Fragment header in the MANIFEST.MF file
+      - By copying the fragment file into the Application.e4xmi file
+      - By starting the plug-in manually with the OSGi console
+      - Via the Bundle-Activator header in the MANIFEST.MF file
+    hint: The fragment wizard adds an entry to the manifest of your plug-in.
+    explanation: The Model-Fragment header points to the e4xmi file of the fragment. The plug-in must also be part of the product, otherwise the fragment is not found at runtime.
+    correctChoice: 0
+  - description: What does the Extended Element ID xpath:/ select in a model fragment?
+    choices:
+      - The currently active part
+      - The root of the application model
+      - The first window of the application
+      - The main menu of the application
+    hint: It is an XPath expression, and a single slash is the start of a path.
+    explanation: xpath:/ extends the root element, the MApplication. With a feature name such as commands, handlers or menuContributions you decide to which list of that element the new elements are added.
+    correctChoice: 1
+  - description: What does the Feature Name of a model fragment define?
+    choices:
+      - The file name of the e4xmi file
+      - The label shown in the menu
+      - The name of the plug-in which owns the fragment
+      - The list of the extended element to which the contributed elements are added
+    hint: Examples are commands, handlers, addons and descriptors.
+    explanation: The feature is an attribute of the extended model element, for example the commands list of the application. The elements of the fragment are added to this list.
+    correctChoice: 3
+  - description: Why is a model processor used to remove the existing Exit menu entry, although a fragment is simpler to create?
+    choices:
+      - Fragments are not allowed to contribute menus
+      - A fragment can only add new elements, while a processor can run code to modify or remove existing elements
+      - A fragment can only be used in the Eclipse IDE
+      - A processor starts faster than a fragment
+    hint: Compare what a declarative contribution can express and what Java code can do.
+    explanation: A fragment contributes new elements to the model. A processor is a Java class that gets model elements injected and can change, replace or delete them.
+    correctChoice: 1
+  - description: How is a model processor registered with the Eclipse runtime?
+    choices:
+      - By adding an add-on with the class name to the Application.e4xmi file
+      - Via the org.eclipse.e4.workbench.model extension point
+      - Via the Model-Processor header in the MANIFEST.MF file
+      - By annotating the class with @Component
+    hint: Processors are not part of the model itself, the runtime reads their registration at startup.
+    explanation: The org.eclipse.e4.workbench.model extension point lets you define a processor class, when it runs and which model element IDs are injected into it.
+    correctChoice: 1
+  - description: What does apply set to always mean for a processor registered via the extension point?
+    choices:
+      - It runs on every start of the application and not only when the model is created
+      - It runs every time a part is activated
+      - It runs only the first time the application starts
+      - It is applied to all windows of the application
+    hint: The alternative value is initial.
+    explanation: With always the processor runs at every start, also if the model was restored from the persisted state. With initial it only runs when the model is created.
+    correctChoice: 0
+  - description: Which statements about a part descriptor contributed by a model fragment are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - In the Eclipse IDE, a descriptor with the View tag can be opened via the Show View dialog
+      - The plug-in of the fragment does not have to be part of the feature or product
+      - The View tag is required for the descriptor in a pure RCP application
+      - A part descriptor is a template, so no part is visible until a part is created from it
+    hint: The tag is relevant for the IDE only, and the runtime can only load what the product contains.
+    explanation: A descriptor is only a template for parts. The View tag makes the Eclipse IDE accept it as a view, and a pure RCP application does not need it. The plug-in must be contained in the product to be loaded.
+    correctChoices: [0, 3]

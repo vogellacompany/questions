@@ -1,0 +1,76 @@
+categoryId: 25453
+name: Flutter - Network communication
+questions:
+  - description: What type does http.get return in the http package?
+    choices:
+      - String
+      - Future<Response>
+      - Stream<String>
+      - Response
+    hint: The network call completes later, so the result is wrapped.
+    explanation: http.get returns a Future<Response>. With await you unwrap it and get the Response object with the status code and body.
+    correctChoice: 1
+  - description: Does awaiting a network call block the UI of the Flutter app?
+    choices:
+      - No, the method is suspended and the main thread keeps running
+      - Yes, the main thread is blocked until the response arrives
+      - Only if the request uses the POST method
+      - Yes, but only for requests that return JSON
+    hint: await works together with the event loop.
+    explanation: await suspends only the current async method. The event loop continues to process other events, so the UI stays responsive.
+    correctChoice: 0
+  - description: How does jsonEncode serialize an object of your own class that is not a list, map or primitive value?
+    choices:
+      - It always throws an exception
+      - It calls the toJson method of the object
+      - It calls the toString method of the object
+      - It uses reflection to read all fields
+    hint: Your class has to offer a method for the conversion.
+    explanation: jsonEncode supports lists, maps and primitives out of the box. For other objects it calls toJson, or uses the toEncodable function if one is given.
+    correctChoice: 1
+  - description: Why is the fromJson of a model class often implemented as a factory constructor?
+    choices:
+      - Because it generates the toJson method automatically
+      - Because it runs on a background thread
+      - Because it can prepare values, for example read nested objects and handle null, before it calls the real constructor
+      - Because a factory constructor is the only way to create objects in Dart
+    hint: A normal constructor cannot do work before it initializes the fields.
+    explanation: A factory constructor can run code and return an instance. fromJson uses this to extract nested values, convert types and substitute defaults for null.
+    correctChoice: 2
+  - description: The body of a GitHub issue is null in the JSON if no description was entered. How does the Issue model handle this with null safety?
+    choices:
+      - It skips issues that have no body
+      - It reads json['body'] as String and lets the app crash
+      - It reads json['body'] as String? and falls back to an empty string with ??
+      - It stores the body as dynamic and never checks it
+    hint: The cast must allow null before you can provide a default.
+    explanation: The expression json['body'] as String? ?? '' allows null in the cast and then substitutes an empty string, so the model field can stay non-nullable.
+    correctChoice: 2
+  - description: Why does the GithubService accept an http.Client in its constructor instead of always creating one?
+    choices:
+      - Because http.get cannot be used without a client
+      - Because a fake client can be passed in tests, so no network is needed
+      - Because the client must be shared with all other apps
+      - Because it speeds up JSON parsing
+    hint: Think about how to test the service without calling GitHub.
+    explanation: Injecting the client lets tests supply a fake or mock client with prepared responses, while the app uses a real client by default.
+    correctChoice: 1
+  - description: Why should the Future for a FutureBuilder be created in initState and stored in a field rather than created directly in the build method?
+    choices:
+      - Because build is only called once
+      - Because build can run many times, and each run would start a new request
+      - Because FutureBuilder requires a late field
+      - Because a Future cannot be created outside of initState
+    hint: Rotation, theme changes and parent rebuilds all call build again.
+    explanation: A new Future in build triggers a new request on every rebuild and resets the FutureBuilder to loading. Creating it once in initState avoids this.
+    correctChoice: 1
+  - description: Which statements about reading issues from the GitHub REST API in the exercise are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A response with status 404 should be treated as an empty list of issues
+      - Unauthenticated clients can send an unlimited number of requests
+      - The issues endpoint also returns pull requests, which are recognizable by a pull_request key
+      - Uri.https builds the URI from host, path and query parameters and escapes each part
+    hint: One option is about a rate limit and another about error handling.
+    explanation: GitHub treats pull requests as issues, so the app filters them out. Uri.https escapes its parts. Unauthenticated access is rate limited, and a failed status should raise an exception instead of looking like an empty list.
+    correctChoices: [2, 3]

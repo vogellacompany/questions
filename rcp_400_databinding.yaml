@@ -1,0 +1,76 @@
+categoryId: 1693
+name: Using data binding
+questions:
+  - description: Which factory class creates observables for properties of JFace viewers, for example the current selection of a TableViewer?
+    choices:
+      - PojoProperties
+      - ViewerProperties
+      - BeanProperties
+      - WidgetProperties
+    hint: The class name refers to the type of UI element that is observed.
+    explanation: ViewerProperties provides properties of viewers, for example singleSelection(). WidgetProperties is meant for plain SWT widgets.
+    correctChoice: 1
+  - description: What happens during the initial binding with DataBindingContext.bindValue(target, model)?
+    choices:
+      - The value of the target is copied to the model
+      - The value of the model is copied to the target
+      - Both values are merged into a new object
+      - Nothing is copied until the first change event occurs
+    hint: Think about a Text field that should show the current name of a Person when the dialog opens.
+    explanation: At the start of the binding the model value is propagated to the target (usually a widget), so the UI shows the current state of the model.
+    correctChoice: 1
+  - description: What must a Java bean do so that a bound widget is updated when a setter of the bean is called?
+    choices:
+      - Declare its fields as volatile
+      - Fire property change events, for example via PropertyChangeSupport
+      - Implement the Serializable interface
+      - Extend the class Observable of the JFace data binding framework
+    hint: The framework registers itself as a listener on the bean.
+    explanation: The data binding framework listens to property change events of the bean. Without these events only a unidirectional binding from the widget to the bean is possible.
+    correctChoice: 1
+  - description: Which update policy is used if no UpdateValueStrategy is specified in bindValue()?
+    choices:
+      - POLICY_CONVERT
+      - POLICY_NEVER
+      - POLICY_UPDATE
+      - POLICY_ON_REQUEST
+    hint: The default tracks the source and updates the destination on each change.
+    explanation: POLICY_UPDATE tracks the source observable and automatically validates, converts and updates the destination whenever the source changes.
+    correctChoice: 2
+  - description: Which class creates the content provider and the label provider of a viewer in one call and binds it to an observable list?
+    choices:
+      - ControlDecorationSupport
+      - ViewerSupport
+      - ObservableListContentProvider
+      - WizardPageSupport
+    hint: Its bind() method is called with the viewer, the input and the properties of the columns.
+    explanation: ViewerSupport.bind() sets up the providers and also listens to changes of the elements. ObservableListContentProvider only provides the content.
+    correctChoice: 1
+  - description: Which statements about converters and update strategies are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - IConverter.create() creates a converter from a lambda expression
+      - A converter set for one direction of the binding is also used for the opposite direction
+      - bindValue() accepts one UpdateValueStrategy for each direction of the binding
+      - Validators are called after the value has been written to the destination
+    hint: One strategy configures one direction, and validation protects the destination.
+    explanation: The static IConverter.create() methods accept a function, and the third and fourth parameter of bindValue() are the strategies for the two directions. Validators run before the value is propagated.
+    correctChoices: [0, 2]
+  - description: Why is a WritableValue combined with observeDetail() in a binding?
+    choices:
+      - It validates the bound object against the database
+      - You create the binding once and can exchange the bound object later
+      - It makes the model class thread-safe
+      - It converts the object to a String
+    hint: Think about a details part which receives a new selected object all the time.
+    explanation: A WritableValue holds a reference to another object. If you exchange this reference, the existing bindings use the new object, so you do not have to create the bindings again.
+    correctChoice: 1
+  - description: What is a main advantage of ISideEffect over a manually registered listener?
+    choices:
+      - It validates the data before it is passed on to the model
+      - It reruns automatically when the observables it read change
+      - It runs the code in a separate background thread
+      - It converts values between a widget and a model object
+    hint: The observables are tracked while the supplier of the side effect runs.
+    explanation: An ISideEffect tracks the observables it reads and reacts to their changes, and it avoids excessive updates if many change events arrive in a short time.
+    correctChoice: 1

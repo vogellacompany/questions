@@ -1,0 +1,58 @@
+categoryId: 89731
+name: Setup of the Eclipse IDE for unit testing
+questions:
+  - description: Why does a project for software tests usually use Maven or Gradle?
+    choices:
+      - They manage the required libraries, for example the JUnit libraries
+      - They replace the need for a Java runtime
+      - They compile Java code faster than the Eclipse compiler
+      - They generate test cases automatically
+    hint: Tests need additional Java libraries that are not part of the JDK.
+    explanation: Maven and Gradle declare and download the libraries (such as JUnit) needed to write and run tests, and they run the same build on the command line.
+    correctChoice: 0
+  - description: How many of the two build tools, Maven and Gradle, do you need to install for this setup?
+    choices:
+      - Both of them are required
+      - None, as the Eclipse IDE always includes both
+      - Gradle is required, Maven is optional
+      - Only one of them, depending on the build system you use
+    hint: The two tools solve the same problem.
+    explanation: You can install both, but only the build tool you actually use is required.
+    correctChoice: 3
+  - description: Which statements about installing the Maven or Gradle command line tooling are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - It is required for the Eclipse IDE to compile Java code
+      - It is required to run JUnit tests from the Eclipse IDE
+      - It lets you verify the build independently of IDE settings
+      - It lets you run the same build in a terminal or on a build server
+    hint: Think about what you gain outside of the IDE.
+    explanation: The command line tools are optional helpers for terminal and server builds. Eclipse compiles with its own compiler and runs JUnit tests without them.
+    correctChoices: [2, 3]
+  - description: What is the purpose of the Favorites list in the Java content assist preferences when writing tests?
+    choices:
+      - It stores the test classes you run most often
+      - It marks tests that are excluded from the build
+      - It lists the Maven dependencies used by the project
+      - It lets content assist propose static members such as assertEquals and add the static import
+    hint: Test code uses many static methods from the same classes.
+    explanation: Types added to the content assist favorites make their static methods available in code completion, so Eclipse can add the matching static import for you.
+    correctChoice: 3
+  - description: What do the Save Actions in the Java editor preferences do?
+    choices:
+      - They prevent saving a file that contains compile errors
+      - They run actions such as formatting the code or organizing imports whenever you save a file
+      - They back up the file to a remote repository on every save
+      - They run all tests of the project on every save
+    hint: The name tells you when the actions are triggered.
+    explanation: Save Actions let Eclipse perform configured clean-up operations, such as formatting and organizing imports, during each save.
+    correctChoice: 1
+  - description: What does the Code Mining feature display for method calls in the editor?
+    choices:
+      - The number of tests that cover the method
+      - The Javadoc of the method
+      - The names of the method parameters
+      - The execution time of the method
+    hint: It adds inline annotations to the source code without changing the file.
+    explanation: With parameter name code minings, Eclipse shows the parameter names next to the arguments, which helps when reading test code.
+    correctChoice: 2

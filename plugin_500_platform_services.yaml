@@ -1,0 +1,76 @@
+categoryId: 1795
+name: IDE - Eclipse platform services
+questions:
+  - description: Your plug-in logs frequently with the Eclipse ILog API. Which call is preferable to ILog.get() for performance reasons?
+    choices:
+      - System.getLogger(String)
+      - Platform.getLog(null)
+      - IStatus.getPlugin()
+      - ILog.of(Class) or ILog.of(Bundle)
+    hint: ILog.get() has to find out which plug-in is calling it.
+    explanation: ILog.get() uses a stack walker to determine the calling plug-in. ILog.of(Class) and ILog.of(Bundle) name the plug-in directly and are therefore faster.
+    correctChoice: 3
+  - description: Your product sets the parameter eclipse.log.level=WARNING in its config.ini file. Which messages end up in the log shown in the Error Log view?
+    choices:
+      - Nothing, the parameter only affects the console
+      - Warnings and errors
+      - Information, warnings and errors
+      - Only errors
+    hint: Each level includes the more severe levels.
+    explanation: The log level is a threshold. WARNING logs warnings and errors, INFO additionally logs information messages, and ERROR logs only errors.
+    correctChoice: 1
+  - description: A view in your plug-in should react only if the user selects a Task in another view. How do you receive the selection via dependency injection?
+    choices:
+      - Inject ESelectionService and poll getSelection() in a timer
+      - Annotate a method parameter with @Named(IServiceConstants.ACTIVE_SELECTION) and declare the parameter type as Task
+      - Inject the MPart and read its selection attribute
+      - Register an ISelectionListener on the workbench page in the constructor
+    hint: The selection is stored under a well-known context key and is injected only if the type fits.
+    explanation: ESelectionService stores the selection under the IServiceConstants.ACTIVE_SELECTION key in the context. A method with a matching type for this key is only called when the selection is of that type.
+    correctChoice: 1
+  - description: A method with an injected selection works when the part is selected, but fails with a NullPointerException when the part sits in an unselected tab of a stack and a selection arrives. What is the reason?
+    choices:
+      - The method runs before @PostConstruct, so the widgets are still null
+      - The @PreDestroy method of the part was already called
+      - Selections are only delivered to the first part of a stack
+      - The selection service ignores parts in stacks
+    hint: Eclipse creates the user interface of a part when it becomes visible.
+    explanation: Injection into methods happens before @PostConstruct, and parts in unselected tabs are not rendered yet. The method must check that its widgets exist and the @PostConstruct method must update the UI once it is created.
+    correctChoice: 0
+  - description: Your handler needs to find a part stack, but the IDE has many perspectives containing similar elements. How can you restrict the search of EModelService.findElements() to the current perspective?
+    choices:
+      - Search from the MApplication without any flag
+      - Pass EModelService.IN_ACTIVE_PERSPECTIVE as search flag
+      - Call deleteModelElement() first
+      - Pass EModelService.OUTSIDE_PERSPECTIVE as search flag
+    hint: The flags describe where to look relative to perspectives.
+    explanation: findElements() accepts search flags, and IN_ACTIVE_PERSPECTIVE limits the search to the active perspective. OUTSIDE_PERSPECTIVE searches the elements which are not part of any perspective.
+    correctChoice: 1
+  - description: Which statements about parts that behave like editors are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A part marks itself as dirty by calling setDirty(true) on an injected MDirtyable
+      - The framework saves any part automatically on close, no save method is needed
+      - EPartService.saveAll() calls the @Persist method of every dirty part
+      - The @Persist method of a part is only called by the Eclipse IDE for parts which are declared in plugin.xml
+    hint: Each part is responsible for saving itself, and the part service can trigger it.
+    explanation: A part flags itself dirty via MDirtyable, and the @Persist method does the actual saving. EPartService.saveAll() triggers this method for all dirty parts, no matter how the part was contributed.
+    correctChoices: [0, 2]
+  - description: You open several editor parts from a part descriptor with the Multiple flag set. After closing an editor you still find its part in the application model. How do you remove it from the model on close?
+    choices:
+      - Call setLabel(null) on the part
+      - Remove the Multiple flag from the descriptor
+      - Set the toBeRendered attribute to true
+      - Add the removeOnHide tag to the part descriptor
+    hint: By default closing only hides the part and disposes its widgets. A tag in the Supplementary tab changes this.
+    explanation: Without extra configuration, closing a part sets toBeRendered to false but keeps it in the model. The removeOnHide tag tells the framework to remove it completely.
+    correctChoice: 3
+  - description: You show the Task views in the current perspective via a handler that looks up a stack by ID. In the Debug perspective this fails with a warning in the Error Log view. What is the most likely reason and a good fix?
+    choices:
+      - The ILog API cannot be used inside handlers
+      - The perspective has no stack with that ID, so the handler should fall back to another stack
+      - The Error Log view blocks the creation of new parts, so it must be closed first
+      - Part descriptors cannot be used in the Debug perspective
+    hint: The ID of the stack is specific to the perspective the code was written for.
+    explanation: Perspectives of the IDE have different layouts, so a hard-coded stack ID may not exist. The handler should check for null and fall back to another existing stack instead of assuming one layout.
+    correctChoice: 1

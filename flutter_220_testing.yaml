@@ -1,0 +1,76 @@
+categoryId: 25457
+name: Flutter - Testing
+questions:
+  - description: Which command runs the tests of a Flutter project?
+    choices:
+      - dart compile test
+      - flutter test
+      - flutter run --test
+      - flutter build test
+    hint: The command name is the obvious one.
+    explanation: flutter test runs the test files, by convention located in the test folder and ending with _test.dart.
+    correctChoice: 1
+  - description: Which function declares a test that needs a WidgetTester to build and inspect widgets?
+    choices:
+      - test
+      - testWidgets
+      - widgetTest
+      - group
+    hint: It receives a tester object as parameter.
+    explanation: testWidgets provides a WidgetTester with which you pump widgets, find them and interact with them. test is for plain Dart unit tests.
+    correctChoice: 1
+  - description: In a widget test, what does tester.pump() do?
+    choices:
+      - It triggers a rebuild and renders a single frame
+      - It runs all animations until nothing is scheduled
+      - It waits for a network response
+      - It restarts the app
+    hint: It advances the test by one step only.
+    explanation: pump renders a single frame, which lets you assert intermediate states such as a loading indicator. pumpAndSettle repeats pumping until no more frames are scheduled.
+    correctChoice: 0
+  - description: Why does tester.pumpAndSettle() time out when a CircularProgressIndicator is visible?
+    choices:
+      - pumpAndSettle only works for text widgets
+      - The indicator throws an exception that is swallowed
+      - The indicator blocks the main isolate
+      - The indicator animates forever, so there is always a new frame scheduled
+    hint: Think about what the spinner does while it is on screen.
+    explanation: pumpAndSettle waits until no frames are scheduled anymore, but an endlessly running animation always schedules the next one.
+    correctChoice: 3
+  - description: Which statements about testing code that calls a web service are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Real calls are preferable, since they give identical results on every run
+      - A mocking framework is mandatory, MockClient does not exist
+      - If the service accepts an http.Client, a MockClient from package:http/testing.dart can return prepared responses
+      - Tests against the real service are slow and depend on the network
+    hint: Dependency injection makes the replacement possible.
+    explanation: Injecting the client allows tests to use MockClient with fixed responses, which makes tests fast and repeatable. Real calls are slow, may fail when offline and can return different data.
+    correctChoices: [2, 3]
+  - description: Which matcher call asserts that a Future completes with an error of a specific type?
+    choices:
+      - expect(future, equals(Error))
+      - expect(future, completes)
+      - expect(future, findsOneWidget)
+      - expect(future, throwsA(isA<MyException>()))
+    hint: The matcher name contains the verb for the failure case.
+    explanation: throwsA takes a matcher for the thrown object and isA<T> checks its type. findsOneWidget is a widget finder matcher.
+    correctChoice: 3
+  - description: Why should a test fixture contain the case you want to exclude, such as a pull request in a list of issues?
+    choices:
+      - It lets the test skip the assertion
+      - It makes the test run faster
+      - The test fails if somebody removes the filtering logic
+      - Fixtures must always contain at least two entries
+    hint: A test that would pass even without the filter proves nothing.
+    explanation: With such a fixture, the assertion fails when the filter is removed, so the test actually protects the behavior.
+    correctChoice: 2
+  - description: What does the Dart analyzer configuration in analysis_options.yaml control?
+    choices:
+      - The signing configuration of the release build
+      - Which lint rules are checked by tools like flutter analyze and the IDE
+      - The runtime performance of the app
+      - The list of test files
+    hint: It is evaluated by static analysis.
+    explanation: analysis_options.yaml enables and configures analyzer settings and linter rules so violations of code conventions are reported.
+    correctChoice: 1

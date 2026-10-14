@@ -1,0 +1,76 @@
+categoryId: 67240
+name: Preferences
+questions:
+  - description: Which preference scope should you use for settings that differ per workspace of the Eclipse IDE?
+    choices:
+      - InstanceScope
+      - UserScope
+      - DefaultScope
+      - ConfigurationScope
+    hint: The settings are stored in the .metadata folder of the workspace.
+    explanation: InstanceScope is specific to a workspace. ConfigurationScope is shared per installation, UserScope per user and DefaultScope holds defaults that are not persisted.
+    correctChoice: 0
+  - description: You changed a value with IEclipsePreferences.put(). The value is lost after a restart of the IDE. What is missing?
+    choices:
+      - A call to remove()
+      - A call to flush() to persist the node
+      - A reference to the Activator
+      - A call to clear()
+    hint: The values are held in memory until you save them.
+    explanation: The flush() method writes the preference node to the file system. Without it, the change may not be persisted.
+    correctChoice: 1
+  - description: How do you contribute a preference page to the Eclipse IDE?
+    choices:
+      - By adding a command to the Application.e4xmi
+      - By overriding the Activator
+      - By adding a file to the preferences folder of the workspace
+      - By extending the org.eclipse.ui.preferencePages extension point with a class implementing IWorkbenchPreferencePage
+    hint: This is a 3.x style extension point supported by the IDE.
+    explanation: The IDE provides the org.eclipse.ui.preferencePages extension point, which points to a class that implements IWorkbenchPreferencePage, for example by extending FieldEditorPreferencePage.
+    correctChoice: 3
+  - description: How do you define default values for the preferences of your plug-in in an Eclipse IDE plug-in?
+    choices:
+      - By calling flush() with null
+      - Via a subclass of AbstractPreferenceInitializer registered with the org.eclipse.core.runtime.preferences extension point
+      - By writing them in the MANIFEST.MF
+      - By using the UserScope only
+    hint: The initializer sets defaults in the default scope.
+    explanation: An initializer registered in the org.eclipse.core.runtime.preferences extension point sets the default values. They are returned when the user did not change a preference, and Restore Defaults brings them back.
+    correctChoice: 1
+  - description: Which statements about reacting to preference changes are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - An IPreferenceChangeListener can be registered on an IEclipsePreferences node
+      - Preference changes are never signaled, the views must be polled
+      - An IPropertyChangeListener can be registered on the IPreferenceStore of a preference page
+      - Listeners are removed automatically by the JVM when the view is closed
+    hint: Listeners should be removed by you if you register them manually.
+    explanation: Eclipse offers listeners both on the preference node and on the JFace preference store. Listeners are not removed automatically, so a view should unregister them on disposal.
+    correctChoices: [0, 2]
+  - description: In an Eclipse 4 part you use @Inject @Preference("user") String user. Which preference changes does the framework track and re-inject?
+    choices:
+      - Changes in all scopes
+      - Changes in the instance scope only
+      - Changes in the default scope only
+      - Changes made via the command line only
+    hint: The tracking is limited to the scope where the injected node writes.
+    explanation: The framework tracks changes in the instance scope and re-injects the value, but it does not track the configuration, user and default scopes.
+    correctChoice: 1
+  - description: A plug-in needs to read a preference from another plug-in, for example com.vogella.preferences.page. Which API is suited?
+    choices:
+      - The EModelService
+      - The IPreferencesService
+      - The Activator of the other plug-in
+      - The Shell of the workbench
+    hint: It can query a preference by node path and key with a lookup order.
+    explanation: IPreferencesService allows access to preferences of other plug-ins by node path and key and respects the scope lookup order.
+    correctChoice: 1
+  - description: Where can you register a plugin_customization.ini file with default preference values for a product?
+    choices:
+      - In the build.properties file
+      - In the manifest header Bundle-Localization
+      - In the Application.e4xmi
+      - In the preferenceCustomization property of the product extension
+    hint: The ini file is referenced by the product definition.
+    explanation: The preferenceCustomization property of the org.eclipse.core.runtime.products extension points to the file. Its entries use the format plug-in id slash key equals value.
+    correctChoice: 3

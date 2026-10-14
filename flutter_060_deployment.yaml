@@ -1,0 +1,67 @@
+categoryId: 25458
+name: Flutter - Deployment
+questions:
+  - description: Which command builds an Android App Bundle for the Google Play Store?
+    choices:
+      - flutter build appbundle
+      - flutter build apk
+      - flutter build aab
+      - flutter publish
+    hint: The sub command is the long form of the file type.
+    explanation: flutter build appbundle creates an .aab file, which Google Play requires for publishing. flutter build apk creates an APK for direct installation.
+    correctChoice: 0
+  - description: What does flutter build ipa require?
+    choices:
+      - A rooted Android device
+      - A running Android emulator
+      - A macOS host and an Apple developer setup
+      - Only the Flutter SDK on any operating system
+    hint: The iOS toolchain is bound to one operating system.
+    explanation: iOS apps can only be built on macOS, because they need Xcode. Distribution through TestFlight or the App Store also needs an Apple Developer account.
+    correctChoice: 2
+  - description: What is an upload keystore used for?
+    choices:
+      - It speeds up the build
+      - It contains the Dart source code
+      - It holds the private key that signs the bundle that you upload to Google Play
+      - It stores the app data of the users
+    hint: Google Play expects apps to be digitally signed.
+    explanation: The keystore contains the private key with which the release is signed, so Google Play can verify that updates come from the same developer.
+    correctChoice: 2
+  - description: Which measures protect the keystore and key.properties file?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Commit key.properties to a public repository so the CI can use it
+      - Share the keystore password in the app store listing
+      - Use strong generated passwords and keep an encrypted backup of the keystore
+      - Keep the keystore outside the project directory and ensure that key.properties is ignored by version control
+    hint: Anybody with the key and its passwords could publish updates as you.
+    explanation: The keystore and passwords must stay private and be backed up. Committing them exposes the key, and deleting them later does not remove them from the history.
+    correctChoices: [2, 3]
+  - description: What does the version entry 1.0.0+3 in pubspec.yaml mean?
+    choices:
+      - The user visible version name is 1.0.0 and the internal build number (version code) is 3
+      - 1.0.0 and 3 are two different apps
+      - Version 3 of build 1.0.0
+      - Three releases of version 1.0.0 are bundled
+    hint: One part is for users, the other for the store.
+    explanation: The part before the plus sign is the version name shown to users, the part after it is the build number, which must increase with every upload to Google Play.
+    correctChoice: 0
+  - description: What is Play App Signing useful for?
+    choices:
+      - It removes the need for a Google developer account
+      - It lets Google manage the app signing key, so a lost upload key can be reset
+      - It automatically increases the version code
+      - It signs the Dart code with a Flutter certificate
+    hint: It reduces the damage of losing the upload key.
+    explanation: With Play App Signing, Google holds the app signing key and the developer uses an upload key, which can be replaced through a reset request in the Play Console if it is lost.
+    correctChoice: 1
+  - description: What differs between a debug build and a release build created with flutter build?
+    choices:
+      - Both are identical and only differ in the file name
+      - Release builds always run slower
+      - Debug builds are required for the Play Store
+      - Release builds are compiled ahead of time and optimized, debug builds support hot reload
+    hint: Hot reload is a development feature.
+    explanation: Release builds are optimized AOT compiled builds without development tooling such as hot reload, while debug builds are meant for development.
+    correctChoice: 3

@@ -1,0 +1,76 @@
+categoryId: 25452
+name: Flutter - UI elements
+questions:
+  - description: Which kind of widget do you implement if the widget has to manage data that changes during its lifetime?
+    choices:
+      - A Container with a decoration
+      - A StatelessWidget with non-final fields
+      - A StatefulWidget together with a State class
+      - A MaterialApp with a home property
+    hint: Two classes are needed for this kind of widget.
+    explanation: A StatefulWidget is immutable, and its mutable data lives in the associated State object, which survives rebuilds of the widget.
+    correctChoice: 2
+  - description: What does calling setState in a State class do?
+    choices:
+      - It runs the given function and tells Flutter to rebuild the widget
+      - It marks all fields of the widget as final
+      - It creates a new State object for the widget
+      - It saves the state to the file system
+    hint: Changing a field alone does not update the screen.
+    explanation: setState executes the callback, which should update the state, and schedules a rebuild so that the UI reflects the new values.
+    correctChoice: 0
+  - description: Which widget offers the properties appBar, body, drawer and floatingActionButton for a typical screen?
+    choices:
+      - Scaffold
+      - Container
+      - Column
+      - MaterialApp
+    hint: It provides the basic visual structure of a Material Design screen.
+    explanation: Scaffold provides slots for common elements such as the app bar, drawer, floating action button, snack bars and the body of the screen.
+    correctChoice: 0
+  - description: Why is ListView.builder preferred over ListView with a children list for long lists, for example data loaded from a server?
+    choices:
+      - It supports reordering by default
+      - It sorts the items automatically
+      - It is the only list widget that can show a Card
+      - It creates the item widgets lazily, only for the items that are visible or close to the viewport
+    hint: Think about memory use when the list has thousands of entries.
+    explanation: ListView.builder calls the itemBuilder only for the items that are needed, which keeps long lists fast.
+    correctChoice: 3
+  - description: Two children of a Column are wrapped in Expanded widgets with flex values 2 and 1. How is the available vertical space distributed?
+    choices:
+      - Equally, because flex is ignored in a Column
+      - Roughly 1 to 2 between the two children
+      - The first child gets the full height
+      - Roughly 2 to 1 between the two children
+    hint: A larger flex value claims a larger share.
+    explanation: Expanded distributes the free space in proportion to the flex values, so the child with flex 2 gets twice the space of the child with flex 1.
+    correctChoice: 3
+  - description: Which statements about layout widgets are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Row scrolls automatically if its children are too wide
+      - Spacer is a button that adds a gap when pressed
+      - Wrap moves its children to the next line if the space is not sufficient
+      - Column arranges its children vertically
+    hint: Only the scrollable widgets such as ListView scroll on their own.
+    explanation: Column is the vertical variant of Row, and Wrap breaks its children onto further lines. Row does not scroll and Spacer is an empty flexible gap.
+    correctChoices: [2, 3]
+  - description: Why must every child of a ReorderableListView have a key, for example a ValueKey?
+    choices:
+      - Keys let Flutter identify each item when the order changes
+      - Keys are used to apply the theme to the item
+      - Keys make the list scrollable
+      - Keys are required by ListTile to draw its title
+    hint: Flutter needs to know which element belongs to which data after items are moved.
+    explanation: Keys identify the items across rebuilds, so Flutter can match each element and its state to the moved data instead of to a position.
+    correctChoice: 0
+  - description: The newIndex of the onReorder callback of a ReorderableListView is computed before the dragged item is removed. What do you have to do when an item is moved down in the list (oldIndex smaller than newIndex)?
+    choices:
+      - Insert at newIndex and then call sort
+      - Subtract 1 from newIndex before inserting
+      - Nothing, the indexes can always be used unchanged
+      - Add 1 to newIndex before inserting
+    hint: Removing the item shifts all following items by one position.
+    explanation: After the item is removed, all later positions move up by one, so you reduce newIndex by 1 when the item moves down. Otherwise it lands one position too far.
+    correctChoice: 1

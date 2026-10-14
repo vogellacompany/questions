@@ -1,0 +1,76 @@
+categoryId: 29536
+name: Flutter - Persistence and State Management
+questions:
+  - description: Why is state in Flutter usually kept in a widget above the widgets that use it?
+    choices:
+      - Only the root widget is able to call setState
+      - The Dart compiler rejects state that is declared inside a leaf widget
+      - Child widgets are not allowed to hold any data
+      - Widgets that depend on the data must be rebuilt when it changes, and a shared ancestor can serve several of them
+    hint: Think about what has to happen to the UI when the data changes and who needs the data.
+    explanation: The UI is rebuilt from the state, so data needed by several widgets lives in a common ancestor from which it is made available to the widgets below.
+    correctChoice: 3
+  - description: What does InheritedWidget provide?
+    choices:
+      - A way to start asynchronous work in the background
+      - A base class for all widgets that have a State object
+      - A way for descendant widgets to look up shared data via the BuildContext and to be rebuilt when it changes
+      - A way to persist widget data in a file
+    hint: The provider package is built on top of this idea.
+    explanation: Descendants look up an InheritedWidget through the BuildContext, and updateShouldNotify decides whether dependents are rebuilt when the widget is replaced.
+    correctChoice: 2
+  - description: What happens when notifyListeners() is called on a ChangeNotifier?
+    choices:
+      - The ChangeNotifier writes its fields to disk
+      - All registered listeners are informed, so for example a Consumer can rebuild
+      - The Navigator pops the current route
+      - The whole app is restarted
+    hint: ChangeNotifier follows the observer pattern.
+    explanation: ChangeNotifier keeps a list of listeners and notifyListeners() calls each of them. With the provider package this makes the dependent widgets rebuild.
+    correctChoice: 1
+  - description: Which statements about the provider package are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - ChangeNotifierProvider creates a ChangeNotifier and exposes it to the widgets below it
+      - MultiProvider takes a providers list and avoids deeply nested provider widgets
+      - Provider can only be placed around widgets that extend StatefulWidget
+      - A Provider is always required to be placed below the MaterialApp
+    hint: One statement is about convenience for several providers, one about exposing a model.
+    explanation: ChangeNotifierProvider exposes a ChangeNotifier to its subtree and MultiProvider groups several providers in a list. A provider may wrap any widget, including the MaterialApp itself, so it is not limited to stateful widgets or to positions below the MaterialApp.
+    correctChoices: [0, 1]
+  - description: What is the purpose of the child parameter of the Consumer builder?
+    choices:
+      - It holds the previous value of the model
+      - It passes the BuildContext of the parent widget
+      - It lets you pass a subtree that does not depend on the model, so it is not rebuilt with the Consumer
+      - It selects which provider the Consumer listens to
+    hint: It is an optimization.
+    explanation: A subtree that does not change with the model can be passed as child to the Consumer and is reused by the builder instead of being created again on each notification.
+    correctChoice: 2
+  - description: What is the difference between context.watch<T>() and context.read<T>() in the provider package?
+    choices:
+      - read can only be used in StatelessWidget classes
+      - They are identical and only differ in name
+      - watch makes the widget rebuild when the value changes, read only obtains the current value without listening
+      - watch reads a value from disk, read reads it from memory
+    hint: One of them subscribes to changes.
+    explanation: watch registers the widget as a dependent so it is rebuilt on changes, while read returns the value once. This is why read is used in callbacks such as onPressed.
+    correctChoice: 2
+  - description: Which approach is the most suitable to keep a list of tasks shared by several screens and make all of them update after an addition?
+    choices:
+      - Store the list in a TextEditingController
+      - Keep the list in a ChangeNotifier, provide it with ChangeNotifierProvider and call notifyListeners() after modifying it
+      - Pass the list down through the constructors of every widget and call each widget manually after changes
+      - Declare the list as a global final variable and never touch the UI again
+    hint: Think about which approach avoids tight coupling between widgets and still triggers rebuilds.
+    explanation: A ChangeNotifier model with notifyListeners() lets all dependent widgets rebuild without the widgets knowing each other. Constructor passing leads to highly coupled widgets.
+    correctChoice: 1
+  - description: In which situation does a state change require data persistence in addition to state management?
+    choices:
+      - When the state is of type String
+      - When the state is used by more than one widget
+      - When the state is changed by setState
+      - When the state should survive an app restart
+    hint: Think about what happens to in-memory objects when the process ends.
+    explanation: State management keeps data consistent while the app runs. To survive a restart the data must be written to storage such as files, shared preferences or a database, and loaded again at startup.
+    correctChoice: 3

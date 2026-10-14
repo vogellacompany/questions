@@ -1,0 +1,67 @@
+categoryId: 1696
+name: Event service for message communication
+questions:
+  - description: What is the difference between post() and send() of the IEventBroker?
+    choices:
+      - post() keeps the event for later subscribers, send() does not
+      - post() sends the event asynchronously, send() delivers it synchronously
+      - post() is for Strings, send() is for arbitrary objects
+      - post() delivers to the UI thread only, send() to all threads
+    hint: One of the methods waits until the handlers have processed the event.
+    explanation: post() queues the event and returns immediately, while send() returns after all handlers were called. Both can transport arbitrary objects.
+    correctChoice: 1
+  - description: What is the benefit of @UIEventTopic compared to @EventTopic?
+    choices:
+      - It subscribes to all sub-topics automatically
+      - It delivers the event only once
+      - It calls the method in the main thread, so it can update the user interface
+      - It can receive events from other OSGi bundles
+    hint: The U in the annotation name stands for the user interface.
+    explanation: A method annotated with @UIEventTopic is called in the UI thread, so widgets can be changed directly, even if the event was sent from a background thread.
+    correctChoice: 2
+  - description: Which topic subscribes to all sub-topics of TOPIC_TASKS, such as TOPIC_TASKS/TASKS/NEW?
+    choices:
+      - TOPIC_TASKS/*
+      - TOPIC_TASKS%
+      - TOPIC_TASKS#
+      - TOPIC_TASKS.*
+    hint: Sub-topics are separated by a slash, and a wildcard can follow it.
+    explanation: The topic hierarchy is separated by "/" and a trailing "*" matches all sub-events. Such a topic can only be used for registration, you cannot send events to it.
+    correctChoice: 0
+  - description: You send an event via the OSGi EventAdmin. Under which key do you put the payload so that it is injected into @EventTopic methods of Eclipse parts?
+    choices:
+      - org.eclipse.e4.data
+      - payload
+      - data
+      - org.osgi.service.event.data
+    hint: The key is defined by the IEventBroker.DATA constant.
+    explanation: The IEventBroker is based on the OSGi EventAdmin and expects the payload under the key org.eclipse.e4.data (IEventBroker.DATA).
+    correctChoice: 0
+  - description: Why is subscribing via dependency injection preferred over IEventBroker.subscribe()?
+    choices:
+      - Only injected subscribers can receive events from other bundles
+      - The handler receives more event properties
+      - The framework removes the subscription when the object is disposed
+      - Events are delivered faster
+    hint: Think about who has to clean up when a part is closed.
+    explanation: With injection the framework manages the registration and automatically removes it, so no stale handlers are left. Direct subscription is useful if you want to control the time, for example to receive an event only once.
+    correctChoice: 2
+  - description: In a pure Eclipse 4 application, how can you react to a perspective switch using model events?
+    choices:
+      - Register an IPerspectiveListener with the workbench window
+      - Poll the active perspective from a job every second
+      - Override the switchPerspective() method of the part service
+      - Subscribe to UIEvents.ElementContainer.TOPIC_SELECTEDELEMENT and check if the new value is an MPerspective
+    hint: In the model, a perspective stack selects one of its children.
+    explanation: A perspective switch changes the selectedElement attribute of the MPerspectiveStack, and EventTags.NEW_VALUE contains the new MPerspective.
+    correctChoice: 3
+  - description: Which statements about the event tags and the UIEvents class are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - EventTags.POSITION contains the type of the performed action
+      - UIEvents.isADD(event) is true for the ADD and the ADD_MANY event type
+      - EventTags.NEW_VALUE contains the value before the change
+      - For ADD_MANY events the new value is a list, which UIEvents.asIterable() can handle
+    hint: OLD_VALUE and NEW_VALUE are named from the point of view of the change.
+    explanation: isADD() covers single and multiple additions, and asIterable() handles both a single value and a list. NEW_VALUE holds the value after the change, and the type of action is found in EventTags.TYPE.
+    correctChoices: [1, 3]

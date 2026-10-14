@@ -1,0 +1,76 @@
+categoryId: 207996
+name: Testing plug-ins and RCP applications
+questions:
+  - description: Where are tests for an Eclipse plug-in typically located?
+    choices:
+      - In the META-INF folder of the plug-in
+      - In the feature project of the plug-in
+      - In the same source folder as the production code
+      - In a separate test plug-in or in a fragment project
+    hint: Production plug-ins should not contain test code or test dependencies.
+    explanation: Tests are placed in a separate plug-in or in a fragment. A fragment is merged with its host at runtime, so it can access the internal classes of the host.
+    correctChoice: 3
+  - description: What is the main difference between a standard JUnit test and a JUnit Plug-in test?
+    choices:
+      - A JUnit Plug-in test cannot use assertions
+      - A standard JUnit test runs in the UI thread only
+      - A standard JUnit test is limited to the JUnit 4 framework
+      - A JUnit Plug-in test starts an OSGi runtime with the plug-ins and can access OSGi services and Eclipse features
+    hint: Think about what is available at runtime when only the JVM and the JUnit library are started.
+    explanation: A standard JUnit test is a plain Java application without OSGi. A JUnit Plug-in test launches an Eclipse instance with the test plug-ins, so services, the workbench and dependency injection are available.
+    correctChoice: 3
+  - description: How can you test a part class with dependency injection and without starting the complete RCP application?
+    choices:
+      - Create an IEclipseContext, add the required objects and create the part via ContextInjectionFactory.make
+      - Start the application with the -consoleLog parameter
+      - Annotate the test class with @Inject
+      - Call the @PostConstruct method via reflection on a mocked Display
+    hint: The factory performs the injection the same way as the platform does for a part.
+    explanation: With EclipseContextFactory.create() you create a context, put the required services into it and call ContextInjectionFactory.make(Class, context) to build the object including injection.
+    correctChoice: 0
+  - description: Which statement about testing a part that does not use dependency injection of platform services is correct?
+    choices:
+      - It must always be tested with a JUnit Plug-in test
+      - It can be tested as a plain Java class, and dependencies can be mocked with a library such as Mockito
+      - It cannot be tested because parts depend on the Eclipse framework
+      - It can only be tested in the running application
+    hint: The part classes are POJOs with annotations.
+    explanation: Model-based parts have no hard dependency on the framework. A test can create the object, pass mocked dependencies, and verify the interaction.
+    correctChoice: 1
+  - description: Where do you add the JUnit 5 libraries so that your test plug-ins can use them in the IDE and in the Tycho build?
+    choices:
+      - In the target platform definition
+      - In the product configuration file
+      - In the Application.e4xmi file
+      - In the build.properties file of each test plug-in
+    hint: The target platform defines which libraries are available for compilation and for the build.
+    explanation: The JUnit Jupiter bundles are added to the target definition, for example from the Eclipse release repository, and then required by the test plug-in or fragment.
+    correctChoice: 0
+  - description: Which statements about running tests with Tycho are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Tests of Tycho Surefire run in the compile phase before the packaging
+      - Tycho cannot run JUnit 5 tests
+      - UI tests that need a display require the useUIHarness parameter
+      - Tycho Surefire runs the tests in an OSGi runtime that contains the test plug-in and its dependencies
+    hint: Tycho uses its own Surefire plug-in, which is aware of plug-in dependencies.
+    explanation: The test runtime is an OSGi framework with the test bundle and its dependencies. The UI harness must be enabled for UI tests, tests run in the integration-test phase, and JUnit 5 is supported.
+    correctChoices: [2, 3]
+  - description: How can you select tests by name on the command line in a Tycho build?
+    choices:
+      - With -Dfilter=TaskServiceTest
+      - With -DtestPlugin=TaskServiceTest
+      - With -Dtycho.class=TaskServiceTest
+      - With -Dtest=TaskServiceTest
+    hint: It is the same property as for the Maven Surefire plug-in.
+    explanation: The test property is evaluated by Tycho Surefire and selects test classes by name. If it is set, the includes and excludes configuration is ignored.
+    correctChoice: 3
+  - description: How can you test code that requires an OSGi service from the service registry?
+    choices:
+      - Copy the service class into the test project
+      - Run the test as JUnit Plug-in test and look up the service, for example via a ServiceTracker
+      - Instantiate the OSGi framework manually in a standard JUnit test
+      - Create the service with new and register it in a Java static field
+    hint: The registry only exists in a running OSGi framework.
+    explanation: A JUnit Plug-in test runs inside OSGi, so the test can obtain the BundleContext via FrameworkUtil and use a ServiceTracker to retrieve the service published by Declarative Services.
+    correctChoice: 1

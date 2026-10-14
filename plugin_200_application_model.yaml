@@ -1,0 +1,76 @@
+categoryId: 1287
+name: Working with the application model
+questions:
+  - description: Which model element describes a part (view) blueprint that can be instantiated on demand, for example via Show View?
+    choices:
+      - PartDescriptor
+      - Handler
+      - Perspective
+      - PartStack
+    hint: It is not an instance in the UI but a template stored in the application.
+    explanation: A PartDescriptor describes a part that is created when the user opens it, for example through the Show View dialog.
+    correctChoice: 0
+  - description: How are model fragment files (e4xmi) registered so that the Eclipse IDE reads them at startup?
+    choices:
+      - By declaring them as OSGi services with a Component annotation
+      - Via the org.eclipse.e4.workbench.model extension point in plugin.xml
+      - By placing them in the root folder of the workspace
+      - By listing them in the Bundle-Activator header of the manifest
+    hint: The registration is done in plugin.xml, not in the manifest.
+    explanation: The model fragment is contributed through the org.eclipse.e4.workbench.model extension point, which the workbench evaluates when it assembles the application model.
+    correctChoice: 1
+  - description: Which feature of the application element do you target in a model fragment to add part descriptors?
+    choices:
+      - children
+      - addons
+      - descriptors
+      - handlers
+    hint: The feature name matches what you add.
+    explanation: Part descriptors are stored in the descriptors feature of the application. The fragment names the extended element ID and this feature name.
+    correctChoice: 2
+  - description: What is required so that a part descriptor appears in the Show View dialog?
+    choices:
+      - The part descriptor needs the View tag
+      - The class of the part must extend ViewPart
+      - The part must be placed in a PartSashContainer
+      - The part descriptor must be marked as closeable
+    hint: A tag in the descriptor marks its role.
+    explanation: Part descriptors with the View tag are offered as views. An optional category groups them in a folder of the dialog.
+    correctChoice: 0
+  - description: When do you use a model processor instead of a static model fragment?
+    choices:
+      - When the contribution should be visible in the Show View dialog
+      - When you want to avoid the plugin.xml file
+      - When the model elements have to be created or changed by code at startup
+      - When the contribution should appear in a different plug-in
+    hint: Think about logic that depends on the runtime state.
+    explanation: A model processor is Java code that can read and modify the model, for example with injected MApplication and EModelService, so it fits dynamic or conditional changes.
+    correctChoice: 2
+  - description: Which statements about the application model of the Eclipse IDE are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The IDE has no application model because it is based on the 3.x API
+      - Model elements cannot reference Java classes
+      - Plug-ins can contribute elements to the running IDE via model fragments
+      - Changes made by the user at runtime are persisted and restored at the next start
+    hint: The Eclipse IDE is built on the e4 workbench.
+    explanation: The IDE runs on the e4 application model. Fragments extend it, user changes are stored as a delta, and elements such as parts and handlers reference classes by URI.
+    correctChoices: [2, 3]
+  - description: Which URI format references the implementation class of a part in the application model?
+    choices:
+      - platform:/plugin/com.vogella.tasks.ui.TodoOverviewPart
+      - class://com.vogella.tasks.ui.TodoOverviewPart
+      - bundleclass://com.vogella.tasks.ui/com.vogella.tasks.ui.parts.TodoOverviewPart
+      - java:/com.vogella.tasks.ui.parts.TodoOverviewPart
+    hint: The URI names the bundle first and then the class.
+    explanation: The bundleclass scheme contains the symbolic name of the bundle followed by the fully qualified class name.
+    correctChoice: 2
+  - description: Which URI scheme is typically used to reference an icon file that is contained in a plug-in?
+    choices:
+      - icon:/<bundle symbolic name>/file.png
+      - file:/icons/file.png
+      - platform:/plugin/<bundle symbolic name>/icons/file.png
+      - bundleclass://<bundle symbolic name>/icons/file.png
+    hint: The same bundle name appears in the URI, but a different scheme than for classes.
+    explanation: Resources of a plug-in are addressed via platform:/plugin/ followed by the bundle symbolic name and the path inside the bundle.
+    correctChoice: 2

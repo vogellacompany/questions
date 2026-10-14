@@ -1,0 +1,67 @@
+categoryId: 1697
+name: Extending and modifying the Eclipse context
+questions:
+  - description: What does IEclipseContext.modify(key, value) do?
+    choices:
+      - It copies the value to all child contexts
+      - It searches up the context hierarchy for the context defining the key and changes the value there
+      - It always sets the value in the local context only
+      - It removes the key from all contexts
+    hint: Compare it with set(), which always works on the context it is called on.
+    explanation: modify() walks up the hierarchy to the context that defines the variable. If there is no such context, the value is set in the starting context. An existing key must have been declared modifiable.
+    correctChoice: 1
+  - description: What does the @Creatable annotation tell the Eclipse DI container?
+    choices:
+      - The class is registered as an OSGi service
+      - The class is added to the application model
+      - The class is instantiated at application startup
+      - The container may create an instance if none is found in the context
+    hint: It makes a class injectable without registering an instance first.
+    explanation: With @Creatable the container creates a new instance on demand if it finds none in the context. To keep a single instance in the application context, add @Singleton.
+    correctChoice: 3
+  - description: Which call creates an object and performs dependency injection on it based on a given IEclipseContext?
+    choices:
+      - ContextInjectionFactory.make()
+      - EclipseContextFactory.create()
+      - IEclipseContext.get()
+      - IEclipseContext.createChild()
+    hint: A factory creates the object, not the context.
+    explanation: ContextInjectionFactory.make(Class, IEclipseContext) instantiates the class and injects the values found in the context hierarchy. EclipseContextFactory.create() only creates a context.
+    correctChoice: 0
+  - description: When does the Eclipse runtime call the compute() method of a context function?
+    choices:
+      - When the user activates a part
+      - When an object is requested for its key and the context contains no value for it
+      - When the application starts, for every registered context function
+      - Whenever a key is changed in any context
+    hint: A context function creates objects lazily.
+    explanation: A context function is registered for a key via the service.context.key property. If injection finds no object for this key, compute() is called to create it.
+    correctChoice: 1
+  - description: Which statements about context functions are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A context function creates its object lazily, only when it is requested
+      - A context function is declared in the Application.e4xmi file
+      - The created object is automatically stored in the context for later requests
+      - A context function can access the IEclipseContext of the requester
+    hint: If the created object should be reused, the function has to do something itself.
+    explanation: Context functions are OSGi services that are lazy and receive the requesting context. They must put the object into a context themselves if it should be reused.
+    correctChoices: [0, 3]
+  - description: How can a handler change what happens when the user closes a window?
+    choices:
+      - By setting its own IWindowCloseHandler under the IWindowCloseHandler key in the window context
+      - By registering a shutdown hook in the MANIFEST.MF
+      - By removing the window from the application model
+      - By implementing the IWorkbenchListener interface
+    hint: The default behavior is itself an object in the context of the window.
+    explanation: The renderer puts a default IWindowCloseHandler into the context of the MWindow. If you set another object with the same key, your handler is used instead.
+    correctChoice: 0
+  - description: What happens when the changed() method of a RunAndTrack object returns false?
+    choices:
+      - The RunAndTrack is unregistered from change tracking
+      - The context is disposed
+      - The method is called again immediately
+      - An exception is thrown
+    hint: The return value tells the context whether to continue.
+    explanation: A RunAndTrack is called immediately and whenever a context value it accessed changes. If changed() returns false it is removed from tracking, so it does not need to be unregistered explicitly.
+    correctChoice: 0

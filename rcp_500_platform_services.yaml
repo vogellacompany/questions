@@ -1,0 +1,77 @@
+categoryId: 1694
+name: Using Eclipse platform services
+questions:
+  - description: A method has the parameter "@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Task task". When does the framework call it?
+    choices:
+      - Whenever any part is activated
+      - When the current selection is a Task
+      - Once at startup with the first selected object
+      - Only when the user selects a menu entry
+    hint: The framework injects the selection only if it fits the requested type.
+    explanation: The active selection is stored under the ACTIVE_SELECTION key. The method is called when the selection changes and its type matches the parameter type.
+    correctChoice: 1
+  - description: What does EPartService.saveAll(false) do?
+    choices:
+      - It marks all parts as clean
+      - It calls the method annotated with @Persist of every dirty part
+      - It saves the application model to the file system
+      - It closes all parts without saving them
+    hint: A part is responsible for saving its own data.
+    explanation: The part service looks for dirty parts and calls their @Persist method. The part then saves its data and sets the dirty state back to false.
+    correctChoice: 1
+  - description: What does the Multiple attribute of a part descriptor control?
+    choices:
+      - Whether the part can be placed in several part stacks at once
+      - Whether the part is visible in several perspectives
+      - Whether the part can select several objects in the UI
+      - Whether more than one instance of the part can be created from the descriptor
+    hint: Think about opening several editors of the same kind.
+    explanation: A part descriptor is a template. If Multiple is set, several parts can be created from the same descriptor, which is how multiple editors of the same kind are implemented.
+    correctChoice: 3
+  - description: By default, a closed part stays in the application model with toBeRendered set to false. Which tag on the part descriptor removes created parts from the model when they are closed?
+    choices:
+      - NoMove
+      - Minimized
+      - removeOnHide
+      - NoAutoCollapse
+    hint: The name describes what happens when the part is hidden.
+    explanation: The removeOnHide tag tells the framework to remove the part from the model instead of only hiding it, so closed editors do not pile up in the model.
+    correctChoice: 2
+  - description: Which statements about ECommandService and EHandlerService are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - EHandlerService can assign a handler to a command at runtime via activateHandler()
+      - A command without any active handler can still be executed
+      - EHandlerService.executeHandler() only works for handlers registered in a plugin.xml file
+      - ECommandService.createCommand() creates a ParameterizedCommand for a command ID and its parameters
+    hint: The command service describes commands, the handler service connects and runs handlers.
+    explanation: The command service creates parameterized commands, and the handler service activates handlers and executes them. Without a handler, canExecute fails, and handlers can come from the application model or from code.
+    correctChoices: [0, 3]
+  - description: Which call switches to another perspective at runtime?
+    choices:
+      - ESelectionService.setPerspective(MPerspective)
+      - IEventBroker.switchTo(MPerspective)
+      - ECommandService.activatePerspective(MPerspective)
+      - EPartService.switchPerspective(MPerspective)
+    hint: Perspectives are searched via the model service, but switching is done by the service which also handles parts.
+    explanation: EPartService provides switchPerspective(). You typically find the MPerspective via EModelService.find() and pass it to this method.
+    correctChoice: 3
+  - description: How do you define the initial share of space of two children in a part sash container?
+    choices:
+      - With the Minimized tag on the smaller child
+      - With the width of the parts in the part descriptor
+      - With the Weight attribute of the sash container
+      - With the container data attribute of each child, which holds relative values
+    hint: Each child describes its own share.
+    explanation: The container data attribute of the children contains relative weights, for example 3000 and 7000 for a 30 to 70 split. You can also change them at runtime with the setContainerData() method.
+    correctChoice: 3
+  - description: Which statements about the Eclipse logging with ILog are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The log of each plug-in ends up in the platform log, which the Error Log view shows
+      - Log messages have to be translated, because they are shown to the end user
+      - The log level is configured in the MANIFEST.MF file of each plug-in
+      - ILog.get() returns the log of the plug-in that contains the calling class
+    hint: The log is meant for diagnosing problems in the field, and the level is a setting of the whole application.
+    explanation: Each plug-in has its own log, but all entries are written to the platform log file. Messages are for developers and support and need no translation. The level is set via eclipse.log.level in the config.ini file.
+    correctChoices: [0, 3]

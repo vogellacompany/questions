@@ -1,0 +1,76 @@
+categoryId: 5405
+name: Programming Java with the Eclipse IDE
+questions:
+  - description: What is the Eclipse workspace?
+    choices:
+      - A location on disk where Eclipse stores metadata such as preferences and logs and, optionally, your projects
+      - A view that lists all open editors
+      - The file in which a Java class is stored
+      - A plug-in that compiles Java code
+    hint: Eclipse asks you for it at startup.
+    explanation: The workspace is a directory with the metadata of the IDE, for example preferences and logs. Projects can be stored inside or outside of it. You choose it when you start Eclipse or via File > Switch Workspace.
+    correctChoice: 0
+  - description: What is a perspective in the Eclipse IDE?
+    choices:
+      - A Java compiler setting
+      - A saved Java project configuration
+      - A predefined arrangement of views and editors for a certain task, such as the Java or the Debug perspective
+      - A type of Java refactoring
+    hint: Switching between coding and debugging is a typical use.
+    explanation: A perspective groups views and editors in a layout for a task. Open editors are shared between perspectives.
+    correctChoice: 2
+  - description: You closed several views and your Java perspective looks wrong. How do you restore its default layout?
+    choices:
+      - Reinstall the Eclipse IDE
+      - Select Window > Perspective > Reset Perspective
+      - Delete the workspace folder
+      - Restart the computer
+    hint: The command is in the Window menu.
+    explanation: Reset Perspective restores the original arrangement of the current perspective. You can also reopen single views via Window > Show View.
+    correctChoice: 1
+  - description: In which order do you typically create the elements of a first Java program in the Eclipse IDE?
+    choices:
+      - Class, package, project
+      - Project, class, package
+      - Package, project, class
+      - Project, package, class
+    hint: Each element is created inside the previous one.
+    explanation: You create a Java project first, then a package in its src folder and then a class in that package. Run it via Run As > Java Application and read the output in the Console view.
+    correctChoice: 3
+  - description: Which shortcut shows Quick Fix proposals for the problem at the cursor in the Java editor?
+    choices:
+      - Ctrl+O
+      - Ctrl+Shift+T
+      - Ctrl+Space
+      - Ctrl+1
+    hint: It is the shortcut right at the start of the digits on the keyboard.
+    explanation: Ctrl+1 opens Quick Fix and Quick Assist. Ctrl+Space is content assist, Ctrl+Shift+T opens the Open Type dialog and Ctrl+O the Quick Outline.
+    correctChoice: 3
+  - description: Which statements about content assist (Ctrl+Space) are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - It automatically saves all editors
+      - It can only complete keywords of the Java language
+      - Typing syso and pressing Ctrl+Space inserts System.out.println()
+      - After typing an object name and a dot, it proposes the methods of the object
+    hint: It is context sensitive and works with templates and members.
+    explanation: Content assist proposes templates like syso and members of an object after the dot. It does not save files and is not limited to keywords.
+    correctChoices: [2, 3]
+  - description: Your class uses List but the editor marks it as an error because the import is missing. What is the quickest way to fix it for the whole file?
+    choices:
+      - Select Refactor > Rename
+      - Select Run As > Java Application
+      - Close and reopen the project
+      - Select Source > Organize Imports
+    hint: The command is in the Source menu.
+    explanation: Organize Imports adds missing imports and removes unused ones. The shortcut is Ctrl+Shift+O.
+    correctChoice: 3
+  - description: What does a refactoring such as Rename in the Eclipse IDE do?
+    choices:
+      - It deletes the old class and keeps no references
+      - It renames only the file on disk, not the references
+      - It restructures the code without changing its behavior and updates all references in the workspace
+      - It changes the behavior of the code and updates the tests
+    hint: The goal of a refactoring is to improve the structure, not to add features.
+    explanation: Refactoring restructures the code while the behavior stays the same. The Eclipse Rename refactoring updates all references in the workspace, so the code still compiles.
+    correctChoice: 2

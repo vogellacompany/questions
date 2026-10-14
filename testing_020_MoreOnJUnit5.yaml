@@ -1,0 +1,77 @@
+categoryId: 89776
+name: More on JUnit 5
+questions:
+  - description: What happens to a test when an assumption such as Assumptions.assumeTrue fails?
+    choices:
+      - The test is repeated until the assumption holds
+      - The test is aborted and not reported as failed
+      - The test is reported as failed
+      - The whole test class is deleted
+    hint: Assumptions express preconditions, for example a certain operating system.
+    explanation: A failed assumption aborts the test without marking it as failed, so the test is reported as skipped. This is useful for tests that only make sense in a given environment.
+    correctChoice: 1
+  - description: How do you verify in JUnit 5 that code throws an exception and check its message?
+    choices:
+      - Add the exception to the throws clause of the test method
+      - Use the expected attribute of the @Test annotation
+      - Call assertThrows, which returns the thrown exception for further assertions
+      - Use a try block and call fail() in the catch block
+    hint: The assertion returns something you can inspect.
+    explanation: assertThrows takes the expected exception type and an executable, and it returns the caught exception, so you can assert on getMessage(). The expected attribute belongs to JUnit 4.
+    correctChoice: 2
+  - description: Which statements about @Nested tests in JUnit 5 are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The inner class must be a non-static inner class
+      - The inner class must extend the outer test class
+      - They group related tests, which the test report shows as a group
+      - The outer class lifecycle methods like @BeforeEach are not executed for nested tests
+    hint: Think about how Java inner classes relate to their outer instance.
+    explanation: A nested test class is a non-static inner class, and test reports show its tests grouped. Because it has an outer instance, the outer @BeforeEach methods run before the nested tests too.
+    correctChoices: [0, 2]
+  - description: What is the purpose of the @Tag annotation?
+    choices:
+      - It gives a test a readable name in the report
+      - It labels tests so that you can include or exclude them when running tests
+      - It disables a test
+      - It defines the order in which tests are executed
+    hint: A label such as fast or slow can be selected in the run configuration.
+    explanation: Tags categorize tests. In the Eclipse run configuration or in the build tool you can run only the tests with, or without, certain tags.
+    correctChoice: 1
+  - description: What must a method annotated with @TestFactory return to create dynamic tests?
+    choices:
+      - A Stream, Collection, Iterable or Iterator of DynamicTest
+      - A boolean
+      - A String array with the test names
+      - A single Executable
+    hint: The runtime needs several test instances from one method.
+    explanation: A @TestFactory method returns a collection-like structure of DynamicTest objects, each created for example via DynamicTest.dynamicTest(name, executable).
+    correctChoice: 0
+  - description: Which source annotation supplies several arguments per invocation to a parameterized test, for example the values 1, 2 and 2 as separate parameters?
+    choices:
+      - "@NullSource"
+      - "@CsvSource"
+      - "@EnumSource"
+      - "@ValueSource"
+    hint: One of them supplies exactly one argument per invocation.
+    explanation: "@CsvSource splits each row into several arguments, while @ValueSource provides a single value per invocation. Parameterized tests also require the junit-jupiter-params dependency."
+    correctChoice: 1
+  - description: What does a method parameter annotated with @TempDir provide?
+    choices:
+      - A temporary directory that JUnit creates for the test and deletes afterwards
+      - A mocked file system that never touches the disk
+      - A copy of the production database for the test
+      - A file that is kept between test runs for caching
+    hint: You do not have to clean up manually.
+    explanation: The @TempDir extension injects a Path or File for a fresh temporary directory and removes it with its content after the test.
+    correctChoice: 0
+  - description: Which statements about writing JUnit 5 extensions are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A ParameterResolver uses supportsParameter to decide whether it can resolve a parameter
+      - An extension is registered for a test class with @ExtendWith
+      - An extension must extend an abstract base class called TestCase
+      - A test class can use at most one extension
+    hint: Extensions are built from small interfaces and attached via an annotation.
+    explanation: JUnit 5 extensions implement interfaces such as ParameterResolver, BeforeEachCallback or TestExecutionExceptionHandler and are registered with @ExtendWith. A class can use several extensions.
+    correctChoices: [0, 1]

@@ -1,0 +1,67 @@
+categoryId: 29309
+name: Flutter - Building a GitHub Client
+questions:
+  - description: Why is the issue list entry implemented as its own StatelessWidget instead of repeating the code in the list?
+    choices:
+      - It avoids the need for a Scaffold
+      - Stateless widgets are the only widgets that can show text
+      - Flutter requires every ListTile to be in a separate file
+      - It makes the entry reusable and keeps the list code small
+    hint: Think about how widgets are composed in Flutter.
+    explanation: Widgets are composed from smaller widgets. A dedicated widget for a list entry can be reused and tested, and the list stays readable.
+    correctChoice: 3
+  - description: What does ListView.builder do with itemCount and itemBuilder?
+    choices:
+      - It sorts the list by itemCount
+      - It creates all itemCount widgets immediately and keeps them in memory
+      - It calls itemBuilder for each index up to itemCount, creating the entries on demand
+      - It calls itemBuilder exactly once
+    hint: The builder receives an index.
+    explanation: itemBuilder is called with a BuildContext and an index for the entries which are needed, and itemCount tells the list how many entries exist.
+    correctChoice: 2
+  - description: What does a FutureBuilder do?
+    choices:
+      - It blocks the UI until the Future completes
+      - It runs a Future in an isolate
+      - It converts a Future to a Stream
+      - It rebuilds based on the state of a Future, so you can show loading, error and data states
+    hint: Its builder receives an AsyncSnapshot.
+    explanation: FutureBuilder rebuilds when the Future completes and gives the builder an AsyncSnapshot with the connection state, data or error.
+    correctChoice: 3
+  - description: Which statements about the use of FutureBuilder in the issue list are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The Future should be created in build so that it is always fresh
+      - Calling the method that creates the Future directly in build triggers a new request on every rebuild
+      - snapshot.hasData and snapshot.hasError allow to distinguish the data, error and loading cases
+      - The FutureBuilder caches the Future result across rebuilds on its own, even when a new Future instance is passed
+    hint: Think about when build is executed.
+    explanation: The snapshot tells which case applies. If the Future is created in build it is created again for each rebuild, so it should be created once, for example in initState, and passed to the builder.
+    correctChoices: [1, 2]
+  - description: How does the app read the GitHub issues from the REST API?
+    choices:
+      - By running git clone on the device
+      - By importing the GitHub server code
+      - By sending an HTTP GET request with the http package and decoding the JSON body with jsonDecode
+      - By opening a socket to port 22
+    hint: The API returns JSON over HTTP.
+    explanation: The http package performs the request, the status code is checked, and jsonDecode converts the response body into lists and maps which are mapped to the data class.
+    correctChoice: 2
+  - description: Why should the status code of the response be checked before the JSON is converted into issues?
+    choices:
+      - The http package throws an exception for every status code
+      - The status code is needed to sort the list
+      - A failed request, for example due to rate limiting, returns an error body instead of the expected list
+      - jsonDecode only works for status codes above 500
+    hint: GitHub limits the number of unauthenticated calls.
+    explanation: A response with an error status contains different JSON than the expected list, so the code must report an error instead of trying to map it to issues.
+    correctChoice: 2
+  - description: How is the selected issue passed to a detail page?
+    choices:
+      - Via a global variable that the Navigator reads
+      - By converting the issue to a Future
+      - By calling setState on the list
+      - By pushing a MaterialPageRoute whose builder creates the detail page with the issue as constructor parameter
+    hint: Navigator.push needs a route.
+    explanation: Navigator.push with MaterialPageRoute builds the detail widget, and the issue is handed over as a constructor parameter.
+    correctChoice: 3

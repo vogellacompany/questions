@@ -1,0 +1,76 @@
+categoryId: 72676
+name: More on OSGi
+questions:
+  - description: Which OSGi console command shows the unresolved dependencies of a bundle?
+    choices:
+      - start
+      - scr:list
+      - diag
+      - ss
+    hint: The command name is short for diagnose.
+    explanation: diag <id> reports why a bundle cannot be resolved, for example a missing package. The command ss lists the bundles with their state and scr:list lists the declarative service components.
+    correctChoice: 2
+  - description: How do you add a new command to the Equinox OSGi console from a bundle?
+    choices:
+      - Register an OSGi component that implements CommandProvider and name its methods with a leading underscore
+      - Add the command name to the config.ini file
+      - Extend the class java.lang.Runtime
+      - Create a file with the command name in the OSGI-INF folder
+    hint: The console discovers commands via the service registry.
+    explanation: A CommandProvider registered as a service contributes methods such as _add, which become the console command add. The CommandInterpreter reads the arguments.
+    correctChoice: 0
+  - description: Why is a fragment a good choice for a test project of a bundle that does not export its implementation packages?
+    choices:
+      - Fragments are loaded by a separate class loader with fewer restrictions
+      - Fragments do not need a manifest
+      - A fragment is attached to its host and shares its class loader, so tests can access the non-exported classes
+      - Fragments are started before all other bundles
+    hint: The fragment becomes part of the host bundle.
+    explanation: A fragment contributes its content to the host bundle at resolution, so the tests see the internal packages without them being exported as API.
+    correctChoice: 2
+  - description: How does an integration test in an OSGi environment typically obtain a service that is created by Declarative Services?
+    choices:
+      - By calling the constructor of the implementation class
+      - By using @Inject from JSR 330
+      - By using a ServiceTracker with the BundleContext obtained via FrameworkUtil.getBundle
+      - By reading the component XML file
+    hint: The test wants the instance the framework created, not a new one.
+    explanation: The test looks the service up in the service registry, for example with a ServiceTracker. This verifies that the runtime really created and registered the component.
+    correctChoice: 2
+  - description: What does the Integer suffix mean in the component property "parallelUpdates:Integer=3"?
+    choices:
+      - The property is limited to three digits
+      - The property is only visible for integer-typed references
+      - The value is converted to an Integer instead of being passed as a String
+      - The suffix is just a comment and ignored
+    hint: Properties are Strings by default.
+    explanation: In @Component(property=...) the type after the colon defines the type of the value, so the activate method receives an Integer in its properties map.
+    correctChoice: 2
+  - description: Which statements about the OSGi Event Admin service are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - An event handler is a service that registers for topics with the event.topics property
+      - postEvent sends an event asynchronously
+      - sendEvent sends an event asynchronously
+      - Topics are separated by dots and wildcards are not allowed
+    hint: Think about the registration property and the two ways to deliver an event.
+    explanation: Handlers implement EventHandler and are registered as services with the event.topics property, where a trailing * matches subtopics. postEvent is asynchronous and sendEvent is synchronous. Topic levels are separated by slashes.
+    correctChoices: [0, 1]
+  - description: How does a Declarative Services component publish a servlet with the HTTP Whiteboard pattern?
+    choices:
+      - By running the bundle inside a WAR container
+      - By registering the servlet as a Servlet service with a property such as osgi.http.whiteboard.servlet.pattern
+      - By adding the servlet to a web.xml file
+      - By calling HttpService.registerServlet in the constructor
+    hint: The HTTP server watches the service registry.
+    explanation: The whiteboard implementation tracks Servlet services and publishes them for the URL patterns defined by the service properties, so a @Component with service=Servlet.class and the pattern property is enough.
+    correctChoice: 1
+  - description: What do the parameters in "java -jar plugins/org.eclipse.osgi_*.jar -configuration ./configuration -console" do?
+    choices:
+      - Both parameters are ignored without a native launcher
+      - -configuration names the folder with the config.ini of the framework, -console opens the OSGi console
+      - -configuration selects the product, -console starts the web console
+      - -configuration compiles the bundles, -console prints the Maven log
+    hint: The framework needs to find its startup configuration.
+    explanation: The configuration folder holds the config.ini with the bundles to start, and -console opens the interactive console, which is needed here because no other starter exists.
+    correctChoice: 1

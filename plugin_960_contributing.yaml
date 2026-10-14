@@ -1,0 +1,76 @@
+categoryId: 62463
+name: Contributing to the Eclipse framework
+questions:
+  - description: Which workflow do most Eclipse platform projects use to review contributions?
+    choices:
+      - GitHub pull requests from a fork of the repository
+      - Uploading a ZIP file to the Eclipse Marketplace
+      - Direct pushes to the master branch by anyone
+      - Emailing patch files to a mailing list
+    hint: Everyone has read access, but only committers can push to the main repository.
+    explanation: Eclipse platform projects live on GitHub (for example eclipse-platform/eclipse.platform.ui). You fork the repository, push a branch to your fork and open a pull request that committers review.
+    correctChoice: 0
+  - description: What do you have to do before your first contribution can be accepted by an Eclipse project?
+    choices:
+      - Pay a membership fee to the Eclipse Foundation
+      - Get an invitation from the project lead
+      - Sign the Eclipse Contributor Agreement (ECA) with your Eclipse Foundation account
+      - Become a committer of the project
+    hint: It is an electronic agreement connected to your Eclipse.org account.
+    explanation: Contributors have to sign the Eclipse Contributor Agreement in their Eclipse account. No membership or committer status is required.
+    correctChoice: 2
+  - description: Why must the author email of your Git commits match the email of your Eclipse account?
+    choices:
+      - Because the email is used as the branch name
+      - Otherwise Git refuses to create the commit
+      - Because GitHub only accepts pull requests from Eclipse email domains
+      - Because the ECA check on the pull request verifies the commit author
+    hint: An automated check runs for every pull request.
+    explanation: The ECA check on GitHub compares the commit author with the Eclipse account which signed the agreement. A mismatch makes the check fail.
+    correctChoice: 3
+  - description: What is the Eclipse installer with the Platform SDK setup used for?
+    choices:
+      - It converts GitHub issues to Bugzilla entries
+      - It installs an IDE from the latest integration build, clones the Eclipse SDK repositories and configures the target platform and API baseline
+      - It publishes your plug-ins to the Eclipse Marketplace
+      - It signs your pull requests
+    hint: It automates the setup of a complete development environment.
+    explanation: The Oomph based Platform SDK configuration prepares the IDE, the Git clones, the target platform and an API baseline, so you can start contributing without manual steps.
+    correctChoice: 1
+  - description: Why do you set an API baseline in the workspace used to develop the Eclipse platform?
+    choices:
+      - To let API tooling detect unplanned API changes by comparing your code with the latest release
+      - To select the Java version for the runtime Eclipse
+      - To automatically generate the release notes
+      - To make the build faster
+    hint: The baseline is the last released version of Eclipse.
+    explanation: The API tooling compares the workspace code to the baseline and adds markers if you break or add API without the required version change.
+    correctChoice: 0
+  - description: Which statements about plug-in version numbers (major.minor.service.qualifier) in Eclipse are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The major version is increased if you break the API
+      - The service version is increased if you break the API
+      - The minor version is increased if you add API
+      - The qualifier is always chosen by the contributor
+    hint: Think about semantic versioning and who fills the qualifier.
+    explanation: Eclipse uses semantic versioning. Breaking API requires a major increase and new API a minor increase. The service version is increased for changes of internal code or Javadoc. The qualifier is filled in by the build system.
+    correctChoices: [0, 2]
+  - description: A reviewer asks for changes in your open pull request. In the platform projects, how do you usually update it?
+    choices:
+      - Amend the commit and force push it to the same branch of your fork
+      - Close the pull request and open a new one for every change
+      - Send the updated files to the reviewer by email
+      - Create a new fork for every change request
+    hint: The projects prefer a single commit per pull request.
+    explanation: Amending the last commit and force pushing updates the existing pull request, and keeps the history to one commit.
+    correctChoice: 0
+  - description: What is a good type of issue for a first contribution to an Eclipse project?
+    choices:
+      - An issue about the release schedule
+      - An issue that requires a rewrite of the SWT widgets
+      - An issue which changes the public API of the platform
+      - An issue tagged as good first issue or help wanted
+    hint: The projects use labels to mark such issues.
+    explanation: Labels such as good first issue and help wanted mark small and well-scoped tasks for new contributors, for example fixing a typo or a compiler warning.
+    correctChoice: 3

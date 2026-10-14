@@ -1,0 +1,67 @@
+categoryId: 1698
+name: Model add-ons and supplementary application model data
+questions:
+  - description: What is a model add-on in an Eclipse 4 application?
+    choices:
+      - A CSS file which extends the styling of the application
+      - A model object which refers to a class that adds functionality to the application
+      - A plug-in which is loaded from an update site
+      - An extension point contribution in the plugin.xml file
+    hint: Features like drag and drop of parts or key bindings are implemented this way.
+    explanation: Add-ons are model elements which point to a class via a bundleclass:// URI. Because the framework functionality is implemented as add-ons, you can replace or remove it in the model.
+    correctChoice: 1
+  - description: Which add-on handles the minimizing and maximizing of part stacks?
+    choices:
+      - MinMaxAddon
+      - CleanupAddon
+      - BindingServiceAddon
+      - DnDAddon
+    hint: The name combines the two actions.
+    explanation: The MinMaxAddon provides the min and max buttons for part stacks. DnDAddon handles drag and drop of parts and CleanupAddon removes empty containers.
+    correctChoice: 0
+  - description: Which data of a model element is NOT kept between application restarts?
+    choices:
+      - Variables
+      - Tags
+      - Transient data
+      - Persisted state
+    hint: The name of the correct one says it is only valid for the current run.
+    explanation: Transient data is a Map<String, Object> that exists at runtime only and is accessed via getTransientData(). Tags, variables and persisted state are persisted by the Eclipse runtime.
+    correctChoice: 2
+  - description: How can the tags of a model element be used in CSS?
+    choices:
+      - As additional class selectors
+      - As ID selectors
+      - Not at all, tags are not visible to the CSS engine
+      - As element type selectors
+    hint: The framework tags the stack of the active part with "active".
+    explanation: Tags are exposed as additional class selectors, for example .MPartStack.active. Tags used in CSS must not contain whitespace.
+    correctChoice: 0
+  - description: What is the effect of setting the persisted state flag persistState to false on a model element?
+    choices:
+      - The element cannot be changed at runtime
+      - The element is not rendered
+      - The element is not stored when the application model is persisted
+      - The element is stored in the Eclipse preferences instead
+    hint: Useful for elements that a plug-in contributes at every start.
+    explanation: With persistState set to false the element is not written during shutdown, so commands, handlers or menus are only present if the plug-in that contributes them is present.
+    correctChoice: 2
+  - description: Which statements about reacting to perspective switches in a model add-on are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The add-on class must implement a special interface, otherwise it is not instantiated
+      - EModelService.getTopLevelWindowFor() returns the perspective stack of the element
+      - The add-on listens to the selectedElement attribute of the perspective stack
+      - The add-on can receive the event with an @Inject @Optional method and the @UIEventTopic annotation
+    hint: Add-ons are plain classes created with dependency injection.
+    explanation: A perspective switch changes the selectedElement of the MPerspectiveStack, and an add-on can subscribe to this event via an injected method. getTopLevelWindowFor() returns the MWindow, and add-ons need no interface.
+    correctChoices: [2, 3]
+  - description: In the model editor, which tab allows you to add tags, variables and persisted state to a model element?
+    choices:
+      - Behavior
+      - Supplementary
+      - Default
+      - Advanced
+    hint: The name means "additional".
+    explanation: The Supplementary tab holds additional information for a model element. This data can be read and changed via the Eclipse API.
+    correctChoice: 1

@@ -1,0 +1,76 @@
+categoryId: 40350
+name: IDE - Using dependency injection
+questions:
+  - description: Where can the Inject annotation be placed for Eclipse dependency injection?
+    choices:
+      - Only on static fields
+      - On constructors, methods and fields
+      - Only on interfaces
+      - Only on constructors
+    hint: The framework supports three injection points.
+    explanation: Eclipse DI injects into constructors, methods and fields of objects it creates.
+    correctChoice: 1
+  - description: What is the purpose of a method annotated with PostConstruct in a part class?
+    choices:
+      - The framework calls it after the object was created and its dependencies were injected, which makes it the place to build the UI
+      - It is called when the part is disposed to release resources
+      - It is called before the constructor to prepare the context
+      - It is called every time the part loses focus
+    hint: Injected values such as the parent Composite are available there.
+    explanation: PostConstruct is called after the instance is created and injection is done, so the part can create its widgets there.
+    correctChoice: 0
+  - description: What does the Optional annotation on an injection target do?
+    choices:
+      - It lets the framework inject null if no value is available instead of failing
+      - It delays the injection until the first access
+      - It caches the injected value forever
+      - It makes injection happen only on the UI thread
+    hint: Consider a value such as the selection, which may not exist yet.
+    explanation: Without Optional a missing value is an error. With Optional the framework injects null or skips the method call.
+    correctChoice: 0
+  - description: How do you access the current selection of the Eclipse IDE in a part via dependency injection?
+    choices:
+      - Implement the interface ISelectionProvider in the part
+      - Inject Object together with Named and IServiceConstants.ACTIVE_SELECTION
+      - Call SelectionManager.getInstance() in the constructor
+      - Inject Object and add the annotation Selection
+    hint: The selection is a value in the context stored under a key.
+    explanation: The selection is stored in the context under the key IServiceConstants.ACTIVE_SELECTION, which you request with Named. A method with this parameter is called again when the selection changes.
+    correctChoice: 1
+  - description: Which statements about IEclipseContext are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A context is a global singleton without a parent
+      - A context can only hold primitive values such as int and boolean
+      - Contexts form a hierarchy and a lookup continues in the parent context if the key is missing locally
+      - Values can be set into a context so that they can be injected later
+    hint: Think of application, window and part, which each have their own context.
+    explanation: Contexts are organized hierarchically and store key-value pairs of arbitrary objects. Values placed there can be injected into objects created by the framework.
+    correctChoices: [2, 3]
+  - description: You create an object with the new keyword in your plug-in code. How do you get dependency injection applied to a new instance of a class?
+    choices:
+      - Annotate the class with Singleton
+      - Use ContextInjectionFactory.make(Class, IEclipseContext) to create the instance
+      - Call System.getProperty with the class name
+      - Register the class in the MANIFEST.MF file
+    hint: The creation has to go through the framework.
+    explanation: Only objects created by the framework are injected. ContextInjectionFactory creates an instance and injects it from the given context.
+    correctChoice: 1
+  - description: How can code in the Eclipse 3.x style (without dependency injection), for example a class created via new, access the IEclipseContext of the running IDE?
+    choices:
+      - Via new IEclipseContext()
+      - Via the Display.getCurrent() method
+      - Via the static field IEclipseContext.INSTANCE
+      - Via PlatformUI.getWorkbench().getService(IEclipseContext.class)
+    hint: The workbench is the entry point for services in 3.x API.
+    explanation: The IWorkbench provides the application level context as a service, from which you can read values such as the active editor.
+    correctChoice: 3
+  - description: Which annotation marks a method of a part that is called when the part receives the focus?
+    choices:
+      - Execute
+      - Focus
+      - PostConstruct
+      - Active
+    hint: The part should then pass the focus to one of its controls.
+    explanation: The Focus annotation marks the method that the framework calls when the part gets the focus, where you typically call setFocus on a widget.
+    correctChoice: 1

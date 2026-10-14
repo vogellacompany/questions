@@ -1,0 +1,67 @@
+categoryId: 6223
+name: Using context functions in the IDE
+questions:
+  - description: What is a context function in the Eclipse 4 programming model?
+    choices:
+      - An OSGi service that creates an object on demand for a context key when dependency injection finds no value
+      - A method annotated with @Execute that is called by a command
+      - A CSS function that styles parts depending on their context
+      - A utility method of the IEclipseContext that removes all values
+    hint: It is called lazily, and only if nothing is stored under the requested key.
+    explanation: A context function is an OSGi service which Eclipse calls via compute() when a key is requested and no object exists for it in the IEclipseContext. It can create and store the object.
+    correctChoice: 0
+  - description: You register a context function for your TaskService interface. How do you make dependency injection use it for "@Inject TaskService"?
+    choices:
+      - Name the component class TaskServiceContextFunction
+      - Annotate the TaskService interface with @Creatable
+      - Add the context function to the Application.e4xmi as a handler
+      - Set the service property service.context.key to the fully qualified name of the TaskService interface
+    hint: The function is registered for a key, and for injection the key is the type.
+    explanation: The service.context.key property defines for which key the context function is responsible. For injection of a type, the key must be the fully qualified class name.
+    correctChoice: 3
+  - description: You should register your context function as an OSGi service for the IContextFunction interface but extend the ContextFunction class. Why?
+    choices:
+      - IContextFunction cannot be implemented by classes in other plug-ins
+      - The ContextFunction class makes the service available to non-OSGi applications
+      - ContextFunction provides a default implementation, so your service keeps working if the interface gets new methods
+      - Only abstract classes can be registered with Declarative Services
+    hint: Think about API evolution of an interface.
+    explanation: The abstract class provides default implementations for methods which may be added to the interface later, so the subclass stays compatible while it is registered under the interface.
+    correctChoice: 2
+  - description: The implementation of your context function creates its service with ContextInjectionFactory.make(TransientTaskServiceImpl.class, context). Why is this used instead of new?
+    choices:
+      - make() runs the service in a separate thread
+      - make() is the only way to register OSGi services
+      - make() performs dependency injection on the new instance, for example for an @Inject IEventBroker field
+      - new cannot be used in classes which extend ContextFunction
+    hint: OSGi Declarative Services do not process injection annotations from the Eclipse DI framework.
+    explanation: The object is created by the Eclipse DI container, so it can use @Inject for its dependencies. A plain new instance or an OSGi service created by DS would not get these values injected.
+    correctChoice: 2
+  - description: When should you prefer a plain OSGi service over a context function?
+    choices:
+      - When the service is simple and does not need access to the context hierarchy
+      - When the object must be different for each window of the IDE
+      - When the object must be created with values from the active IEclipseContext
+      - When the service must be published under several context keys
+    hint: Context functions add complexity that you should only pay for when needed.
+    explanation: OSGi services are simpler to define. Context functions are only worth the extra effort if you need the context hierarchy or want to lazily create objects from context values.
+    correctChoice: 0
+  - description: Which statements about the IEclipseContext are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - A RunAndTrack object stays registered even if its changed() method returns false
+      - A key must be declared with declareModifiable() before modify() can change an existing value
+      - modify() searches up the context hierarchy for a context in which the variable was declared
+      - set() on a child context changes the value in the application context
+    hint: Context variables are special entries which can be changed from a lower level.
+    explanation: modify() walks up the hierarchy to the context defining the variable, and an existing key must have been declared modifiable, otherwise an IllegalArgumentException is thrown. set() only affects the context on which it is called, and a RunAndTrack is unregistered when changed() returns false.
+    correctChoices: [1, 2]
+  - description: Your context function creates an instance and also needs to make it available to other OSGi services. What can the function do?
+    choices:
+      - Store the instance in a static field of the Activator
+      - Store the instance in the context and additionally register it via BundleContext.registerService()
+      - Make the instance a model add-on
+      - Return the instance twice from compute()
+    hint: Other OSGi services use the OSGi service registry, not the Eclipse context.
+    explanation: The compute() method can put the object into the IEclipseContext and also publish it with registerService(), so both Eclipse DI clients and OSGi services find the same instance.
+    correctChoice: 1

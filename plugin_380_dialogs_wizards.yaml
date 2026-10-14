@@ -1,0 +1,67 @@
+categoryId: 1609
+name: Dialogs and Wizards
+questions:
+  - description: Which extension point do you use to add a wizard to the New dialog of the Eclipse IDE?
+    choices:
+      - org.eclipse.core.runtime.products
+      - org.eclipse.ui.views
+      - org.eclipse.ui.menus
+      - org.eclipse.ui.newWizards
+    hint: The name of the dialog is part of the extension point id.
+    explanation: Wizards for File > New are contributed with the org.eclipse.ui.newWizards extension point, optionally grouped by a category element.
+    correctChoice: 3
+  - description: Which interface does a wizard implement to be used in the New dialog and to receive the current selection of the workbench?
+    choices:
+      - IWorkbenchPart
+      - IWizardPage
+      - IDialogSettings
+      - INewWizard
+    hint: The name matches the extension point.
+    explanation: INewWizard extends IWorkbenchWizard and provides init(IWorkbench, IStructuredSelection), which passes the selection to the wizard.
+    correctChoice: 3
+  - description: Which method of a JFace Wizard class do you implement to react to the Finish button?
+    choices:
+      - createControl
+      - okPressed
+      - addPages
+      - performFinish
+    hint: The method returns a boolean to signal success.
+    explanation: performFinish is called when the user presses Finish and returns true if the wizard can close.
+    correctChoice: 3
+  - description: Where do you add the pages to a JFace wizard?
+    choices:
+      - In the plugin.xml file
+      - In the createControl method of the first page
+      - In the constructor of the WizardDialog
+      - In the addPages method of the wizard
+    hint: The method name says exactly what it does.
+    explanation: The wizard creates its pages in addPages by calling addPage for each WizardPage.
+    correctChoice: 3
+  - description: Which JFace class is intended for a dialog that shows a title, a message and an image above the area with your own controls?
+    choices:
+      - WizardDialog
+      - ProgressMonitorDialog
+      - MessageDialog
+      - TitleAreaDialog
+    hint: The name reflects the extra region at the top.
+    explanation: TitleAreaDialog offers a title area with a title, message and image. You fill the remaining area by overriding createDialogArea.
+    correctChoice: 3
+  - description: Which of the following are native SWT dialogs?
+    type: MULTIPLE_CHOICE
+    choices:
+      - WizardDialog
+      - TitleAreaDialog
+      - FileDialog
+      - ColorDialog
+    hint: JFace dialogs are built from SWT widgets, native dialogs call the operating system.
+    explanation: FileDialog and ColorDialog use the native dialogs of the operating system. TitleAreaDialog and WizardDialog are JFace dialogs.
+    correctChoices: [2, 3]
+  - description: What does project="true" on the wizard element of the org.eclipse.ui.newWizards extension point indicate?
+    choices:
+      - The wizard creates a project and is offered in the New Project dialog
+      - The wizard runs in a separate OSGi project
+      - The wizard has no pages
+      - The wizard can only be started from the Project Explorer
+    hint: The flag describes the result of the wizard.
+    explanation: The project attribute marks wizards that create a project, so the IDE lists them among the project wizards.
+    correctChoice: 0

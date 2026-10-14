@@ -1,0 +1,76 @@
+categoryId: 9757
+name: Building Eclipse applications with Maven Tycho on the command line
+questions:
+  - description: What is Tycho?
+    choices:
+      - A collection of Maven plug-ins for building Eclipse plug-ins, features, products and OSGi bundles
+      - A replacement for the OSGi runtime Equinox
+      - A Git client for Eclipse projects
+      - An Eclipse plug-in that exports products via a wizard
+    hint: A Tycho build is configured via pom.xml files.
+    explanation: Tycho extends Maven so that it understands the Eclipse and OSGi metadata, which allows headless builds on the command line or on a build server.
+    correctChoice: 0
+  - description: What is the purpose of the extensions.xml file in the .mvn folder when you build many Eclipse components?
+    choices:
+      - It sets the Java version of the build
+      - It defines the target platform
+      - It registers the Tycho build extension, so that components need no own pom.xml file
+      - It lists all modules of the build
+    hint: The extension uses the information of the MANIFEST.MF file to derive the build configuration.
+    explanation: The tycho-build extension enables pomless builds, in which Tycho derives the build information from MANIFEST.MF, feature.xml or the product file.
+    correctChoice: 2
+  - description: What does the target-platform-configuration plug-in define in the top-level pom file?
+    choices:
+      - The target definition file and the environments for which the build resolves dependencies
+      - The version of the Maven runtime
+      - The folder to which the product is exported
+      - The Java classes that are part of the target
+    hint: Without it, a Tycho build does not know the libraries that the IDE gets from its own installation.
+    explanation: It points to the target file, for example target-platform.target, and lists the operating systems, window systems and architectures that the build supports.
+    correctChoice: 0
+  - description: Which command builds all modules of a Tycho project from the top-level directory?
+    choices:
+      - mvn clean verify
+      - mvn eclipse:export
+      - mvn clean compile-tycho
+      - mvn tycho:build
+    hint: It is a standard Maven lifecycle phase.
+    explanation: Tycho binds to the standard Maven lifecycle, so mvn clean verify builds the plug-ins, features and products, and runs the tests.
+    correctChoice: 0
+  - description: What does Tycho do with the SNAPSHOT suffix of a plug-in version when it builds a product or an update site with eclipse-repository packaging?
+    choices:
+      - It fails the build until the version is changed
+      - It replaces the suffix with the build timestamp qualifier
+      - It keeps the suffix unchanged
+      - It removes the suffix and uses the version without a qualifier
+    hint: The qualifier makes each build uniquely identifiable.
+    explanation: The SNAPSHOT suffix is replaced with a qualifier derived from the build time, so that every build produces unique version numbers in the repository.
+    correctChoice: 1
+  - description: Which statements about running unit tests with Tycho Surefire are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - The tests run against the complete target platform
+      - UI tests do not need any configuration, because the UI harness is always active
+      - Test plug-ins whose Bundle-SymbolicName ends with .tests are treated as test plug-ins by pomless builds
+      - Tycho Surefire runs the tests in the integration-test phase in an OSGi runtime
+    hint: The test runtime contains the test plug-in and its transitive dependencies, and UI tests need a flag.
+    explanation: The .tests suffix is a naming convention, and Tycho Surefire runs in the integration-test phase. The UI harness must be enabled via useUIHarness, and the runtime contains only the dependencies of the test bundle plus configured extra requirements.
+    correctChoices: [2, 3]
+  - description: How do you add a bundle that is only required implicitly, such as org.apache.felix.scr, to the test runtime?
+    choices:
+      - By setting the useJDK parameter to BREE
+      - By adding it to the build.properties file
+      - By adding it as extraRequirements in the target-platform-configuration plug-in
+      - By adding it to the Application.e4xmi file
+    hint: The test runtime resolves only what the test bundle requires.
+    explanation: The extraRequirements configuration adds plug-ins, features or installable units to the resolution, and their transitive dependencies are resolved automatically.
+    correctChoice: 2
+  - description: How can you include a JRE in a product built with Tycho?
+    choices:
+      - By copying the JRE folder next to the product after the build
+      - By enabling the product includes a JRE flag and having a JustJ JRE in the target platform
+      - By adding the JRE as test dependency
+      - By setting JAVA_HOME before starting the exported product
+    hint: The JRE comes from the target platform like other content.
+    explanation: With the flag set in the product configuration and a JustJ JRE available in the target platform in planner mode, Tycho adds a fitting JRE to the plugins folder and references it in the ini file.
+    correctChoice: 1

@@ -1,0 +1,76 @@
+categoryId: 63107
+name: Tracing and performance analysis
+questions:
+  - description: Which Spy shows the plug-in that contributes the currently selected UI part?
+    choices:
+      - Plug-in Spy
+      - Layout Spy
+      - SWT Spy
+      - Menu Spy
+    hint: The shortcut is Alt+Shift+F1.
+    explanation: The Plug-in Spy shows information about the selected UI component including the contributing plug-in, and links to its manifest. The Menu Spy (Alt+Shift+F2) does this for menu and toolbar entries.
+    correctChoice: 0
+  - description: Which tool helps you to analyze SWT layout problems by showing the size computation and an outline of a control and its child?
+    choices:
+      - Plug-in Spy
+      - Error Log view
+      - Layout Spy
+      - Menu Spy
+    hint: The name of the tool already says what it inspects.
+    explanation: The Layout Spy lets you select a control, shows an overlay with its bounds and the bounds of its child, and reports values like computeSize. This helps to decide if the parent layout or the child widget is wrong.
+    correctChoice: 2
+  - description: How do you find the code that opened an unexpected dialog in a runtime Eclipse?
+    choices:
+      - Start the runtime Eclipse in debug mode, press Suspend when the dialog is open and read the call stack
+      - Activate the UI freeze monitoring in the preferences
+      - Search for the dialog title in the Error Log view
+      - Delete the .metadata folder and restart
+    hint: A thread that is paused tells you where it is.
+    explanation: With the runtime in debug mode, suspending the UI thread while the dialog is open shows the call stack up to the code that opened it.
+    correctChoice: 0
+  - description: What does the UI freeze monitor do once it is activated in the preferences?
+    choices:
+      - It prevents the UI thread from blocking
+      - It writes a stack trace to the Error Log whenever a UI freeze occurs
+      - It restarts the IDE after a freeze
+      - It moves long running work automatically to a background job
+    hint: It observes the UI thread and reports, it does not repair.
+    explanation: The monitor detects that the UI thread is blocked and logs the stack trace, which you can attach to an issue for the team of the affected project.
+    correctChoice: 1
+  - description: How do you start Eclipse so that it reads the trace options from a .options file?
+    choices:
+      - With the -debug start parameter
+      - With the -consoleLog start parameter
+      - With the -clean start parameter
+      - With the -nosplash start parameter
+    hint: The parameter is named after the activity of finding errors.
+    explanation: The -debug parameter turns on tracing. Eclipse then reads the key=value pairs of the .options file, by default from the installation directory, or from the location given after -debug.
+    correctChoice: 0
+  - description: Which statements about tracing in Eclipse plug-ins are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Tracing options are stored in the MANIFEST.MF file of each plug-in
+      - A plug-in registers a DebugOptionsListener to receive its trace options and uses DebugTrace to write messages
+      - Trace options can only be set before the first plug-in is started and never change
+      - Plug-ins can offer tracing options that you can enable at runtime in the Tracing preference page
+    hint: Think about the preference page for tracing and the OSGi service used to get the options.
+    explanation: The Tracing preference page allows to enable options at runtime. Plug-ins implement DebugOptionsListener (registered as OSGi service) and write messages via DebugTrace. The options come from the .options file, not from the manifest.
+    correctChoices: [1, 3]
+  - description: Why is a single thread dump often not enough to find the cause of a UI freeze?
+    choices:
+      - A thread dump shows only the state of one instant, so a fast call might be caught by chance
+      - A thread dump never contains the UI thread
+      - A thread dump only works on Windows
+      - The JVM cannot create thread dumps of the Eclipse IDE
+    hint: The dump is a snapshot, not a recording.
+    explanation: One dump says nothing about how long the UI thread stayed in a frame. Many consecutive samples show which call appears repeatedly, which is the actual freeze.
+    correctChoice: 0
+  - description: A label provider for a tree viewer needs the result of a long running operation, such as resolving the target platform, to compute a text. Why is this a problem?
+    choices:
+      - Label providers are only called once at startup
+      - Label providers are called on the UI thread for every visible row, so the UI freezes
+      - The result is cached automatically so the operation runs in the background
+      - Label providers cannot return a String
+    hint: Which thread asks the label provider for text?
+    explanation: JFace asks the label provider on the UI thread for each visible element. A slow call there blocks the UI, so expensive data must be computed in a job beforehand.
+    correctChoice: 1

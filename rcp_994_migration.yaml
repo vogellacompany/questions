@@ -1,0 +1,76 @@
+categoryId: 236356
+name: Migrating Eclipse 3.x components and applications
+questions:
+  - description: What does the compatibility layer of the Eclipse platform provide?
+    choices:
+      - It implements the Eclipse 3.x API on top of the 4.x runtime
+      - It adds support for older Java versions
+      - It converts the source code of 3.x applications automatically
+      - It translates the plugin.xml file to the Application.e4xmi file at build time
+    hint: The layer is the reason why old applications still run on a recent Eclipse platform.
+    explanation: The 3.x API is implemented on top of the 4.x API, so applications written for the 3.x API run without modification on a recent runtime.
+    correctChoice: 0
+  - description: What are the two migration options for an Eclipse 3.x based application?
+    choices:
+      - Rewrite the application in SWT or in JFace
+      - Migrate the target platform or migrate the Java version
+      - Migrate the runtime only, or additionally migrate the code to the 4.x API
+      - Migrate to OSGi or migrate to Maven
+    hint: One option keeps your code unchanged.
+    explanation: Migrating the runtime requires few code changes and relies on the compatibility layer. Migrating to the 4.x API means using the application model and dependency injection.
+    correctChoice: 2
+  - description: Which features should a new target definition contain for a runtime migration of an RCP application?
+    choices:
+      - org.eclipse.e4.rcp, org.eclipse.emf.ecore and org.eclipse.emf.common
+      - org.eclipse.platform.ide only
+      - org.eclipse.equinox.ds and org.eclipse.ui.ide
+      - org.eclipse.jdt and org.eclipse.pde
+    hint: The e4 runtime is based on EMF, and one feature contains the RCP base.
+    explanation: The e4.rcp feature contains the platform plug-ins, and the application model is based on EMF, so the two EMF features are required.
+    correctChoice: 0
+  - description: Which plug-in must replace org.eclipse.equinox.ds in older products that you migrate to a recent platform?
+    choices:
+      - org.eclipse.core.runtime
+      - org.eclipse.equinox.event
+      - org.apache.felix.scr
+      - org.eclipse.osgi.services
+    hint: Equinox switched to another implementation of Declarative Services.
+    explanation: The Declarative Services implementation changed to Apache Felix SCR. Features and product configurations that reference org.eclipse.equinox.ds must be updated.
+    correctChoice: 2
+  - description: How do you enable dependency injection in an existing 3.x view as an early migration step?
+    choices:
+      - By adding the jakarta.inject library to the product
+      - By setting the inject attribute of the view extension to true in plugin.xml
+      - By extending the e4 class ViewPartInjector
+      - By adding an e4 view extension to the application model
+    hint: The attribute is set in the editor of the view extension.
+    explanation: With inject set to true on the org.eclipse.ui.views extension, the platform injects the view and @Inject can be used, which reduces the access to singletons such as PlatformUI.
+    correctChoice: 1
+  - description: Which changes are part of migrating a 3.x ViewPart to an Eclipse 4 part?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Annotate the method that creates the UI with @PostConstruct
+      - Annotate the setFocus method with @Focus
+      - Keep the view element of the org.eclipse.ui.views extension unchanged
+      - Remove the inheritance from ViewPart
+    hint: The part is a POJO and the framework finds the methods via annotations. The registration changes too.
+    explanation: A part has no superclass, uses @PostConstruct for the UI creation and @Focus for the focus method. The 3.x view element is replaced with an e4view element or a model fragment.
+    correctChoices: [0, 1, 3]
+  - description: What happens to the extensions of a 3.x application on a 4.x runtime, for example to org.eclipse.ui.views?
+    choices:
+      - They are ignored
+      - They are removed from the plugin.xml file
+      - They are translated into model elements at runtime
+      - They must be converted manually before the application starts
+    hint: The compatibility layer must bridge the extensions and the application model.
+    explanation: The platform converts the relevant extensions to model elements at runtime, for example the ViewRegistry creates part descriptors from the view extensions.
+    correctChoice: 2
+  - description: Why can you use e4 API based extensions in the Eclipse IDE?
+    choices:
+      - Because e4 extensions are converted to 3.x classes
+      - Because the IDE uses a different renderer for e4 parts
+      - Because the IDE is completely based on the 4.x API
+      - Because the IDE is a 3.x API based application running on the e4 runtime
+    hint: Both APIs coexist in the same runtime.
+    explanation: The Eclipse IDE uses the 3.x API on top of the e4 runtime, so e4 based views, menus and toolbars can be added to it step by step.
+    correctChoice: 3

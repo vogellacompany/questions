@@ -1,0 +1,76 @@
+categoryId: 168445
+name: Flutter file handling and persistence
+questions:
+  - description: Which package do you use to find common locations like the documents directory on the device file system?
+    choices:
+      - build_runner
+      - http
+      - path_provider
+      - shared_preferences
+    hint: It supplies platform specific folders and leaves reading and writing to other code.
+    explanation: path_provider gives access to directories such as the temporary and the application documents directory, while dart:io is used to read and write the files.
+    correctChoice: 2
+  - description: What is the difference between the temporary directory and the application documents directory?
+    choices:
+      - The temporary directory is a cache that the system may clear at any time, the documents directory stays until the app is deleted
+      - The documents directory is cleared by the system at any time, the temporary directory never
+      - Both are cleared by the system whenever the app is closed
+      - The temporary directory is shared between all apps, the documents directory is shared with the user
+    hint: One of them is meant for cache data only.
+    explanation: Files in the temporary directory may disappear whenever the system needs space. The documents directory is private to the app and is removed only when the app is uninstalled.
+    correctChoice: 0
+  - description: Which Dart library contains the File class that you use to read and write files?
+    choices:
+      - dart:convert
+      - dart:math
+      - dart:async
+      - dart:io
+    hint: The library name stands for input and output.
+    explanation: The File class is part of dart:io. The dart:convert library only provides conversions such as jsonEncode.
+    correctChoice: 3
+  - description: When is SharedPreferences a good fit for persisting data?
+    choices:
+      - For large binary files like videos
+      - For small amounts of simple data stored as key-value pairs, such as settings
+      - For caching complete web pages
+      - For a relational data model that needs queries and joins
+    hint: The API consists of methods like setString and getString.
+    explanation: SharedPreferences stores simple values under string keys. Larger or structured data belongs into files or a database.
+    correctChoice: 1
+  - description: Which statements about persisting data in Flutter are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - Files can be accessed with dart:io in the same way in a browser
+      - Files in the application documents directory can be read by every other app on the device
+      - Files in the application documents directory are kept until the app is uninstalled
+      - Getting the application documents directory is an asynchronous operation
+    hint: Calls like getApplicationDocumentsDirectory are used with await.
+    explanation: getApplicationDocumentsDirectory returns a Future, and the directory is private to the app and survives restarts. Other apps cannot read it, and the browser has no such file system.
+    correctChoices: [2, 3]
+  - description: How can you store a list of Dart objects in a file?
+    choices:
+      - Save the list in pubspec.yaml
+      - Use File.writeObjects, which serializes any class
+      - Write the list directly with writeAsString, because every object has a string representation
+      - Convert the objects to a JSON string with jsonEncode and write it with writeAsString, then read it back with readAsString and jsonDecode
+    hint: Files hold text or bytes, not objects.
+    explanation: Objects are serialized, usually to JSON via toJson, and the resulting string is written to the file. When reading, jsonDecode and a fromJson factory rebuild the objects.
+    correctChoice: 3
+  - description: When should you use a local SQLite database instead of SharedPreferences?
+    choices:
+      - When you only store a single boolean setting
+      - When the data must be stored in the cloud
+      - When you want to store data in the temporary directory
+      - When you have larger, structured data that you want to query
+    hint: Think about the shape and the amount of the data.
+    explanation: SQLite suits structured data that needs queries, sorting or relations. Key-value storage is meant for small simple values.
+    correctChoice: 3
+  - description: Why does the readCounter example wrap the read access in a try and catch block and return 0 on error?
+    choices:
+      - Because readAsString always throws an exception on success
+      - Because the file does not exist yet on the first start or may contain invalid content
+      - Because the app must be restarted after reading a file
+      - Because the int type cannot hold the value 0 otherwise
+    hint: What is on the disk when the app runs for the very first time?
+    explanation: Reading a file that was never written throws an exception, and parsing invalid text fails as well. The fallback gives the app a sensible start value.
+    correctChoice: 1

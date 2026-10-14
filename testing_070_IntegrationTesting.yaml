@@ -1,0 +1,67 @@
+categoryId: 89780
+name: Integration testing
+questions:
+  - description: Why is a test that calls the GitHub REST API over HTTP an integration test and not a unit test?
+    choices:
+      - It exercises the interaction with an external system instead of a single isolated unit
+      - It tests one single method in isolation
+      - It runs faster than any unit test
+      - It uses a JUnit annotation that unit tests cannot use
+    hint: Think about what the test depends on besides your own code.
+    explanation: Integration tests check how components work together, here your code and a real remote service. Unit tests isolate a single unit from its dependencies.
+    correctChoice: 0
+  - description: Which Java API is used in the exercise to send an HTTP request without an additional library?
+    choices:
+      - java.io.HttpReader
+      - javax.swing.HttpPane
+      - java.nio.file.Files
+      - java.net.http.HttpClient
+    hint: It was added to the standard library in Java 11.
+    explanation: The java.net.http.HttpClient builds on HttpRequest and HttpResponse and allows sending requests with client.send(request, BodyHandlers.ofString()).
+    correctChoice: 3
+  - description: How do you read the HTTP status code from an HttpResponse in a test?
+    choices:
+      - response.statusCode()
+      - response.headers().status()
+      - response.getCode()
+      - response.body().statusCode()
+    hint: The method name is short and has no get prefix.
+    explanation: HttpResponse.statusCode() returns the status as int, so the test can assert that it equals 200.
+    correctChoice: 0
+  - description: What does response.headers().firstValue("Content-Type") return?
+    choices:
+      - A String that is null if the header is missing
+      - A Map of all headers
+      - An Optional of the first value of the header
+      - A list of all header values
+    hint: The API avoids returning null for missing headers.
+    explanation: HttpHeaders.firstValue returns an Optional of String. The test can then check for example that the content type starts with application/json.
+    correctChoice: 2
+  - description: What is an advantage of using AssertJ for the assertions of these tests?
+    choices:
+      - It replaces the JUnit test runner
+      - It mocks the remote service
+      - It offers fluent, readable assertions such as assertThat(value).startsWith("application/json")
+      - It sends the HTTP requests for you
+    hint: It is an assertion library only.
+    explanation: AssertJ provides a fluent assertThat API with many specialized assertions for strings, numbers, collections and more, while JUnit still runs the tests.
+    correctChoice: 2
+  - description: Which are typical drawbacks of integration tests against a real, external API?
+    type: MULTIPLE_CHOICE
+    choices:
+      - They can fail because of network problems or an unavailable service
+      - They can only be written with Gradle
+      - They cannot use assertions
+      - They are usually slower than unit tests
+    hint: Consider what is outside of your control.
+    explanation: Tests that depend on the network and a remote service are slower and can be flaky. The build tool and the assertion support do not limit them.
+    correctChoices: [0, 3]
+  - description: Why does the optional Stack Overflow exercise use dynamic tests?
+    choices:
+      - Dynamic tests do not need assertions
+      - Dynamic tests run without a JUnit runtime
+      - The tests to execute can be created at runtime, for example from the data returned by the API
+      - Dynamic tests are the only tests that can use HttpClient
+    hint: The number of tests depends on what the service returns.
+    explanation: With @TestFactory you can create one DynamicTest per element of data that is only known at runtime, for example per returned question.
+    correctChoice: 2

@@ -1,0 +1,67 @@
+categoryId: 25451
+name: Flutter - Overview of Flutter development
+questions:
+  - description: Which command creates a new Flutter project named hello_world on the command line?
+    choices:
+      - flutter project hello_world
+      - flutter create hello_world
+      - flutter init hello_world
+      - flutter new hello_world
+    hint: The verb says that something is generated, and the argument is the project folder.
+    explanation: flutter create generates a new project with the example counter app in the given folder.
+    correctChoice: 1
+  - description: How do you start the generated app from the command line?
+    choices:
+      - Run flutter start in the parent folder
+      - Run flutter run in the project folder
+      - Run dart main.dart in the lib folder
+      - Run flutter build in any folder
+    hint: You have to be inside the project, and the command asks for a target device if several are available.
+    explanation: flutter run, executed in the project folder, builds the app and starts it on the selected device, emulator or browser.
+    correctChoice: 1
+  - description: What happens to the counter value when you change the theme color and trigger a hot reload?
+    choices:
+      - The UI updates and the counter keeps its value
+      - The app restarts and the counter is reset to 0
+      - The counter is deleted but the color changes
+      - Nothing changes until the app is reinstalled
+    hint: Hot reload injects changed code into the running app.
+    explanation: Hot reload applies the changed code to the running app and rebuilds the widgets while the state is preserved.
+    correctChoice: 0
+  - description: Which statements about hot reload are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - It requires the app to be uninstalled from the device first
+      - It resets all state variables to their initial values
+      - Bigger structural changes may require a full restart of the app
+      - It keeps the state of the running app
+    hint: Think about why developers use it during UI work.
+    explanation: Hot reload preserves the app state, which makes UI iterations fast. Some larger changes are not applied and need a restart.
+    correctChoices: [2, 3]
+  - description: In which file does the generated Flutter app start and which function runs the root widget?
+    choices:
+      - pubspec.yaml and runApp
+      - lib/app.dart and startApp
+      - lib/main.dart and startApp
+      - lib/main.dart and runApp
+    hint: The main function hands the root widget to the framework.
+    explanation: The main function in lib/main.dart is the entry point, and it calls runApp with the top-level widget.
+    correctChoice: 3
+  - description: Which file configures the linter rules that the Dart analyzer applies to your code?
+    choices:
+      - analysis_options.yaml
+      - pubspec.yaml
+      - lint.json
+      - settings.dart
+    hint: The name mentions the tool that checks your source code.
+    explanation: The analysis_options.yaml file in the project root defines the analyzer and linter rules, for example annotate_overrides.
+    correctChoice: 0
+  - description: What do you need installed in Visual Studio Code to create and run Flutter projects from the command palette?
+    choices:
+      - Only the Java extension pack
+      - The Gradle extension
+      - The Dart and Flutter extensions
+      - The Android Studio plug-in
+    hint: One extension supports the language, the other the framework.
+    explanation: The Dart and Flutter extensions provide commands like Flutter - New Project, the debugger and hot reload support.
+    correctChoice: 2

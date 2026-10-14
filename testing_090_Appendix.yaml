@@ -1,0 +1,58 @@
+categoryId: 109276
+name: Java Testing - Appendix
+questions:
+  - description: Which Eclipse feature is used to create a Gradle project with the New Gradle Project wizard?
+    choices:
+      - The Tycho build extension
+      - The Java Development Tools launcher
+      - The Maven integration m2e
+      - The Buildship Gradle integration
+    hint: The Eclipse Gradle tooling has a name related to ships.
+    explanation: Buildship is the Eclipse integration for Gradle. Its wizard creates the Gradle project and imports it into the workspace.
+    correctChoice: 3
+  - description: Why does the build.gradle file call useJUnitPlatform() in its test block?
+    choices:
+      - It converts JUnit 4 tests to JUnit 5 tests
+      - It adds the test sources to the production classpath
+      - It tells Gradle to run the tests with the JUnit Platform so that JUnit 5 tests are found
+      - It downloads JUnit from the internet
+    hint: Gradle needs to know which test framework executes the tests.
+    explanation: Without useJUnitPlatform() Gradle does not run the tests with the JUnit Platform, so JUnit Jupiter tests are not executed.
+    correctChoice: 2
+  - description: What is the purpose of testImplementation platform('org.junit:junit-bom:...')?
+    choices:
+      - It starts the tests in the JUnit Platform console
+      - It aligns the versions of all JUnit artifacts to those defined in the bill of materials
+      - It disables transitive dependencies
+      - It makes JUnit available in production code
+    hint: BOM stands for bill of materials.
+    explanation: A BOM is a platform dependency that defines compatible versions, so the individual JUnit artifacts can be declared without versions.
+    correctChoice: 1
+  - description: Why is org.junit.platform:junit-platform-launcher added as testRuntimeOnly?
+    choices:
+      - It contains the assertion methods
+      - It is only used by the Eclipse IDE
+      - It is needed to compile the test classes
+      - Newer Gradle versions no longer provide the launcher on the test runtime classpath
+    hint: It is not used in the test source code but needed to start the tests.
+    explanation: Gradle needs the JUnit Platform launcher at runtime to start the tests. Since Gradle 9 it must be declared explicitly, and testRuntimeOnly keeps it off the compile classpath.
+    correctChoice: 3
+  - description: What is the difference between the Gradle configurations implementation and testImplementation?
+    choices:
+      - testImplementation dependencies are packaged into the production JAR
+      - There is no difference
+      - implementation dependencies are only used by the tests
+      - testImplementation dependencies are only available for compiling and running the tests
+    hint: The prefix tells you which source set uses the dependency.
+    explanation: testImplementation applies to the test source set only, so test libraries such as JUnit are not part of the production classpath or the delivered artifact.
+    correctChoice: 3
+  - description: Which statements about running the tests of a Gradle project are correct?
+    type: MULTIPLE_CHOICE
+    choices:
+      - ./gradlew test runs the tests with the Gradle wrapper
+      - The tests can also be started from the Eclipse IDE
+      - Tests can only be run from the command line
+      - Gradle needs a pom.xml file to find the tests
+    hint: A Gradle project supports both a command line and an IDE workflow.
+    explanation: The wrapper script gradlew runs the test task, and the Eclipse IDE can run the same tests via JUnit. A pom.xml belongs to Maven.
+    correctChoices: [0, 1]
